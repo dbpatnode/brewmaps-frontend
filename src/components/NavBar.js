@@ -1,24 +1,32 @@
-// import React, { Component } from 'react';
-// import {Route, Switch, Link, NavLink, withRouter} from 'react-router-dom'
+import React, { Component } from 'react';
+import { NavLink} from 'react-router-dom';
+import logo from './hop_logo.png'
 
 
-// class NavBar extends Component {
-// //     state = {
-// //         users: [],
-// //         name: ""
-// //     }
+class NavBar extends Component {
+    state = {
+        users: [],
+        name: ""
+    }
     
+    // logout = () => {
+    //     sessionStorage.clear();
+    //     window.location.href = '/';
+    // }
     
-// render() {
-//         return (
-//         <header>
-//         <h3>BrewMaps</h3>
-//             <NavLink to='/' exact >Home</NavLink>
-//             <NavLink to='/login'>Login</NavLink>
-//             <NavLink to='/signup'>Sign up</NavLink>
-//         </header>
-//         )
-//     }
-// }
+    render() {
+        return (
+            // <Router>
+            <div className="navbar">
+                <NavLink to="/"> <img src= {logo} alt= 'beer map logo' className='logo'></img> </NavLink> 
+                <NavLink to="/map"> BeerMap </NavLink> 
+                <NavLink to="/login"> Login </NavLink> 
+                <NavLink to='/signup'> Sign Up </NavLink> 
+                <NavLink to='/profile'> View Profile </NavLink> 
+            </div>
+            // </Router>
+        )
+    }
+}
 
-// export default NavBar
+export default NavBar
