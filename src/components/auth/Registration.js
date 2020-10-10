@@ -20,7 +20,6 @@ export default class Registration extends Component {
     }
     
     handleChange(e) {
-        // console.log("handle change", e)
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -42,18 +41,21 @@ export default class Registration extends Component {
             password: password,
             password_confirmation: password_confirmation
         },
-        { withCredentials: true, mode: "cors" }
-        ).then(resp => {
-            console.log("signup resp", resp)
-        }).catch(error => {
+        { withCredentials: true }
+        )
+        .then(resp => {
+            if (resp.data.status === 'created') {
+                this.props.history.push("/map")
+            }
+        })
+        .catch(error => {
             console.log("signup error", error)
         })
-        e.preventDefault()
     }
 
     render() {
         return (
-            <div className="signup-login">
+            <div className="signup">
                 <form onSubmit={this.handleSubmit}>
                     
                     <input
@@ -64,6 +66,7 @@ export default class Registration extends Component {
                     onChange={this.handleChange} 
                     required
                     />
+                    <br />
 
                     <input 
                     type="username" 
@@ -73,6 +76,7 @@ export default class Registration extends Component {
                     onChange={this.handleChange} 
                     required
                     />
+                    <br />
 
                     <input 
                     type="email" 
@@ -82,6 +86,7 @@ export default class Registration extends Component {
                     onChange={this.handleChange} 
                     required
                     />
+                    <br />
 
                     <input 
                     type="password" 
@@ -91,6 +96,7 @@ export default class Registration extends Component {
                     onChange={this.handleChange} 
                     required
                     />
+                    <br />
 
                     <input 
                     type="password" 
@@ -100,8 +106,9 @@ export default class Registration extends Component {
                     onChange={this.handleChange} 
                     required
                     />
+                     <br />
 
-                    <button type= "submit"> Sign Up </button>
+                    <button className="login-signup-buttons" type= "submit" value="Signup"> Sign Up </button>
 
                 </form>
             </div>
