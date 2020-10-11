@@ -2,13 +2,15 @@ import React, {Component} from 'react';
 // import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
-import axios from 'axios'
+// import axios from 'axios'
 import './App.css';
 import NavBar from './components/NavBar.js'
 import Login from './components/auth/Login.js'
 import Registration from './components/auth/Registration.js'
-import MainContainer from './containers/MapContainer.js'
+import MapContainer from './containers/MapContainer.js'
 import Home from './components/Home'
+import FavoriteContainer from './containers/FavoriteContainer.js'
+import NoteContainer from './containers/NoteContainer.js'
 import Dashboard from './components/Dashboard'
 
 class App extends Component {
@@ -71,12 +73,14 @@ class App extends Component {
             )}
             /> */}
 
-            <Route 
+            {/* <Route 
             exact 
             render={props => (
-              <Dashboard {...props} loggedInStatus={this.state.loggedInStatus} />
+              <Dashboard {...props} 
+              loggedInStatus={this.state.loggedInStatus} />
             )}
-            />
+            /> */}
+
             <Route
             path="/signup"
             render= {props => (
@@ -86,6 +90,7 @@ class App extends Component {
               />
               )}
             />
+
             <Route
             path="/login"
             render= {props => (
@@ -94,11 +99,32 @@ class App extends Component {
               loggedInStatus={this.state.loggedInStatus} 
               />
               )}
-            />
+              />
+
             <Route
             path="/map"
             render= {props => (
-            <MainContainer {...props}
+            <MapContainer {...props}
+              handleLogin= {this.handleLogin}
+              loggedInStatus={this.state.loggedInStatus} 
+            />
+            )}
+            />
+
+            <Route
+            path="/favorites"
+            render= {props => (
+            <FavoriteContainer {...props}
+              handleLogin= {this.handleLogin}
+              loggedInStatus={this.state.loggedInStatus} 
+            />
+            )}
+            />
+
+            <Route
+            path="/notes"
+            render= {props => (
+            <NoteContainer {...props}
               handleLogin= {this.handleLogin}
               loggedInStatus={this.state.loggedInStatus} 
             />

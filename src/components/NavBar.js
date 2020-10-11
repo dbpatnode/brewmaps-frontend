@@ -22,7 +22,8 @@ class NavBar extends Component {
                 <NavLink to="/map"> BeerMap </NavLink> 
                 <NavLink to="/login"> Login </NavLink> 
                 <NavLink to='/signup'> Sign Up </NavLink> 
-                <NavLink to='/profile'> View Profile </NavLink> 
+                <NavLink to='/favorites'> Favorite Breweries</NavLink>
+                <NavLink to='/notes'> Brewery Notes</NavLink>
             </div>
             // </Router>
         )
