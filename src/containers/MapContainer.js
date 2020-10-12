@@ -11,7 +11,6 @@ class MapContainer extends React.Component {
 
     componentDidMount() {
         axios.get('http://localhost:3000/breweries',{withCredentials: true})
-        // .then(resp => console.log(resp))
         .then(resp => {this.setState({pins: resp.data})
         })
     }

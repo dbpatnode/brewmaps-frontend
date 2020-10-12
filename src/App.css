@@ -68,6 +68,79 @@ html, body{
    color: #aa9902;
  }
 
+ /* HOME PAGE */
+.home{
+   /* text-align: center; */
+   height:100%;
+   display: grid; 
+   grid-template-columns: 1fr 1fr 1fr;
+   /* background: rgb(253,187,45);
+   background: linear-gradient(0deg, rgba(253,187,45,1) 15%, rgba(195,121,34,0) 100%); */
+ }
+ 
+ .bio{
+   text-align: center;
+    text-align: left;
+    margin-left: 50px;
+ }
+ .Bio #title {
+   text-align: center;
+   height: 50px;
+   font-weight: bold;
+ }
+
+ .Bio #subtitle {
+   text-align: center;
+ }
+ 
+ .Bio #body {
+   font-style: italic;
+   margin-left: 10%;
+   margin-right: 10%;
+   margin-top: 1%;
+   margin-bottom: 3%;
+ }
+ 
+#welcome-image {
+   height: 350px;
+ }
+
+.home-login-signup {
+   text-align: center;
+   text-align: center;
+   max-width:250px;
+   /* margin: 5% 35% 5% 35%; */
+   margin: 45% auto;
+   margin-left: 51%;
+   /* margin-right:51%; */
+   padding:37px;
+   height: 50px;
+   height: 200px;
+   /* border: 1px solid grey; */
+   opacity: .95;
+   -webkit-box-shadow: 7px 10px 20px -4px rgba(0,0,0,0.75);
+   -moz-box-shadow: 7px 10px 20px -4px rgba(0,0,0,0.75);
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+}
+
+.home-buttons {
+   margin-top: 5px;
+   background-color: white;
+   border-radius: 3px;
+   width: 200px;
+   border: .5px solid  #1A0035;
+ 
+}
+
+.home-buttons:hover {
+   background-color: #015a29;
+   color: white;
+   border-radius: 3px ;
+   width: 204px;
+   height: 30px;
+   transition: all .1s
+ }
+
  /* Map */
  .map-position {
    margin-left:-200px;
@@ -104,6 +177,21 @@ html, body{
      height: 20px;
   }
 
+  /* popups on map */
+
+  .popup-button {
+   /* align-items: center; */
+   margin-top: 5px;
+   background-color: white;
+   border-radius: 3px;
+   width: 75%;
+   border: .5px solid  #1A0035;
+  }
+
+  .popup-button:hover {
+   background-color: #e9e9e9;
+  }
+  
   /* login and signup */
 
 .signup{

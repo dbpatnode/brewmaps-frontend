@@ -7,8 +7,11 @@ import './App.css';
 import NavBar from './components/NavBar.js'
 import Login from './components/auth/Login.js'
 import Registration from './components/auth/Registration.js'
-import MainContainer from './containers/MapContainer.js'
+import MapContainer from './containers/MapContainer.js'
 import Home from './components/Home'
+import FavoriteContainer from './containers/FavoriteContainer.js'
+import NoteContainer from './containers/NoteContainer.js'
+import BreweryShowPage from './components/BreweryShowPage'
 import Dashboard from './components/Dashboard'
 
 class App extends Component {
@@ -17,8 +20,11 @@ class App extends Component {
 
     this.state = {
       loggedInStatus: "NOT_LOGGED_IN",
-      user: {}
+      user: {},
+      allBreweries:[]
     }
+    
+   
 
     this.handleLogin = this.handleLogin.bind(this)
     this.handleLogout = this.handleLogout.bind(this)
@@ -38,6 +44,12 @@ class App extends Component {
   //   this.checkLoginStatus()
 
   // }
+
+  componentDidMount() {
+    axios.get('http://localhost:3000/breweries',{withCredentials: true})
+    .then(resp => {this.setState({allBreweries: resp.data})
+    })
+}
 
   handleLogout(){
     this.setState({
@@ -59,7 +71,7 @@ class App extends Component {
         <Router>
         <div>
         <NavBar />
-        {/* <Route 
+        <Route 
             exact 
             path="/" 
             render={props => (
@@ -69,40 +81,86 @@ class App extends Component {
               loggedInStatus={this.state.loggedInStatus} 
               />
             )}
-            /> */}
+            />
 
-            <Route 
+            {/* <Route 
             exact 
             render={props => (
-              <Dashboard {...props} loggedInStatus={this.state.loggedInStatus} />
+              <Dashboard {...props} 
+              loggedInStatus={this.state.loggedInStatus} />
             )}
-            />
+            /> */}
+
             <Route
             path="/signup"
             render= {props => (
-              <Registration {...props}
+              <Registration 
+              {...props}
               handleLogin= {this.handleLogin}
               loggedInStatus={this.state.loggedInStatus} 
               />
               )}
             />
+
             <Route
             path="/login"
             render= {props => (
-              <Login {...props}
+              <Login 
+              {...props}
               handleLogin= {this.handleLogin}
               loggedInStatus={this.state.loggedInStatus} 
               />
               )}
-            />
+              />
+
             <Route
             path="/map"
             render= {props => (
-            <MainContainer {...props}
+            <MapContainer 
+              {...props}
               handleLogin= {this.handleLogin}
               loggedInStatus={this.state.loggedInStatus} 
             />
             )}
+            />
+
+            <Route
+            path="/favorites"
+            render= {props => (
+            <FavoriteContainer 
+              {...props}
+              handleLogin= {this.handleLogin}
+              loggedInStatus={this.state.loggedInStatus} 
+            />
+            )}
+            />
+
+            <Route
+            path="/notes"
+            render= {props => (
+            <NoteContainer {...props}
+              handleLogin= {this.handleLogin}
+              loggedInStatus={this.state.loggedInStatus} 
+            />
+            )}
+            />
+
+            <Route
+            path="/brewery/:BreweryId"
+            render= {(props) => {
+ 
+            const BreweryId = props.match.params.BreweryId
+            const brewery = this.state.allBreweries.find(e => e.id === parseInt(BreweryId))
+            return brewery ?
+            <BreweryShowPage
+            brewery ={brewery} 
+            {...props}
+              handleLogin= {this.handleLogin}
+              loggedInStatus={this.state.loggedInStatus} 
+            />
+            :
+            "Loading..."
+            }}
             />
         </div>
         </Router>
