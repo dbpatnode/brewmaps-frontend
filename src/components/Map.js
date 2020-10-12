@@ -34,19 +34,6 @@ class Map extends React.Component {
         })
     }
 
-//    CustomPopup = ({index, pin, closePopup}) => {
-//         return (
-//           <Popup
-//             latitude={pin.lat}
-//             longitude={pin.long}
-//             onClose={closePopup}
-//             closeButton={true}
-//             closeOnClick={false}
-//             offsetTop={-30}
-//            >
-//             <p>{pin.brewery_name}</p>
-//           </Popup>
-//         )}
 
     _onClickMarker = pin => {
         this.setState({popupInfo: pin});
