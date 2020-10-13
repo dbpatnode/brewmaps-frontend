@@ -38,6 +38,7 @@ export default class Login extends Component {
             if (resp.data.status === "created") {
             this.props.history.push("/map")
             this.props.handleLogin(resp.data)
+            console.log(resp.data)
             }
         })
         .catch(error => {

@@ -9,7 +9,7 @@ class BreweryShowPage extends Component {
 
 
     render() {
-        console.log("phone", this.props.brewery)
+        // console.log("phone", this.props.brewery)
         // const phone = this.props.brewery.phone
         const {brewery_name, brewery_type, street, city, state, postal_code, phone, website_url} = this.props.brewery
         return (

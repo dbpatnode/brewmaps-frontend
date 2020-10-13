@@ -12,8 +12,9 @@ export default class BreweryCard extends PureComponent {
     const website = `${info.website_url}`
     const phoneNumber = `${info.phone}`
 
-   
+    console.log(info.id)
     return (
+      
         // console.log(info.website_url)
       <div className="popup">
         <div>

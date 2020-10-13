@@ -80,7 +80,7 @@ class Map extends React.Component {
                 width= "100%"
                 height="100%"
                 mapStyle='mapbox://styles/mapbox/streets-v11'
-                mapboxApiAccessToken = 'pk.eyJ1IjoibHVjYXNsZWlicyIsImEiOiJja2Z5OGVmb20xMjlxMnRvazY0OTlqMXVkIn0.G1QPTc55QLc2rXKcO47jzw'
+                mapboxApiAccessToken = 'pk.eyJ1IjoiZGJwYXRub2RlIiwiYSI6ImNrZnk4aWJ1MjAwN2kyem55MzVmaWh0MnkifQ.9Xu3ZCcZg5OPrXUkqrMILQ'
                 >
 
                 {this.filterPins().map((pin) => (

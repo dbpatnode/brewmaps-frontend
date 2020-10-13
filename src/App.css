@@ -70,14 +70,9 @@ html, body{
 
  /* HOME PAGE */
 .home{
-   /* text-align: center; */
-   /* height:100%; */
    display: grid; 
    grid-template-columns: 20% 20% 20% 20% 20%;
-   grid-template-rows: 20% 20% 20% 20% 20%;
-   /* box-shadow: 0 4px 8px 0 rgba(0,0,0,.2); */
-   /* background: rgb(253,187,45);
-   /* background: linear-gradient(0deg, rgba(253,187,45,1) 15%, rgba(195,121,34,0) 100%); */ 
+   grid-template-rows: 20% 20% 20% 20% 20%; 
  }
  
  .Bio{
@@ -85,10 +80,8 @@ html, body{
    grid-column-end: 4;
    text-align: center;
    text-align: left;
-   /* margin-left: 50%; */
-   /* box-shadow: 0 4px 8px 0 rgba(0,0,0,.2); */
-
  }
+
  .Bio #title {
    /* grid-column-start: 2;
    grid-column-end: 4; */
@@ -103,8 +96,6 @@ html, body{
  
  .Bio #body {
    width: 100%;
-   /* font-style: italic; */
-   
  }
  
 #welcome-image {

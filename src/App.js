@@ -11,8 +11,10 @@ import MapContainer from './containers/MapContainer.js'
 import Home from './components/Home'
 import FavoriteContainer from './containers/FavoriteContainer.js'
 import NoteContainer from './containers/NoteContainer.js'
-import BreweryShowPage from './components/BreweryShowPage'
+import IndividualBreweryShowPage from './components/BreweryShowPage'
 import BreweryCollection from './components/BreweryCollection'
+
+
 
 
 
@@ -32,12 +34,21 @@ class App extends Component {
     this.handleLogout = this.handleLogout.bind(this)
   }  
 
+  
 
   componentDidMount() {
-    axios.get('http://localhost:3000/breweries',{withCredentials: true})
-    .then(resp => {this.setState({allBreweries: resp.data})
-    })
-}
+    localStorage.clear()
+    // if(!localStorage.getItem("allBreweries")){
+      axios.get('http://localhost:3000/breweries',{withCredentials: true})
+      .then(resp => {
+
+        this.setState({
+          allBreweries: resp.data 
+        })
+        localStorage.setItem("allBreweries", 
+        JSON.stringify(resp.data))
+      })
+  }
 
   handleLogout(){
     console.log("hello")
@@ -56,6 +67,7 @@ class App extends Component {
   }
   
   render() {
+    console.log(this.state.allBreweries)
     return (
       // <div className="App">
         <Router>
@@ -144,12 +156,12 @@ class App extends Component {
             <Route
             path="/brewery/:BreweryId"
             render= {(props) => {
- 
+
             const BreweryId = props.match.params.BreweryId
-            const brewery = this.state.allBreweries.find(e => e.id === parseInt(BreweryId))
+            const brewery =this.state.allBreweries.find(e => e.id === parseInt(BreweryId))
 
             return brewery ?
-            <BreweryShowPage
+            <IndividualBreweryShowPage
             brewery ={brewery} 
               {...props}
               handleLogin= {this.handleLogin}
