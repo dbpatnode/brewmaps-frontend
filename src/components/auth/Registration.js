@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 export default class Registration extends Component {
     
@@ -46,6 +47,7 @@ export default class Registration extends Component {
         .then(resp => {
             if (resp.data.status === 'created') {
                 this.props.history.push("/map")
+                this.props.handleLogin(resp.data)
             }
         })
         .catch(error => {
@@ -110,7 +112,12 @@ export default class Registration extends Component {
 
                     <button className="login-signup-buttons" type= "submit" value="Signup"> Sign Up </button>
 
+                    
                 </form>
+                <br/>
+
+                <Link to='/'>homepage</Link> {"  🍻  "}
+                <Link to='/login'>login </Link>
             </div>
         )
     }

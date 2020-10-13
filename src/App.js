@@ -12,7 +12,7 @@ import Home from './components/Home'
 import FavoriteContainer from './containers/FavoriteContainer.js'
 import NoteContainer from './containers/NoteContainer.js'
 import BreweryShowPage from './components/BreweryShowPage'
-import Dashboard from './components/Dashboard'
+import BreweryCollection from './components/BreweryCollection'
 
 class App extends Component {
   constructor() {
@@ -30,20 +30,6 @@ class App extends Component {
     this.handleLogout = this.handleLogout.bind(this)
   }  
 
-  // checkLoginStatus(){
-  //   axios.get('http://localhost:3000/logged_in', {withCredentials: true})
-  //   .then(resp => {
-  //     console.log("logged in?", resp)
-  //   })
-  //   .catch(error => {
-  //     console.log("check login error", error)
-  //   })
-  // }
-
-  // componentDidMount(){
-  //   this.checkLoginStatus()
-
-  // }
 
   componentDidMount() {
     axios.get('http://localhost:3000/breweries',{withCredentials: true})
@@ -52,6 +38,7 @@ class App extends Component {
 }
 
   handleLogout(){
+    console.log("hello")
     this.setState({
       loggedInStatus:"NOT_LOGGED_IN",
       user:{}
@@ -59,6 +46,7 @@ class App extends Component {
   }
 
   handleLogin(data) {
+    // debugger
     this.setState({
       loggedInStatus: "LOGGED_IN",
       user: data.user
@@ -70,14 +58,20 @@ class App extends Component {
       // <div className="App">
         <Router>
         <div>
-        <NavBar />
+        <NavBar 
+        user={this.state.user}
+        loggedInStatus= {this.state.loggedInStatus}
+        handleLogout= {this.handleLogout}
+        />
         <Route 
             exact 
             path="/" 
             render={props => (
-              <Home {...props} 
-              handleLogin= {this.handleLogin}  
+
+              <Home {...props}
               handleLogout= {this.handleLogout}
+              handleLogin= {this.handleLogin}  
+              
               loggedInStatus={this.state.loggedInStatus} 
               />
             )}
@@ -151,10 +145,11 @@ class App extends Component {
  
             const BreweryId = props.match.params.BreweryId
             const brewery = this.state.allBreweries.find(e => e.id === parseInt(BreweryId))
+
             return brewery ?
             <BreweryShowPage
             brewery ={brewery} 
-            {...props}
+              {...props}
               handleLogin= {this.handleLogin}
               loggedInStatus={this.state.loggedInStatus} 
             />
@@ -162,6 +157,25 @@ class App extends Component {
             "Loading..."
             }}
             />
+
+            <Route
+            path="/breweries"
+            render= {(props) => {
+
+            const breweries = this.state.allBreweries
+            return breweries ?
+            <BreweryCollection 
+              breweries = {breweries}
+              {...props}
+              handleLogin= {this.handleLogin}
+              loggedInStatus={this.state.loggedInStatus} 
+            />
+            :
+            "Loading..."
+            }}
+            />
+
+
         </div>
         </Router>
    

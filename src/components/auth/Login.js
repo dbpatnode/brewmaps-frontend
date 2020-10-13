@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 export default class Login extends Component {
     
@@ -9,18 +10,19 @@ export default class Login extends Component {
         this.state = {
             username: "",
             password: "",
-            loginErrors: ""
+            loginErrors: "",
+            allFavorites: []
         }
         
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
     
-    handleChange(e) {
-        // console.log("handle change", e)
+    handleChange = (e) => {
+        let { name, value } = e.target;
         this.setState({
-            [e.target.name]: e.target.value
-        })
+            [name]: value
+        });
     }
     handleSubmit(e) {
         e.preventDefault()
@@ -33,14 +35,16 @@ export default class Login extends Component {
         { withCredentials: true }
         )
         .then(resp => {
-            // console.log("login resp", resp)
             if (resp.data.status === "created") {
-            // this.props.handleSuccesfulAuth(resp.data)
             this.props.history.push("/map")
+            this.props.handleLogin(resp.data)
             }
         })
         .catch(error => {
             console.log("login error", error)
+            // this.setState({ 
+            //     isInvalid: true
+            // })
         })
         // e.preventDefault()
     }
@@ -71,8 +75,13 @@ export default class Login extends Component {
                     <br />
 
                     <button className= "login-signup-buttons" type= "submit"> Login </button>
-
+                    {this.state.isInvalid && <div>Invalid Username or Password</div>}
+            
                 </form>
+                <br/>
+
+                <Link to='/'>homepage</Link> {"  🍻  "}
+                <Link to='/signup'>signup </Link>
             </div>
         )
     }

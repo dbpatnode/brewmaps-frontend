@@ -4,10 +4,8 @@ import {PureComponent} from 'react';
 import {Link} from 'react-router-dom'
 // import {BreweryShowPage} from './components/BreweryShowPage'
 
-export default class CityInfo extends PureComponent {
-  
-    
-  
+export default class BreweryCard extends PureComponent {
+
     render() {
     const {info} = this.props;
     const displayName = `${info.brewery_name}`;

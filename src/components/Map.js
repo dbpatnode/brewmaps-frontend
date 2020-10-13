@@ -64,6 +64,7 @@ class Map extends React.Component {
             <div className="mapContainer">
                  <div
                  alignItems="center"><div
+                 className = "map-search-input"
           ref={this.geocoderContainerRef}
           style={{
             height: 50,
