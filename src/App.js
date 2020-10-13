@@ -14,6 +14,8 @@ import NoteContainer from './containers/NoteContainer.js'
 import BreweryShowPage from './components/BreweryShowPage'
 import BreweryCollection from './components/BreweryCollection'
 
+
+
 class App extends Component {
   constructor() {
     super()

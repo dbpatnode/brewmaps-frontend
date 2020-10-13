@@ -1,38 +1,40 @@
-// import React from 'react';
-// // import BreweryCard from './BreweryCard.js'
-// // import {Link} from 'react-router-dom'
-// // import { LinkPreviewer } from "./LinkPreviewer";
-// // import FavoriteContainer from './FavoriteContainer'
-// // import BreweryCollection from './BreweryContainer.js'
-// // // import axios from 'axios';
+import React from 'react';
+import BreweryShowPage from './BreweryShowPage'
+import BreweryShowPageBack from './BreweryShowPageBack'
+import ReactPaginate from 'react-paginate';
+import Flippy, { FrontSide, BackSide } from 'react-flippy';
 
 
-// // // const breweriesURL = 'http://localhost:3000/breweries'
+const BreweryCollection = (props) => {
+    return(
+        <div className="fav-header"><h4>Breweries</h4>
+            <div className= "cards">
+                {props.breweries.map(brewery =>{
+                    return( 
+                    <div className="ml-5 mb-3" brewery={brewery} key={brewery.id} >
+                         <Flippy 
+                                flipOnClick={true}
+                                style={{ width: '300px' }}
+                            >
+                             <FrontSide
+                                style={{ backgroundColor: '#ffffff' }}>
+                                <BreweryShowPage 
+                                key={brewery.id} 
+                                brewery={brewery}/>
+                            </FrontSide>
+                            <BackSide
+                                style={{ backgroundColor: '#ffffff' }}>
+                                <BreweryShowPageBack
+                                    brewery={brewery} 
+                                />
+                            </BackSide>
+                        </Flippy>
+                    </div>
+                    )
+                })}
+            </div>
+        </div>
+    )
+}
 
-// class BreweryCollection extends React.Component {
-//     renderBreweryCard(){
-//         {this.props.breweries.map((brewery) => {
-//             brewery.id
-//             brewery.brewery_name
-//         })}
-//     }
-
-//     render() {
-//         // console.log("all breweries", this.props.breweries)
-//         console.log("allbreweries", this.props.breweries)
-//         // // const phone = this.props.brewery.phone
-//         const {brewery_name, brewery_type, street, city, state, postal_code, phone, website_url} = this.props.breweries
-//         return (
-//             <div>
-//                 {/* {this.props.breweries.map((brewery) => {
-//                    brewery.id
-//                    brewery.brewery_name */}
-
-//                 {/* })} */}
-
-//             </div>
-//         );
-//     }
-// }
-
-// export default BreweryCollection
+export default BreweryCollection
