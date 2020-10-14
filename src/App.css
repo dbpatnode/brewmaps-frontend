@@ -134,19 +134,48 @@ html, body{
 
 .home-buttons:hover {
    background-color: #035e2c33;
-   /* color: white;
-   border-radius: 3px ;
-   width: 204px;
-   height: 30px; */
    transition: all .1s
  }
 
 
  /* brewery show page */
+
+
 .note-input{
    height:300px;
    width: 200%;
    box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+}
+
+.cards {
+   display: grid; 
+   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+   grid-template-rows: 1fr 1fr 1fr; 
+}
+
+#brewery-header {
+   text-align: center;
+}
+
+.brewery-card-button {
+   background-color: white;
+   border-radius: 3px;
+   width: 85%;
+   height: 20%;
+   border: .5px solid  #ebeaec;
+}
+
+.brewery-card-button:hover {
+   background-color: #035e2c33;
+   transition: all .1s
+ }
+.like-brewery-button {
+   display: grid; 
+   grid-template-columns: 1fr 1fr 1fr;
+}
+
+path {
+   
 }
 
  /* Map */

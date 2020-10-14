@@ -3,7 +3,7 @@ import { FaBeer } from 'react-icons/fa';
 
 const StarRating = (props) => {
     return (
-        <div > 
+        <div className= "like-brewery-button"> 
             <FaBeer 
                 onClick={() => props.addFavorite(props.brewery)}
                 className="beer" 

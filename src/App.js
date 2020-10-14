@@ -29,9 +29,7 @@ class App extends Component {
       breweries: [],
       favorites: []
     }
-    
-   
-
+ 
     this.handleLogin = this.handleLogin.bind(this)
     this.handleLogout = this.handleLogout.bind(this)
   }  
@@ -39,42 +37,75 @@ class App extends Component {
 
 
   componentDidMount() {
-    this.checkLoginStatus()
-    localStorage.clear()
+    // this.checkLoginStatus()
+    // localStorage.clear()
     
     // if(!localStorage.getItem("allBreweries")){
-      axios.get('http://localhost:3000/breweries',{withCredentials: true})
-      .then(resp => {
+      // axios.get('http://localhost:3000/breweries',{withCredentials: true})
+      // .then(resp => {
 
-        this.setState({
-          allBreweries: resp.data,
-          breweries: resp.data
-        })
-        localStorage.setItem("allBreweries", 
-        JSON.stringify(resp.data))
-      })
+      //   this.setState({
+      //     allBreweries: resp.data,
+      //     breweries: resp.data
+      //   })
+      //   localStorage.setItem("allBreweries", 
+      //   JSON.stringify(resp.data))
+      // })
+
+
+
+  
+        const token = localStorage.getItem("authToken")
+        if (token) {
+            
+            this.setState({loggedInStatus: "LOGGED_IN"})
+            fetch('http://localhost:3000/whoami', {
+              headers: {
+                'Content-Type': 'application/json', 
+                Authorization: token 
+              } 
+            })
+            .then(user => {
+              this.setState({
+                user: user
+              })
+            })
+            .catch()
+            axios.defaults.headers.common['Authorization'] = token;
+        } else {
+            axios.defaults.headers.common['Authorization'] = null;
+            this.setState({loggedInStatus: "NOT_LOGGED_IN"})
+            /*if setting null does not remove `Authorization` header then try     
+              delete axios.defaults.headers.common['Authorization'];
+            */
+        }
   }
 
-  checkLoginStatus() {
-    axios.get("http://localhost:3000/logged_in", { withCredentials: true })
-    .then(resp => {
-      console.log('FUCK', resp.data)
-      if (resp.data.logged_in && this.state.loggedInStatus === "NOT_LOGGED_IN") {
-        this.setState({
-          loggedInStatus: "LOGGED_IN", 
-          user: resp.data.user
-        })
-        console.log("newFuck",resp.data)
-      } else if(!resp.data.logged_in && this.state.loggedInStatus === "LOGGED_IN") {
-        this.setState({
-          loggedInStatus: "NOT_LOGGED_IN", 
-          user: {}
-        })
-      }
-    }).catch(error => {
-      console.log("check login error", error)
-    })
-    }
+
+
+
+  // checkLoginStatus() {
+  // return axios.get("http://localhost:3000/logged_in", { withCredentials: true })
+  //   .then(resp => {
+      
+  //     if (resp.data.logged_in && this.state.loggedInStatus === "NOT_LOGGED_IN") {
+  //       this.setState({
+  //         loggedInStatus: "LOGGED_IN", 
+  //         user: resp.data
+  //       })
+  //       console.log("firstFuck",resp.data)
+  //     } else if(!resp.data.logged_in && this.state.loggedInStatus === "LOGGED_IN") {
+  //       this.setState({
+  //         loggedInStatus: "NOT_LOGGED_IN", 
+  //         user: {}
+  //       })
+  //       console.log('secondFUCK', resp)
+  //     }
+      
+  //   }).catch(error => {
+  //     console.log("check login error", error)
+  //   })
+  // }
 
   handleLogout(){
     console.log("hello")
@@ -86,6 +117,7 @@ class App extends Component {
 
   handleLogin(data) {
     // debugger
+    console.log("login console log", data)
     this.setState({
       loggedInStatus: "LOGGED_IN",
       user: data.user
@@ -93,7 +125,6 @@ class App extends Component {
   }
 
     addFavorite = (brewery) => {
-      debugger
       if (!this.state.favorites.includes(brewery)){
           this.setState({
               favorites: [...this.state.favorites, brewery]
@@ -106,7 +137,8 @@ class App extends Component {
     }
   
   render() {
-    console.log(this.state.allBreweries)
+    // console.log(this.state.user, this.state.loggedInStatus)
+    
     return (
       // <div className="App">
         <Router>
@@ -129,14 +161,6 @@ class App extends Component {
               />
             )}
             />
-
-            {/* <Route 
-            exact 
-            render={props => (
-              <Dashboard {...props} 
-              loggedInStatus={this.state.loggedInStatus} />
-            )}
-            /> */}
 
             <Route
             path="/signup"
@@ -165,8 +189,9 @@ class App extends Component {
             render= {props => (
             <MapContainer 
               {...props}
+              user = {this.state.user}
               handleLogin= {this.handleLogin}
-              // addFavorite={this.addFavorite}
+              addFavorite={this.addFavorite}
               loggedInStatus={this.state.loggedInStatus} 
             />
             )}

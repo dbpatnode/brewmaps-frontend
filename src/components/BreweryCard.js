@@ -2,7 +2,7 @@
 import * as React from 'react';
 import {PureComponent} from 'react';
 import {Link} from 'react-router-dom'
-// import {BreweryShowPage} from './components/BreweryShowPage'
+import FavoriteElement from './FavoriteElement'
 
 export default class BreweryCard extends PureComponent {
 
@@ -34,6 +34,13 @@ export default class BreweryCard extends PureComponent {
                 View Brewery
         </Link>
         </button>
+
+        <FavoriteElement
+        // favorites={this.props.favorites}
+        brewery={info}
+        addFavorite={this.props.addFavorite}
+        // brewery = {this.props.brewery}
+        />
           
         </div>
         {/* <img width={240} src={info.image} /> */}

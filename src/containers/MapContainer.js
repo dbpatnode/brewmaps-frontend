@@ -19,9 +19,12 @@ class MapContainer extends React.Component {
     }
 
     render() {
-        // console.log(this.state.pins)
+        console.log(this.props.user)
         return (
-            <Map pins= {this.state.pins}/>
+            <Map 
+            pins= {this.state.pins}
+            addFavorite={this.props.addFavorite}
+            />
         )
     }
 }

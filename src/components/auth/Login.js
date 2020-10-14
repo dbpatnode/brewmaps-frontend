@@ -28,25 +28,42 @@ export default class Login extends Component {
         e.preventDefault()
         const {username, password} = this.state
 
-        axios.post("http://localhost:3000/sessions", {
-            username: username,
-            password: password
-        },
-        { withCredentials: true }
-        )
-        .then(resp => {
-            if (resp.data.status === "created") {
-            this.props.history.push("/map")
-            this.props.handleLogin(resp.data)
-            console.log(resp.data)
-            }
+
+        fetch("http://localhost:3000/login", {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json' }, 
+            body: JSON.stringify({
+                user: {
+                    username,
+                    password
+                }
+            }), 
+            })
+            .then(res => res.json())
+            .then(json => {localStorage.setItem("authToken", json.auth_token)
+        
         })
-        .catch(error => {
-            console.log("login error", error)
-            // this.setState({ 
-            //     isInvalid: true
+        
+
+            // axios.post("http://localhost:3000/login", {
+            //     username: username,
+            //     password: password
+            // },
+            // { withCredentials: true }
+            // )
+            // .then(resp => {
+            //     if (resp.data.logged_in === true) {
+            //     this.props.history.push("/map")
+            //     this.props.handleLogin(resp.data)
+            //     console.log(resp.data)
+            //     }
             // })
-        })
+            // .catch(error => {
+            //     console.log("login error", error)
+            //     // this.setState({ 
+            //     //     isInvalid: true
+            //     // })
+            // })
         // e.preventDefault()
     }
 

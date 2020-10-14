@@ -7,7 +7,7 @@ import Flippy, { FrontSide, BackSide } from 'react-flippy';
 
 const BreweryCollection = (props) => {
     return(
-        <div className="fav-header"><h4>Breweries</h4>
+        <div className="fav-header"><h1 id= "brewery-header">Breweries</h1>
             <div className= "cards">
                 {/* {props.breweries.map(brewery =>{ */}
                 {JSON.parse(localStorage.getItem("allBreweries")).map(brewery => {

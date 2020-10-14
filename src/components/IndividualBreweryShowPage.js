@@ -21,7 +21,9 @@ const BreweryCollection = (props) => {
                                 style={{ backgroundColor: '#ffffff' }}>
                                 <BreweryShowPage 
                                 key={brewery.id} 
-                                brewery={brewery}/>
+                                brewery={brewery}
+                                addFavorite={props.addFavorite}
+                                />
                             </FrontSide>
                             <BackSide
                                 style={{ backgroundColor: '#ffffff' }}>

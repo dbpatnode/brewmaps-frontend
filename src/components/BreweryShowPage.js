@@ -12,28 +12,28 @@ class BreweryShowPage extends Component {
     render() {
         // console.log("phone", this.props.brewery)
         // const phone = this.props.brewery.phone
-        const {brewery_name, brewery_type, street, city, state, postal_code, phone, website_url} = this.props.brewery
+        const {brewery_name, brewery_type, street, city, state, postal_code} = this.props.brewery
         return (
             <div>
-                <h1>{brewery_name}</h1>
+                <h4>{brewery_name}</h4>
                 <h3>Brewery Style: {brewery_type}</h3>
                 <p>{street} <br/>{city}, {state} {postal_code}</p>
                 
-                <a style={{display: "table-cell"}} href={website_url} target="_blank" rel="noopener noreferrer">website</a>
+                {/* <a style={{display: "table-cell"}} href={website_url} target="_blank" rel="noopener noreferrer">website</a>
                 <br/>
 
                 <a href= {`tel:${phone}`}>Call us at {phone}</a>
-                <br/>
-
-                <FavoriteElement
-                    favorites={this.props.favorites} 
-                    addFavorite={this.props.addFavorite}
-                    brewery = {this.props.brewery}
-                />
-
+                <br/> */}
+                <div >
+                    <FavoriteElement
+                        favorites={this.props.favorites} 
+                        addFavorite={this.props.addFavorite}
+                        brewery = {this.props.brewery}
+                    />
+                </div>
 
                 <Link to = '/map'>
-                    <button>Back to map</button>
+                    <button className = "brewery-card-button">Back to map</button>
                 </Link>
                 
             </div>
