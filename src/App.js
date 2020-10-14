@@ -25,7 +25,9 @@ class App extends Component {
     this.state = {
       loggedInStatus: "NOT_LOGGED_IN",
       user: {},
-      allBreweries:[]
+      allBreweries:[],
+      breweries: [],
+      favorites: []
     }
     
    
@@ -34,21 +36,45 @@ class App extends Component {
     this.handleLogout = this.handleLogout.bind(this)
   }  
 
-  
+
 
   componentDidMount() {
+    this.checkLoginStatus()
     localStorage.clear()
+    
     // if(!localStorage.getItem("allBreweries")){
       axios.get('http://localhost:3000/breweries',{withCredentials: true})
       .then(resp => {
 
         this.setState({
-          allBreweries: resp.data 
+          allBreweries: resp.data,
+          breweries: resp.data
         })
         localStorage.setItem("allBreweries", 
         JSON.stringify(resp.data))
       })
   }
+
+  checkLoginStatus() {
+    axios.get("http://localhost:3000/logged_in", { withCredentials: true })
+    .then(resp => {
+      console.log('FUCK', resp.data)
+      if (resp.data.logged_in && this.state.loggedInStatus === "NOT_LOGGED_IN") {
+        this.setState({
+          loggedInStatus: "LOGGED_IN", 
+          user: resp.data.user
+        })
+        console.log("newFuck",resp.data)
+      } else if(!resp.data.logged_in && this.state.loggedInStatus === "LOGGED_IN") {
+        this.setState({
+          loggedInStatus: "NOT_LOGGED_IN", 
+          user: {}
+        })
+      }
+    }).catch(error => {
+      console.log("check login error", error)
+    })
+    }
 
   handleLogout(){
     console.log("hello")
@@ -65,6 +91,19 @@ class App extends Component {
       user: data.user
     })
   }
+
+    addFavorite = (brewery) => {
+      debugger
+      if (!this.state.favorites.includes(brewery)){
+          this.setState({
+              favorites: [...this.state.favorites, brewery]
+            
+          })
+          axios.post("http://localhost:3000/favorites", {user_id: this.state.user.id, brewery_id: brewery.id}, { withCredentials: true })
+          .then(resp => {
+            console.log(resp)
+          })}
+    }
   
   render() {
     console.log(this.state.allBreweries)
@@ -127,6 +166,7 @@ class App extends Component {
             <MapContainer 
               {...props}
               handleLogin= {this.handleLogin}
+              // addFavorite={this.addFavorite}
               loggedInStatus={this.state.loggedInStatus} 
             />
             )}
@@ -135,8 +175,11 @@ class App extends Component {
             <Route
             path="/favorites"
             render= {props => (
+ 
             <FavoriteContainer 
               {...props}
+              favorites={this.state.favorites}
+              addFavorite={this.addFavorite}
               handleLogin= {this.handleLogin}
               loggedInStatus={this.state.loggedInStatus} 
             />
@@ -165,7 +208,8 @@ class App extends Component {
             brewery ={brewery} 
               {...props}
               handleLogin= {this.handleLogin}
-              loggedInStatus={this.state.loggedInStatus} 
+              loggedInStatus={this.state.loggedInStatus}
+              addFavorite={this.addFavorite} 
             />
             :
             "Loading..."
@@ -181,6 +225,7 @@ class App extends Component {
             <BreweryCollection 
               breweries = {breweries}
               {...props}
+              addFavorite={this.addFavorite}
               handleLogin= {this.handleLogin}
               loggedInStatus={this.state.loggedInStatus} 
             />

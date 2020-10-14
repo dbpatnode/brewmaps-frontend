@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const BreweryShowPageBack = (props) => {
-    const {brewery_name, description} = props.brewery;
+    const {brewery_name} = props.brewery;
     return (
         <div > 
             <div className="mt-3"> 

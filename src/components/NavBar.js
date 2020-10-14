@@ -63,7 +63,7 @@ class NavBar extends Component {
                         <div class="navbar-header">
                             <NavLink to='/' className="navbar-brand"> <img src= {logo} alt= 'beer map logo' className='logo'></img> </NavLink> 
                         </div>
-                            <a>cheers, {this.props.user.username}!</a>
+                            <a>Cheers, {this.props.user.username}!</a>
                             <NavLink to='/map'> BeerMap </NavLink> 
                             <NavLink to='/breweries'> Breweries </NavLink>
                             <NavLink to='/favorites'> Favorite Breweries</NavLink>
