@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-// import {BrowserRouter, Switch, Route} from 'react-router-dom'
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import axios from "axios";
 import "./App.css";
 import NavBar from "./components/NavBar.js";
 import Login from "./components/auth/Login.js";
@@ -66,7 +63,6 @@ class App extends Component {
     } else {
       this.setState({ loggedInStatus: "NOT_LOGGED_IN" });
     }
-    // }
   }
 
   handleLogout = () => {
@@ -79,18 +75,15 @@ class App extends Component {
 
   handleLogin = (user) => {
     this.setState({
-      // ...this.state,
       loggedInStatus: "LOGGED_IN",
       user: user,
+      favorites: user.favorites,
     });
+    console.log("handle log in", this.state);
   };
 
   addFavorite = (brewery) => {
     if (!this.state.favorites.includes(brewery)) {
-      // this.setState({
-      //   favorites: [...this.state.favorites, brewery],
-      // });
-
       const configObj = {
         method: "POST",
         headers: {
@@ -107,28 +100,28 @@ class App extends Component {
         .then((data) => {
           console.log(data.brewery);
           this.setState({
-            favorites: [...this.state.favorites, data.brewery],
+            favorites: [...this.state.favorites, { brewery: data.brewery }],
           });
         });
-      // this.setState({
-      //   allBreweries: breweries,
-      //   breweries: breweries,
-      // });
-      // axios
-      //   .post(
-      //     "http://localhost:3000/favorites",
-      //     { user_id: this.state.user.id, brewery_id: brewery.id },
-      //     { withCredentials: true }
-      //   )
-      //   .then((resp) => {
-      //     console.log(resp);
-      //   });
     }
-    console.log(this.state.favorites);
+  };
+
+  removeFavorite = (brewery) => {
+    let newFavorites = this.state.favorites.filter(
+      (favoritedBrewery) => favoritedBrewery !== brewery
+    );
+    this.setState({ favorites: newFavorites });
+  };
+
+  handleRemove = (id) => {
+    console.log("id", id);
+    this.state.breweries.filter((brewery) => {
+      return brewery.id !== id;
+    });
   };
 
   render() {
-    console.log("state", this.state);
+    console.log("state from app.js", this.state);
     return (
       <Router>
         <div>
@@ -205,6 +198,7 @@ class App extends Component {
                 {...props}
                 favorites={this.state.favorites}
                 addFavorite={this.addFavorite}
+                removeFavorite={this.removeFavorite}
                 handleLogin={this.handleLogin}
                 loggedInStatus={this.state.loggedInStatus}
               />
@@ -253,6 +247,7 @@ class App extends Component {
                   breweries={breweries}
                   {...props}
                   addFavorite={this.addFavorite}
+                  removeFavorite={this.removeFavorite}
                   handleLogin={this.handleLogin}
                   loggedInStatus={this.state.loggedInStatus}
                 />

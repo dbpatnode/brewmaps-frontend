@@ -1,10 +1,10 @@
 import React from "react";
-import { FaBeer } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 
 const FavoriteElement = (props) => {
   return (
-    <div className="like-brewery-button">
-      <FaBeer
+    <div className="remove-brewery-button">
+      <FaTrashAlt
         onClick={() => props.addFavorite(props.brewery)}
         className="beer"
         size={20}

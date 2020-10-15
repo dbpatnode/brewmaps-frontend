@@ -76,7 +76,7 @@ class NavBar extends Component {
           <nav class="navbar navbar-inverse">
             <div className="container-fluid">
               <div class="navbar-header">
-                <NavLink to="/" className="navbar-brand">
+                <NavLink to="/home" className="navbar-brand">
                   {" "}
                   <img
                     src={logo}
