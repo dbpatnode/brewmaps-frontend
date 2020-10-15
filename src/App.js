@@ -43,6 +43,12 @@ class App extends Component {
         });
     }
 
+    if (localStorage.getItem("allBreweries")) {
+      this.setState({
+        breweries: JSON.parse(localStorage.getItem("allBreweries")),
+      });
+    }
+
     const token = localStorage.getItem("authToken");
     if (token) {
       console.log(token);
@@ -81,19 +87,44 @@ class App extends Component {
 
   addFavorite = (brewery) => {
     if (!this.state.favorites.includes(brewery)) {
-      this.setState({
-        favorites: [...this.state.favorites, brewery],
-      });
-      axios
-        .post(
-          "http://localhost:3000/favorites",
-          { user_id: this.state.user.id, brewery_id: brewery.id },
-          { withCredentials: true }
-        )
-        .then((resp) => {
-          console.log(resp);
+      // this.setState({
+      //   favorites: [...this.state.favorites, brewery],
+      // });
+
+      const configObj = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.authToken,
+        },
+        body: JSON.stringify({
+          user_id: this.state.user.id,
+          brewery_id: brewery.id,
+        }),
+      };
+      fetch("http://localhost:3000/favorites", configObj)
+        .then((resp) => resp.json())
+        .then((data) => {
+          console.log(data.brewery);
+          this.setState({
+            favorites: [...this.state.favorites, data.brewery],
+          });
         });
+      // this.setState({
+      //   allBreweries: breweries,
+      //   breweries: breweries,
+      // });
+      // axios
+      //   .post(
+      //     "http://localhost:3000/favorites",
+      //     { user_id: this.state.user.id, brewery_id: brewery.id },
+      //     { withCredentials: true }
+      //   )
+      //   .then((resp) => {
+      //     console.log(resp);
+      //   });
     }
+    console.log(this.state.favorites);
   };
 
   render() {
@@ -151,7 +182,7 @@ class App extends Component {
           <Route
             path="/map"
             render={(props) => {
-              const breweries = this.state.allBreweries;
+              const breweries = this.state.breweries;
               return breweries ? (
                 <MapContainer
                   breweries={breweries}
@@ -195,7 +226,7 @@ class App extends Component {
             path="/brewery/:BreweryId"
             render={(props) => {
               const BreweryId = props.match.params.BreweryId;
-              const brewery = this.state.allBreweries.find(
+              const brewery = this.state.breweries.find(
                 (e) => e.id === parseInt(BreweryId)
               );
 

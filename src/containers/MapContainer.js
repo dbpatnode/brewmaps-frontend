@@ -47,27 +47,30 @@ import React, { Component } from "react";
 import Map from "../components/Map.js";
 
 class MapContainer extends Component {
-  state = {
-    pins: [],
-  };
+  //   state = {
+  //     pins: [],
+  //   };
 
-  componentDidMount() {
-    // axios.get('http://localhost:3000/breweries',{withCredentials: true})
-    // .then(resp => {this.setState({pins: resp.data})
-    // })
-    if (localStorage.getItem("allBreweries")) {
-      this.setState({
-        breweries: JSON.parse(localStorage.getItem("allBreweries")),
-      });
-    }
-  }
+  //   componentDidMount() {
+  //       this.setState({
+  //           pins: this.props.breweries
+  //       })
+  //     // axios.get('http://localhost:3000/breweries',{withCredentials: true})
+  //     // .then(resp => {this.setState({pins: resp.data})
+  //     // })
+  // //     if (localStorage.getItem("allBreweries")) {
+  // //       this.setState({
+  // //         breweries: JSON.parse(localStorage.getItem("allBreweries")),
+  // //       });
+  // //     }
+  //   }
 
   render() {
-    console.log("user", this.props.user, "breweries", this.state.breweries);
+    console.log("user", this.props.user, "breweries", this.props.breweries);
     return (
       <Map
-        //   user={this.props.user}
-        breweries={this.state.pins}
+        user={this.props.user}
+        breweries={this.props.breweries}
         addFavorite={this.props.addFavorite}
       />
     );
