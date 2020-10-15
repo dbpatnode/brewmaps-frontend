@@ -7,8 +7,9 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
-    "bootstrap": "^4.5.2",
+    "bootstrap": "^4.5.3",
     "devcamp-js-builder": "^1.6.0",
+    "flippy": "^1.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-flippy": "^0.1.5",
@@ -23,7 +24,7 @@
     "reactstrap": "^8.6.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
