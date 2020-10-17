@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import BreweryShowPage from "../components/BreweryShowPage";
+import FavoritesShowPage from "../components/FavoritesShowPage";
 import BreweryShowPageBack from "../components/BreweryShowPageBack";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
 
 class FavoriteContainer extends Component {
+  //   state = {
+  //     userFavorites: this.props.favorites,
+  //   };
   render() {
-    console.log("favorite contain", this.props.favorites);
+    console.log(this.props.favorites);
     return (
       <div>
         <div className="fav-header">
@@ -14,13 +17,16 @@ class FavoriteContainer extends Component {
         <div>
           {this.props.favorites.map((favorite) => {
             return (
-              <div className="ml-5 mb-3" brewery={favorite} key={favorite.id}>
+              <div className="ml-5 mb-3" favorite={favorite} key={favorite.id}>
                 <Flippy flipOnClick={true} style={{ width: "500px" }}>
                   <FrontSide style={{ backgroundColor: "#ffffff" }}>
-                    <BreweryShowPage
-                      brewery={favorite.brewery}
+                    <h4>{favorite.brewery.brewery_name}</h4>
+                    <FavoritesShowPage
+                      favorite={favorite}
+                      user={this.props.user}
                       key={favorite.brewery.id}
                       addFavorite={this.props.addFavorite}
+                      removeFavorite={this.props.removeFavorite}
                     />
                   </FrontSide>
                   <BackSide style={{ backgroundColor: "#ffffff" }}>

@@ -19,6 +19,7 @@ class App extends Component {
     breweries: [],
     allBreweries: [],
     favorites: [],
+    inputValue: "",
   };
 
   componentDidMount() {
@@ -32,10 +33,24 @@ class App extends Component {
       fetch("http://localhost:3000/breweries", configObj)
         .then((resp) => resp.json())
         .then((breweries) => {
-          this.setState({
-            allBreweries: breweries,
-            breweries: breweries,
-          });
+          console.log("here", breweries);
+          if (!breweries.error) {
+            this.setState(
+              {
+                allBreweries: breweries,
+                breweries: breweries,
+              },
+              () => {
+                console.log(
+                  "from component did mount",
+                  this.state.allBreweries
+                );
+              }
+            );
+          } else {
+            alert(breweries.error);
+          }
+          // });
           localStorage.setItem("allBreweries", JSON.stringify(breweries));
         });
     }
@@ -48,7 +63,6 @@ class App extends Component {
 
     const token = localStorage.getItem("authToken");
     if (token) {
-      console.log(token);
       const configObj = {
         headers: {
           "Content-Type": "application/json",
@@ -66,7 +80,8 @@ class App extends Component {
   }
 
   handleLogout = () => {
-    localStorage.removeItem("authToken");
+    // localStorage.removeItem("authToken");
+    localStorage.clear();
     this.setState({
       loggedInStatus: "NOT_LOGGED_IN",
       user: {},
@@ -79,10 +94,11 @@ class App extends Component {
       user: user,
       favorites: user.favorites,
     });
-    console.log("handle log in", this.state);
+    console.log("handle log in", user);
   };
 
-  addFavorite = (brewery) => {
+  addFavorite = (e, brewery) => {
+    // debugger;
     if (!this.state.favorites.includes(brewery)) {
       const configObj = {
         method: "POST",
@@ -100,13 +116,17 @@ class App extends Component {
         .then((data) => {
           console.log(data.brewery);
           this.setState({
-            favorites: [...this.state.favorites, { brewery: data.brewery }],
+            favorites: [
+              ...this.state.favorites,
+              { id: data.id, brewery: data.brewery },
+            ],
           });
         });
     }
   };
 
   removeFavorite = (brewery) => {
+    console.log("remove favorite", brewery);
     let newFavorites = this.state.favorites.filter(
       (favoritedBrewery) => favoritedBrewery !== brewery
     );
@@ -120,8 +140,15 @@ class App extends Component {
     });
   };
 
+  breweryFilterOnChange = (e) => {
+    console.log("hi from onChange", e.target.value);
+    this.setState({
+      inputValue: e.target.value,
+    });
+  };
+
   render() {
-    console.log("state from app.js", this.state);
+    console.log(this.state.favorites);
     return (
       <Router>
         <div>
@@ -196,6 +223,7 @@ class App extends Component {
             render={(props) => (
               <FavoriteContainer
                 {...props}
+                user={this.state.user}
                 favorites={this.state.favorites}
                 addFavorite={this.addFavorite}
                 removeFavorite={this.removeFavorite}
@@ -241,11 +269,20 @@ class App extends Component {
           <Route
             path="/breweries"
             render={(props) => {
-              const breweries = this.state.allBreweries;
+              const breweries = this.state.breweries;
+              const filteredBreweries = breweries.filter((brewery) => {
+                return brewery.brewery_name
+                  .toLowerCase()
+                  .includes(this.state.inputValue.toLowerCase());
+              });
+              // console.log("breweries from app", breweries);
               return breweries ? (
                 <BreweryCollection
-                  breweries={breweries}
                   {...props}
+                  breweries={breweries}
+                  filteredBreweries={filteredBreweries}
+                  inputValue={this.state.inputValue}
+                  breweryFilterOnChange={this.breweryFilterOnChange}
                   addFavorite={this.addFavorite}
                   removeFavorite={this.removeFavorite}
                   handleLogin={this.handleLogin}

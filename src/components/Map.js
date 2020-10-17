@@ -117,9 +117,8 @@ class Map extends React.Component {
   };
 
   filterPins() {
-    const breweries = JSON.parse(localStorage.getItem("allBreweries"));
-
-    return breweries.filter(
+    // const breweries = JSON.parse(localStorage.getItem("allBreweries"));
+    return this.props.breweries.filter(
       (brewery) => brewery.lng !== null || brewery.lat !== null
     );
   }
@@ -159,7 +158,9 @@ class Map extends React.Component {
   }
 
   render() {
-    console.log(this.props.breweries);
+    {
+      this.filterPins();
+    }
     return (
       <div className="mapContainer">
         <div alignItems="center">

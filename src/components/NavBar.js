@@ -15,7 +15,6 @@ class NavBar extends Component {
   };
 
   render() {
-    console.log(this.props.user);
     const signup = (
       <svg
         width="1em"

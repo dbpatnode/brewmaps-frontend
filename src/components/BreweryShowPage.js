@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import FavoriteElement from "./FavoriteElement";
-// import { LinkPreviewer } from "./LinkPreviewer";
 
 class BreweryShowPage extends Component {
   render() {
@@ -12,7 +11,11 @@ class BreweryShowPage extends Component {
       city,
       state,
       postal_code,
+      website_url,
+      phone,
     } = this.props.brewery;
+
+    // console.log(this.props.favorite);
     return (
       <div>
         <h4>{brewery_name}</h4>
@@ -22,6 +25,17 @@ class BreweryShowPage extends Component {
           {city}, {state} {postal_code}
         </p>
         <br />
+        <a
+          style={{ display: "table-cell" }}
+          href={website_url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          website
+        </a>
+        <br />
+
+        <a href={`tel:${phone}`}>Call us at {phone}</a>
         <div>
           <FavoriteElement
             favorites={this.props.favorites}

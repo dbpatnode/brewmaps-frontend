@@ -5,7 +5,7 @@ const FavoriteElement = (props) => {
   return (
     <div className="like-brewery-button">
       <FaBeer
-        onClick={() => props.addFavorite(props.brewery)}
+        onClick={(e) => props.addFavorite(e, props.brewery)}
         className="beer"
         size={20}
         color={props.favorite ? "#ffc107" : "#e4e5e9"}
