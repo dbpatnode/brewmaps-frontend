@@ -33,6 +33,7 @@ export default class Registration extends Component {
       [e.target.name]: e.target.value,
     });
   };
+
   handleSubmit = (e) => {
     e.preventDefault();
     const {
@@ -43,27 +44,25 @@ export default class Registration extends Component {
       password_confirmation,
     } = this.state;
 
-    axios
-      .post(
-        "http://localhost:3000/registrations",
-        {
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user: {
           name: name,
           username: username,
           email: email,
           password: password,
           password_confirmation: password_confirmation,
         },
-        { withCredentials: true }
-      )
-      .then((resp) => {
-        if (resp.data.status === "created") {
-          this.props.history.push("/login");
-          this.props.handleLogin(resp.data);
-        }
-      })
-      .catch((error) => {
-        console.log("signup error", error);
+      }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        this.props.handleLogin(json);
       });
+
+    this.props.history.push("/login");
   };
 
   render() {

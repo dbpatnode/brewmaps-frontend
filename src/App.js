@@ -80,7 +80,6 @@ class App extends Component {
   }
 
   handleLogout = () => {
-    // localStorage.removeItem("authToken");
     localStorage.clear();
     this.setState({
       loggedInStatus: "NOT_LOGGED_IN",
@@ -89,6 +88,7 @@ class App extends Component {
   };
 
   handleLogin = (user) => {
+    console.log("registratino issue", user);
     this.setState({
       loggedInStatus: "LOGGED_IN",
       user: user,
@@ -125,20 +125,16 @@ class App extends Component {
     }
   };
 
-  removeFavorite = (brewery) => {
-    console.log("remove favorite", brewery);
-    let newFavorites = this.state.favorites.filter(
-      (favoritedBrewery) => favoritedBrewery !== brewery
-    );
-    this.setState({ favorites: newFavorites });
-  };
-
-  handleRemove = (id) => {
-    console.log("id", id);
-    this.state.breweries.filter((brewery) => {
-      return brewery.id !== id;
-    });
-  };
+  // removeFavorite = (id) => {
+  //   fetch(`http://localhost:3000/favorites/${id}`, {
+  //     method: "DELETE",
+  //   }).then(
+  //     this.setState({
+  //       favorites: this.state.favorites,
+  //     })
+  //   );
+  //   window.location.href = "/favorites";
+  // };
 
   breweryFilterOnChange = (e) => {
     console.log("hi from onChange", e.target.value);
@@ -284,7 +280,6 @@ class App extends Component {
                   inputValue={this.state.inputValue}
                   breweryFilterOnChange={this.breweryFilterOnChange}
                   addFavorite={this.addFavorite}
-                  removeFavorite={this.removeFavorite}
                   handleLogin={this.handleLogin}
                   loggedInStatus={this.state.loggedInStatus}
                 />
