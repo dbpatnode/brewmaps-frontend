@@ -109,9 +109,9 @@ import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 class Map extends React.Component {
   state = {
     viewport: {
-      longitude: -94.692584,
-      latitude: 42.188877,
-      zoom: 3.5,
+      longitude: -99.576229,
+      latitude: 37.720919,
+      zoom: 3.8,
     },
     popupInfo: null,
   };

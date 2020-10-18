@@ -326,8 +326,7 @@ input:focus {
   transition: 0.2s ease-out;
 }
 
-.submit:hover,
-.submit:focus {
+.submit:hover {
   background: #015a29;
   color: #fff;
   outline: 0;
@@ -338,7 +337,7 @@ input:focus {
   font-size: 14px;
 }
 
-.favorite-header {
+.header {
   width: 100%;
   display: block;
   background: #015a2923;
@@ -349,11 +348,16 @@ input:focus {
   /* width: 95%; */
 }
 
-.favorite-card {
+.card {
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr; */
   float: left;
-  width: 33.33%;
+  width: 32.6%;
   padding: 10px;
   text-align: center;
+  border: 1px solid;
+  margin: 5px;
+  border-radius: 10px;
 }
 
 .row:after {

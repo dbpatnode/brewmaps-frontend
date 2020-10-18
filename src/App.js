@@ -121,6 +121,7 @@ class App extends Component {
               { id: data.id, brewery: data.brewery },
             ],
           });
+          window.location.href = "/favorites";
         });
     }
   };
