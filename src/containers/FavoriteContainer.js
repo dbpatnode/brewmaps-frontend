@@ -39,11 +39,11 @@ class FavoriteContainer extends Component {
   };
 
   render() {
-    console.log("favorites", this.props.favorites);
+    // console.log("favorites", this.props.favorites);
     return (
       <div>
         {this.props.favorites.map((favorite) => (
-          <div>
+          <div className="favorite card">
             <h4>{favorite.brewery.brewery_name}</h4>
             <h3>Brewery Style: {favorite.brewery.brewery_type}</h3>
             <p>
