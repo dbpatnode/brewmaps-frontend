@@ -125,17 +125,6 @@ class App extends Component {
     }
   };
 
-  // removeFavorite = (id) => {
-  //   fetch(`http://localhost:3000/favorites/${id}`, {
-  //     method: "DELETE",
-  //   }).then(
-  //     this.setState({
-  //       favorites: this.state.favorites,
-  //     })
-  //   );
-  //   window.location.href = "/favorites";
-  // };
-
   breweryFilterOnChange = (e) => {
     console.log("hi from onChange", e.target.value);
     this.setState({

@@ -42,23 +42,26 @@ class FavoriteContainer extends Component {
     // console.log("favorites", this.props.favorites);
     return (
       <div>
+        <legend className="favorite-header">Favorites</legend>
         {this.props.favorites.map((favorite) => (
-          <div className="favorite card">
-            <h4>{favorite.brewery.brewery_name}</h4>
-            <h3>Brewery Style: {favorite.brewery.brewery_type}</h3>
-            <p>
-              {favorite.brewery.street} <br />
-              {favorite.brewery.city}, {favorite.brewery.state}{" "}
-              {favorite.brewery.postal_code}
-            </p>
-            <button
-              className="brewery-card-button"
-              id={favorite.brewery.id}
-              onClick={() => this.removeFavorite(favorite.brewery.id)}
-              //   onClick={() => this.hi(favorite.brewery.id)}
-            >
-              Remove Favorite
-            </button>
+          <div clasName="row">
+            <div className="favorite-card">
+              <h4>{favorite.brewery.brewery_name}</h4>
+              <h3>Brewery Style: {favorite.brewery.brewery_type}</h3>
+              <p>
+                {favorite.brewery.street} <br />
+                {favorite.brewery.city}, {favorite.brewery.state}{" "}
+                {favorite.brewery.postal_code}
+              </p>
+              <button
+                className="brewery-card-button"
+                id={favorite.brewery.id}
+                onClick={() => this.removeFavorite(favorite.brewery.id)}
+                //   onClick={() => this.hi(favorite.brewery.id)}
+              >
+                Remove Favorite
+              </button>
+            </div>
           </div>
         ))}
       </div>

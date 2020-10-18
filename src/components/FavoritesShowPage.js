@@ -18,6 +18,9 @@ class FavoriteShowPage extends Component {
 
     console.log("somehting here", this.props.favorite);
     return (
+      <div className="favorite-header">
+        Favorites
+      </div>
       <div>
         <h4>{brewery_name}</h4>
         <h3>Brewery Style: {brewery_type}</h3>
@@ -26,18 +29,18 @@ class FavoriteShowPage extends Component {
           {city}, {state} {postal_code}
         </p>
 
-        {/* <a
+        <a
           style={{ display: "table-cell" }}
           href={website_url}
           target="_blank"
           rel="noopener noreferrer"
         >
           website
-        </a> */}
+        </a>
         <br />
 
-        {/* <a href={`tel:${phone}`}>Call us at {phone}</a>
-        <br /> */}
+        <a href={`tel:${phone}`}>Call us at {phone}</a>
+        <br />
         <div>
           <RemoveFavoriteElement
             favorites={this.props.favorites}
