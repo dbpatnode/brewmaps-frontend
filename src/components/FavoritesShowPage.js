@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import FavoriteElement from "./FavoriteElement";
+import RemoveFavoriteElement from "./FavoriteElement";
+// import { LinkPreviewer } from "./LinkPreviewer";
 
-class BreweryShowPage extends Component {
+class FavoriteShowPage extends Component {
   render() {
+    // console.log("phone", this.props.brewery)
+    // const phone = this.props.brewery.phone
     const {
       brewery_name,
       brewery_type,
@@ -11,11 +14,9 @@ class BreweryShowPage extends Component {
       city,
       state,
       postal_code,
-      website_url,
-      phone,
-    } = this.props.brewery;
+    } = this.props.favorite.brewery;
 
-    // console.log(this.props.favorite);
+    console.log("somehting here", this.props.favorite);
     return (
       <div>
         <h4>{brewery_name}</h4>
@@ -24,20 +25,21 @@ class BreweryShowPage extends Component {
           {street} <br />
           {city}, {state} {postal_code}
         </p>
-        <br />
-        <a
+
+        {/* <a
           style={{ display: "table-cell" }}
           href={website_url}
           target="_blank"
           rel="noopener noreferrer"
         >
           website
-        </a>
+        </a> */}
         <br />
 
-        <a href={`tel:${phone}`}>Call us at {phone}</a>
+        {/* <a href={`tel:${phone}`}>Call us at {phone}</a>
+        <br /> */}
         <div>
-          <FavoriteElement
+          <RemoveFavoriteElement
             favorites={this.props.favorites}
             addFavorite={this.props.addFavorite}
             brewery={this.props.brewery}
@@ -52,4 +54,4 @@ class BreweryShowPage extends Component {
   }
 }
 
-export default BreweryShowPage;
+export default FavoriteShowPage;

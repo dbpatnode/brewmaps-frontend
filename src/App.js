@@ -1,187 +1,297 @@
-import React, {Component} from 'react';
-// import {BrowserRouter, Switch, Route} from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
-import axios from 'axios'
-import './App.css';
-import NavBar from './components/NavBar.js'
-import Login from './components/auth/Login.js'
-import Registration from './components/auth/Registration.js'
-import MapContainer from './containers/MapContainer.js'
-import Home from './components/Home'
-import FavoriteContainer from './containers/FavoriteContainer.js'
-import NoteContainer from './containers/NoteContainer.js'
-import BreweryShowPage from './components/BreweryShowPage'
-import BreweryCollection from './components/BreweryCollection'
+import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import "./App.css";
+import NavBar from "./components/NavBar.js";
+import Login from "./components/auth/Login.js";
+import Registration from "./components/auth/Registration.js";
+import MapContainer from "./containers/MapContainer.js";
+import Home from "./components/Home";
+import FavoriteContainer from "./containers/FavoriteContainer.js";
+import NoteContainer from "./containers/NoteContainer.js";
+import IndividualBreweryShowPage from "./components/BreweryShowPage";
+import BreweryCollection from "./components/BreweryCollection";
 
 class App extends Component {
-  constructor() {
-    super()
-
-    this.state = {
-      loggedInStatus: "NOT_LOGGED_IN",
-      user: {},
-      allBreweries:[]
-    }
-    
-   
-
-    this.handleLogin = this.handleLogin.bind(this)
-    this.handleLogout = this.handleLogout.bind(this)
-  }  
-
+  state = {
+    loggedInStatus: "NOT_LOGGED_IN",
+    user: {},
+    breweries: [],
+    allBreweries: [],
+    favorites: [],
+    inputValue: "",
+  };
 
   componentDidMount() {
-    axios.get('http://localhost:3000/breweries',{withCredentials: true})
-    .then(resp => {this.setState({allBreweries: resp.data})
-    })
-}
+    if (!localStorage.getItem("allBreweries")) {
+      const configObj = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.authToken,
+        },
+      };
+      fetch("http://localhost:3000/breweries", configObj)
+        .then((resp) => resp.json())
+        .then((breweries) => {
+          console.log("here", breweries);
+          if (!breweries.error) {
+            this.setState(
+              {
+                allBreweries: breweries,
+                breweries: breweries,
+              },
+              () => {
+                console.log(
+                  "from component did mount",
+                  this.state.allBreweries
+                );
+              }
+            );
+          } else {
+            alert(breweries.error);
+          }
+          // });
+          localStorage.setItem("allBreweries", JSON.stringify(breweries));
+        });
+    }
 
-  handleLogout(){
-    console.log("hello")
-    this.setState({
-      loggedInStatus:"NOT_LOGGED_IN",
-      user:{}
-    })
+    if (localStorage.getItem("allBreweries")) {
+      this.setState({
+        breweries: JSON.parse(localStorage.getItem("allBreweries")),
+      });
+    }
+
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      const configObj = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.authToken,
+        },
+      };
+
+      this.setState({ loggedInStatus: "LOGGED_IN" });
+      fetch("http://localhost:3000/whoami", configObj)
+        .then((resp) => resp.json())
+        .then(this.handleLogin);
+    } else {
+      this.setState({ loggedInStatus: "NOT_LOGGED_IN" });
+    }
   }
 
-  handleLogin(data) {
-    // debugger
+  handleLogout = () => {
+    localStorage.clear();
+    this.setState({
+      loggedInStatus: "NOT_LOGGED_IN",
+      user: {},
+    });
+  };
+
+  handleLogin = (user) => {
+    console.log("registratino issue", user);
     this.setState({
       loggedInStatus: "LOGGED_IN",
-      user: data.user
-    })
-  }
-  
+      user: user,
+      favorites: user.favorites,
+    });
+    console.log("handle log in", user);
+  };
+
+  addFavorite = (e, brewery) => {
+    // debugger;
+    if (!this.state.favorites.includes(brewery)) {
+      const configObj = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.authToken,
+        },
+        body: JSON.stringify({
+          user_id: this.state.user.id,
+          brewery_id: brewery.id,
+        }),
+      };
+      fetch("http://localhost:3000/favorites", configObj)
+        .then((resp) => resp.json())
+        .then((data) => {
+          console.log(data.brewery);
+          this.setState({
+            favorites: [
+              ...this.state.favorites,
+              { id: data.id, brewery: data.brewery },
+            ],
+          });
+        });
+    }
+  };
+
+  // removeFavorite = (id) => {
+  //   fetch(`http://localhost:3000/favorites/${id}`, {
+  //     method: "DELETE",
+  //   }).then(
+  //     this.setState({
+  //       favorites: this.state.favorites,
+  //     })
+  //   );
+  //   window.location.href = "/favorites";
+  // };
+
+  breweryFilterOnChange = (e) => {
+    console.log("hi from onChange", e.target.value);
+    this.setState({
+      inputValue: e.target.value,
+    });
+  };
+
   render() {
+    console.log(this.state.favorites);
     return (
-      // <div className="App">
-        <Router>
+      <Router>
         <div>
-        <NavBar 
-        user={this.state.user}
-        loggedInStatus= {this.state.loggedInStatus}
-        handleLogout= {this.handleLogout}
-        />
-        <Route 
-            exact 
-            path="/" 
-            render={props => (
-
-              <Home {...props}
-              handleLogout= {this.handleLogout}
-              handleLogin= {this.handleLogin}  
-              
-              loggedInStatus={this.state.loggedInStatus} 
+          <Route
+            path="/"
+            render={(props) => (
+              <NavBar
+                {...props}
+                user={this.state.user}
+                loggedInStatus={this.state.loggedInStatus}
+                handleLogout={this.handleLogout}
               />
             )}
-            />
+          />
 
-            {/* <Route 
-            exact 
-            render={props => (
-              <Dashboard {...props} 
-              loggedInStatus={this.state.loggedInStatus} />
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <Home
+                {...props}
+                handleLogout={this.handleLogout}
+                handleLogin={this.handleLogin}
+                loggedInStatus={this.state.loggedInStatus}
+              />
             )}
-            /> */}
+          />
 
-            <Route
+          <Route
             path="/signup"
-            render= {props => (
-              <Registration 
-              {...props}
-              handleLogin= {this.handleLogin}
-              loggedInStatus={this.state.loggedInStatus} 
+            render={(props) => (
+              <Registration
+                {...props}
+                handleLogin={this.handleLogin}
+                loggedInStatus={this.state.loggedInStatus}
               />
-              )}
-            />
+            )}
+          />
 
-            <Route
+          <Route
             path="/login"
-            render= {props => (
-              <Login 
-              {...props}
-              handleLogin= {this.handleLogin}
-              loggedInStatus={this.state.loggedInStatus} 
+            render={(props) => (
+              <Login
+                {...props}
+                handleLogin={this.handleLogin}
+                loggedInStatus={this.state.loggedInStatus}
               />
-              )}
-              />
+            )}
+          />
 
-            <Route
+          <Route
             path="/map"
-            render= {props => (
-            <MapContainer 
-              {...props}
-              handleLogin= {this.handleLogin}
-              loggedInStatus={this.state.loggedInStatus} 
-            />
-            )}
-            />
+            render={(props) => {
+              const breweries = this.state.breweries;
+              return breweries ? (
+                <MapContainer
+                  breweries={breweries}
+                  {...props}
+                  user={this.state.user}
+                  addFavorite={this.addFavorite}
+                  handleLogin={this.handleLogin}
+                  loggedInStatus={this.state.loggedInStatus}
+                />
+              ) : (
+                "Loading..."
+              );
+            }}
+          />
 
-            <Route
+          <Route
             path="/favorites"
-            render= {props => (
-            <FavoriteContainer 
-              {...props}
-              handleLogin= {this.handleLogin}
-              loggedInStatus={this.state.loggedInStatus} 
-            />
+            render={(props) => (
+              <FavoriteContainer
+                {...props}
+                user={this.state.user}
+                favorites={this.state.favorites}
+                addFavorite={this.addFavorite}
+                removeFavorite={this.removeFavorite}
+                handleLogin={this.handleLogin}
+                loggedInStatus={this.state.loggedInStatus}
+              />
             )}
-            />
+          />
 
-            <Route
+          <Route
             path="/notes"
-            render= {props => (
-            <NoteContainer {...props}
-              handleLogin= {this.handleLogin}
-              loggedInStatus={this.state.loggedInStatus} 
-            />
+            render={(props) => (
+              <NoteContainer
+                {...props}
+                handleLogin={this.handleLogin}
+                loggedInStatus={this.state.loggedInStatus}
+              />
             )}
-            />
+          />
 
-            <Route
+          <Route
             path="/brewery/:BreweryId"
-            render= {(props) => {
- 
-            const BreweryId = props.match.params.BreweryId
-            const brewery = this.state.allBreweries.find(e => e.id === parseInt(BreweryId))
+            render={(props) => {
+              const BreweryId = props.match.params.BreweryId;
+              const brewery = this.state.breweries.find(
+                (e) => e.id === parseInt(BreweryId)
+              );
 
-            return brewery ?
-            <BreweryShowPage
-            brewery ={brewery} 
-              {...props}
-              handleLogin= {this.handleLogin}
-              loggedInStatus={this.state.loggedInStatus} 
-            />
-            :
-            "Loading..."
+              return brewery ? (
+                <IndividualBreweryShowPage
+                  brewery={brewery}
+                  {...props}
+                  handleLogin={this.handleLogin}
+                  loggedInStatus={this.state.loggedInStatus}
+                  addFavorite={this.addFavorite}
+                />
+              ) : (
+                "Loading..."
+              );
             }}
-            />
+          />
 
-            <Route
+          <Route
             path="/breweries"
-            render= {(props) => {
-
-            const breweries = this.state.allBreweries
-            return breweries ?
-            <BreweryCollection 
-              breweries = {breweries}
-              {...props}
-              handleLogin= {this.handleLogin}
-              loggedInStatus={this.state.loggedInStatus} 
-            />
-            :
-            "Loading..."
+            render={(props) => {
+              const breweries = this.state.breweries;
+              const filteredBreweries = breweries.filter((brewery) => {
+                return brewery.brewery_name
+                  .toLowerCase()
+                  .includes(this.state.inputValue.toLowerCase());
+              });
+              // console.log("breweries from app", breweries);
+              return breweries ? (
+                <BreweryCollection
+                  {...props}
+                  breweries={breweries}
+                  filteredBreweries={filteredBreweries}
+                  inputValue={this.state.inputValue}
+                  breweryFilterOnChange={this.breweryFilterOnChange}
+                  addFavorite={this.addFavorite}
+                  handleLogin={this.handleLogin}
+                  loggedInStatus={this.state.loggedInStatus}
+                />
+              ) : (
+                "Loading..."
+              );
             }}
-            />
-
-
+          />
         </div>
-        </Router>
-   
-
+      </Router>
     );
   }
 }
 
-export default App
+export default App;
