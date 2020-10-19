@@ -19,6 +19,7 @@ class App extends Component {
     breweries: [],
     allBreweries: [],
     favorites: [],
+    notes: [],
     inputValue: "",
   };
 
