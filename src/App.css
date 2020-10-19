@@ -47,19 +47,33 @@ body {
   width: 100%;
 }
 .navbar a {
-  color: #015a29;
+  background-color: #015a2985;
+  color: black;
   text-decoration: none;
   font-weight: bold;
+  border: 1px solid rgb(201, 198, 198);
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 7px rgba(0, 0, 0, 0.03);
+  padding: 10px;
 }
+
 .navbar a:hover {
+  background-color: #015a295e;
+}
+
+/* .navbar a navbar-brand {
+  border: 1px solid rgb(255, 255, 255);
+} */
+
+/* .navbar a:hover {
   color: #015a2985;
-}
+} */
 .logo {
-  height: 30px;
+  height: 45px;
 }
-.logo :hover {
+/* .logo :hover {
   color: #aa9902;
-}
+} */
 /* HOME PAGE */
 .home {
   display: grid;
@@ -73,11 +87,8 @@ body {
   text-align: left;
 }
 .Bio #title {
-  /* grid-column-start: 2;
-   grid-column-end: 4; */
   text-align: center;
   height: 50px;
-  /* font-weight: bold;box-shadow: 0 4px 8px 0 rgba(0,0,0,.2); */
 }
 .Bio #subtitle {
   text-align: center;
@@ -103,14 +114,17 @@ body {
   opacity: 0.95;
 }
 .home-buttons {
-  background-color: white;
+  background-color: #035e2c33;
+  /* background-color: #035e2c; */
+  /* background-color: white; */
   border-radius: 3px;
   width: 85%;
   height: 20%;
   border: 0.5px solid #ebeaec;
 }
 .home-buttons:hover {
-  background-color: #035e2c33;
+  background-color: #035e2c;
+  /* background-color: #035e2c33; */
   transition: all 0.1s;
 }
 /* brewery show page */
@@ -123,6 +137,7 @@ body {
 }
 
 /* Map */
+
 .map-position {
   margin-left: -200px;
   margin-right: 50px;
@@ -133,8 +148,14 @@ body {
   z-index: 10;
 }
 .mapContainer {
-  margin-top: 55px;
+  /* margin-top: 55px; */
   position: absolute;
+  width: 90%;
+  height: 85%;
+  margin: 60px -25px 25px 95px;
+  /* border: 1px solid rgb(201, 198, 198); */
+  border-radius: 10px;
+  box-shadow: 10px 10px 40px -5px rgba(0, 0, 0, 0.04);
   top: 0;
   right: 0;
   left: 0;
@@ -209,14 +230,18 @@ body {
   display: table;
   margin: 85px auto 0 auto;
   background: #fff;
-  border-radius: 4px;
+  border: 1px solid rgb(201, 198, 198);
+  border-radius: 10px;
+  box-shadow: 10px 10px 40px -5px rgba(0, 0, 0, 0.04);
 }
 .legend {
   position: relative;
   width: 100%;
+  border-radius: 10px 10px 0px 0px;
   display: block;
   background: #015a29;
   padding: 15px;
+
   color: #fff;
   font-size: 20px;
 }
@@ -256,7 +281,6 @@ input {
   color: darken(#ededed, 30%);
 }
 input:focus {
-  /* padding: 10px 5px 10px 10px; */
   outline: 0;
   border-color: #015a29;
 }
@@ -284,24 +308,24 @@ input:focus {
   font-size: 14px;
 }
 .header {
-  width: 100%;
+  position: relative;
+  width: 25%;
+  margin: 0 auto;
+  border-radius: 5px 5px 5px 5px;
   display: block;
   background: #015a29;
   padding: 15px;
-  color: rgb(0, 0, 0);
   font-size: 50px;
   text-align: center;
-  margin-left: 620px;
-  width: 35%;
-  border-radius: 15px;
+
+  color: #fff;
 }
 .header:after {
   content: "";
-  background-image: url(http://simpleicon.com/wp-content/uploads/beer_4-128x128.png);
+  background-image: url(http://simpleicon.com/wp-content/uploads/beer_2-256x256.png);
   background-size: 100px 100px;
   background-repeat: no-repeat;
-  background-position: 1100px -16px;
-  margin-top: 112px;
+  background-position: 300px -16px;
   opacity: 0.2;
   top: 0;
   left: 0;
@@ -317,7 +341,9 @@ input:focus {
   border: 1px solid;
   margin: 5px;
   margin-right: -150px;
+  border: 1px solid rgb(201, 198, 198);
   border-radius: 10px;
+  box-shadow: 10px 10px 40px -5px rgba(0, 0, 0, 0.04);
 }
 .row:after {
   content: "";
@@ -351,7 +377,7 @@ input:focus {
 }
 .search__input {
   margin: 0 auto;
-  width: 50%;
+  width: 15%;
   padding: 12px 24px;
   background-color: transparent;
   transition: transform 250ms ease-in-out;

@@ -89,7 +89,6 @@ export default class Login extends Component {
       </svg>
     );
     return (
-      // <div className="login">
       <div>
         <form className="login" onSubmit={this.handleSubmit}>
           <fieldset>
@@ -120,16 +119,17 @@ export default class Login extends Component {
                 <i className="fa fa-lock">{password}</i>
               </span>
             </div>
+
             <button className="submit" type="submit">
               {arrow}
             </button>
             {this.state.isInvalid && <div>Invalid Username or Password</div>}
-            <br />
           </fieldset>
         </form>
+        <br />
         <div className="route-links">
           <Link to="/">homepage</Link> {"  🍻  "}
-          <Link to="/signup">login </Link>
+          <Link to="/signup">signup </Link>
         </div>
       </div>
     );

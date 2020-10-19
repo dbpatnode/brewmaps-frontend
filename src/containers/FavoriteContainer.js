@@ -31,18 +31,36 @@ class FavoriteContainer extends Component {
     );
     return (
       <div>
-        <legend className="header">Favorites</legend>
+        <h1 className="header">Favorites</h1>
         <div className="cards">
           {this.props.favorites.map((favorite) => (
             <div clasName="row">
               <div className="card">
-                <h4>{favorite.brewery.brewery_name}</h4>
-                <h3>Brewery Style: {favorite.brewery.brewery_type}</h3>
+                <a
+                  className="website"
+                  style={{ display: "table-cell" }}
+                  href={favorite.brewery.website_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {favorite.brewery.brewery_name}
+                </a>
+
+                <h6>Brewery Style: {favorite.brewery.brewery_type}</h6>
                 <p>
                   {favorite.brewery.street} <br />
                   {favorite.brewery.city}, {favorite.brewery.state}{" "}
                   {favorite.brewery.postal_code}
                 </p>
+                <a
+                  href={`tel:${favorite.brewery.phone}`}
+                  className="phone-number"
+                >
+                  {""}
+                  {favorite.brewery.phone.length > 0
+                    ? favorite.brewery.phone
+                    : "No phone number available"}
+                </a>
                 <button
                   className="submit"
                   id={favorite.brewery.id}
