@@ -114,35 +114,14 @@ body {
   transition: all 0.1s;
 }
 /* brewery show page */
-/* .note-input {
-  height: 300px;
-  width: 200%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-} */
+
 .cards {
   margin-left: 35px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
 }
-/* #brewery-header {
-  text-align: center;
-}
-.brewery-card-button {
-  background-color: white;
-  border-radius: 3px;
-  width: 85%;
-  height: 20%;
-  border: 0.5px solid #ebeaec;
-}
-.brewery-card-button:hover {
-  background-color: #035e2c33;
-  transition: all 0.1s;
-}
-.like-brewery-button {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-} */
+
 /* Map */
 .map-position {
   margin-left: -200px;
@@ -185,17 +164,31 @@ body {
 }
 /* popups on map */
 .popup-button {
-  margin-top: 5px;
+  margin-left: 27px;
+  /* margin-top: 5px; */
+  margin-bottom: 5px;
   background-color: white;
   border-radius: 3px;
   width: 75%;
   border: 0.5px solid #ebeaec;
 }
 .popup-button:hover {
-  background-color: #035e2c33;
+  background-color: #035e2c;
+}
+
+.view-brewery {
+  color: black;
+}
+
+.view-brewery:hover {
+  color: white;
+}
+
+.popup a {
+  color: #035e2c;
 }
 /* login and signup */
-/* // Set background image (pattern) */
+
 * {
   margin: 0;
   padding: 0;
@@ -293,16 +286,30 @@ input:focus {
 .header {
   width: 100%;
   display: block;
-  background: #015a2923;
+  background: #015a29;
   padding: 15px;
   color: rgb(0, 0, 0);
   font-size: 50px;
   text-align: center;
-  /* width: 95%; */
+  margin-left: 620px;
+  width: 35%;
+  border-radius: 15px;
+}
+.header:after {
+  content: "";
+  background-image: url(http://simpleicon.com/wp-content/uploads/beer_4-128x128.png);
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  background-position: 1100px -16px;
+  margin-top: 112px;
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
 }
 .card {
-  /* display: grid;
-  grid-template-columns: 1fr 1fr 1fr; */
   float: left;
   width: 90%;
   padding: 10px;
