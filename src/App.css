@@ -1,12 +1,10 @@
 .App {
   text-align: center;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
 html,
 body {
   padding: 0px;
@@ -19,7 +17,6 @@ body {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -30,11 +27,9 @@ body {
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
 .App-link {
   color: #61dafb;
 }
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -51,38 +46,32 @@ body {
   margin-bottom: 25px;
   width: 100%;
 }
-
 .navbar a {
   color: #015a29;
   text-decoration: none;
   font-weight: bold;
 }
-
 .navbar a:hover {
   color: #015a2985;
 }
-
 .logo {
   height: 30px;
 }
 .logo :hover {
   color: #aa9902;
 }
-
 /* HOME PAGE */
 .home {
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
   grid-template-rows: 20% 20% 20% 20% 20%;
 }
-
 .Bio {
   grid-column-start: 2;
   grid-column-end: 4;
   text-align: center;
   text-align: left;
 }
-
 .Bio #title {
   /* grid-column-start: 2;
    grid-column-end: 4; */
@@ -90,15 +79,12 @@ body {
   height: 50px;
   /* font-weight: bold;box-shadow: 0 4px 8px 0 rgba(0,0,0,.2); */
 }
-
 .Bio #subtitle {
   text-align: center;
 }
-
 .Bio #body {
   width: 100%;
 }
-
 #welcome-image {
   margin-top: px;
   grid-column-start: 1;
@@ -106,7 +92,6 @@ body {
   width: 152%;
   /* height: 300%; */
 }
-
 .home-login-signup {
   text-align: center;
   margin-left: 10px;
@@ -117,7 +102,6 @@ body {
   height: 150%;
   opacity: 0.95;
 }
-
 .home-buttons {
   background-color: white;
   border-radius: 3px;
@@ -125,45 +109,17 @@ body {
   height: 20%;
   border: 0.5px solid #ebeaec;
 }
-
 .home-buttons:hover {
   background-color: #035e2c33;
   transition: all 0.1s;
 }
-
 /* brewery show page */
 
-.note-input {
-  height: 300px;
-  width: 200%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
 .cards {
+  margin-left: 35px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-}
-
-#brewery-header {
-  text-align: center;
-}
-
-.brewery-card-button {
-  background-color: white;
-  border-radius: 3px;
-  width: 85%;
-  height: 20%;
-  border: 0.5px solid #ebeaec;
-}
-
-.brewery-card-button:hover {
-  background-color: #035e2c33;
-  transition: all 0.1s;
-}
-.like-brewery-button {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
 }
 
 /* Map */
@@ -176,7 +132,6 @@ body {
   display: block;
   z-index: 10;
 }
-
 .mapContainer {
   margin-top: 55px;
   position: absolute;
@@ -185,72 +140,60 @@ body {
   left: 0;
   bottom: 0;
 }
-
 .map-search-input {
   margin-top: 17px;
 }
-
 .mapboxgl-ctrl-geocoder {
   width: 100% !important;
   margin: 0 auto;
 }
-
 .mapboxgl-ctrl-geocoder--input {
   margin-top: 500px;
 }
-
 .pin {
   background: none;
   border: none;
   cursor: pointer;
 }
-
 .pin img {
   width: 20px;
   height: 20px;
 }
-
 .pin img:hover {
   background-color: rgba(255, 255, 0, 0.178);
 }
-
 /* popups on map */
-
 .popup-button {
-  margin-top: 5px;
+  margin-left: 27px;
+  /* margin-top: 5px; */
+  margin-bottom: 5px;
   background-color: white;
   border-radius: 3px;
   width: 75%;
   border: 0.5px solid #ebeaec;
 }
-
 .popup-button:hover {
-  background-color: #035e2c33;
+  background-color: #035e2c;
 }
 
+.view-brewery {
+  color: black;
+}
+
+.view-brewery:hover {
+  color: white;
+}
+
+.popup a {
+  color: #035e2c;
+}
 /* login and signup */
-
-/* .signup {
-  text-align: center;
-  max-width: 250px;
-  margin: 40px auto;
-  padding: 10px;
-  height: 50px;
-  height: 200px;
-  opacity: 0.95;
-  -webkit-box-shadow: 7px 10px 20px -4px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 7px 10px 20px -4px rgba(0, 0, 0, 0.75);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-} */
-
-/* // Set background image (pattern) */
 
 * {
   margin: 0;
   padding: 0;
   border: 0;
 }
-
 html,
 body {
   width: 100%;
@@ -259,7 +202,6 @@ body {
   font-family: "Open Sans", sans-serif;
   font-weight: 200;
 }
-
 .login {
   position: relative;
   top: 50%;
@@ -269,7 +211,6 @@ body {
   background: #fff;
   border-radius: 4px;
 }
-
 .legend {
   position: relative;
   width: 100%;
@@ -279,7 +220,6 @@ body {
   color: #fff;
   font-size: 20px;
 }
-
 .legend:after {
   content: "";
   background-image: url(http://simpleicon.com/wp-content/uploads/multy-user.png);
@@ -293,13 +233,11 @@ body {
   right: 0;
   position: absolute;
 }
-
 .input {
   position: relative;
   width: 90%;
   margin: 15px auto;
 }
-
 .input span {
   position: absolute;
   display: block;
@@ -308,7 +246,6 @@ body {
   top: 8px;
   font-size: 20px;
 }
-
 input {
   width: 100%;
   padding: 10px 5px 10px 40px;
@@ -323,7 +260,6 @@ input:focus {
   outline: 0;
   border-color: #015a29;
 }
-
 .submit {
   width: 45px;
   height: 45px;
@@ -338,15 +274,112 @@ input:focus {
   box-shadow: 0px 0px 0px 7px #fff;
   transition: 0.2s ease-out;
 }
-
-.submit:hover,
-.submit:focus {
+.submit:hover {
   background: #015a29;
   color: #fff;
   outline: 0;
 }
-
 .route-links {
   text-align: center;
   font-size: 14px;
+}
+.header {
+  width: 100%;
+  display: block;
+  background: #015a29;
+  padding: 15px;
+  color: rgb(0, 0, 0);
+  font-size: 50px;
+  text-align: center;
+  margin-left: 620px;
+  width: 35%;
+  border-radius: 15px;
+}
+.header:after {
+  content: "";
+  background-image: url(http://simpleicon.com/wp-content/uploads/beer_4-128x128.png);
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  background-position: 1100px -16px;
+  margin-top: 112px;
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+.card {
+  float: left;
+  width: 90%;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid;
+  margin: 5px;
+  margin-right: -150px;
+  border-radius: 10px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.website {
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #015a29;
+}
+.website:hover {
+  color: #015a2985;
+}
+.phone-number {
+  color: #015a2985;
+  text-decoration: none;
+}
+.phone-number:hover {
+  text-decoration: none;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.search__container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.search__input {
+  margin: 0 auto;
+  width: 50%;
+  padding: 12px 24px;
+  background-color: transparent;
+  transition: transform 250ms ease-in-out;
+  font-size: 14px;
+  line-height: 18px;
+  color: #168116;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  background-position: 95% center;
+  border-radius: 50px;
+  border: 1px solid #575756;
+  transition: all 250ms ease-in-out;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+.search__input::placeholder {
+  color: color(#575756 a(0.8));
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.search__input:hover,
+.search__input:focus {
+  padding: 12px 0;
+  outline: 0;
+  border: 1px solid transparent;
+  border-bottom: 1px solid #575756;
+  border-radius: 0;
+  background-position: 100% center;
 }
