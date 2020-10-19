@@ -16,7 +16,7 @@ const BreweryCollection = (props) => {
   );
   return (
     <div>
-      <legend className="header">Breweries</legend>
+      <h1 className="header">Breweries</h1>
       <div class="search__container">
         <input
           className="search__input"
@@ -26,6 +26,7 @@ const BreweryCollection = (props) => {
           onChange={props.breweryFilterOnChange}
         />
       </div>
+
       <div className="cards">
         {props.filteredBreweries.map((brewery) => {
           return (

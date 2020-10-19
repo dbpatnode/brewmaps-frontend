@@ -75,16 +75,15 @@ class NavBar extends Component {
           <nav class="navbar navbar-inverse">
             <div className="container-fluid">
               <div class="navbar-header">
-                <NavLink to="/home" className="navbar-brand">
-                  {" "}
-                  <img
-                    src={logo}
-                    alt="beer map logo"
-                    className="logo"
-                  ></img>{" "}
-                </NavLink>
+                {" "}
+                <img
+                  className="navbar-brand"
+                  src={logo}
+                  alt="beer map logo"
+                  className="logo"
+                ></img>{" "}
               </div>
-              <a>Cheers, {this.props.user.username}!</a>
+              <b>Cheers, {this.props.user.username}!</b>
               <NavLink to="/map"> BeerMap </NavLink>
               <NavLink to="/breweries"> Breweries </NavLink>
               <NavLink to="/favorites"> Favorite Breweries</NavLink>
@@ -99,14 +98,9 @@ class NavBar extends Component {
           <nav class="navbar navbar-inverse">
             <div className="container-fluid">
               <div class="navbar-header">
-                <NavLink to="/">
-                  {" "}
-                  <img
-                    src={logo}
-                    alt="beer map logo"
-                    className="logo"
-                  ></img>{" "}
-                </NavLink>
+                {/* <NavLink to="/"> */}{" "}
+                <img src={logo} alt="beer map logo" className="logo"></img>{" "}
+                {/* </NavLink> */}
               </div>
             </div>
           </nav>

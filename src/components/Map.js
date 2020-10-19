@@ -73,37 +73,40 @@ class Map extends React.Component {
             }}
           />
         </div>
-        <ReactMapGL
-          ref={this.myMap}
-          {...this.state.viewport}
-          onViewportChange={this.handleViewportChange}
-          width="100%"
-          height="100%"
-          mapStyle="mapbox://styles/mapbox/streets-v11"
-          mapboxApiAccessToken="pk.eyJ1IjoiZGJwYXRub2RlIiwiYSI6ImNrZnk4aWJ1MjAwN2kyem55MzVmaWh0MnkifQ.9Xu3ZCcZg5OPrXUkqrMILQ"
-        >
-          {this.filterPins().map((brewery) => (
-            <Marker
-              key={brewery.id}
-              longitude={brewery.lng}
-              latitude={brewery.lat}
-            >
-              <button
-                className="pin"
-                onClick={() => this._onClickMarker(brewery)}
-              >
-                <img src="./hop_logo.png" alt="Brewery Icon" />
-              </button>
-            </Marker>
-          ))}
-          {this._renderPopup()}
-          <Geocoder
-            mapRef={this.myMap}
-            containerRef={this.geocoderContainerRef}
-            mapboxApiAccessToken="pk.eyJ1IjoibHVjYXNsZWlicyIsImEiOiJja2Z5OGVmb20xMjlxMnRvazY0OTlqMXVkIn0.G1QPTc55QLc2rXKcO47jzw"
+        <span className="whole-map">
+          <ReactMapGL
+            ref={this.myMap}
+            {...this.state.viewport}
             onViewportChange={this.handleViewportChange}
-          />
-        </ReactMapGL>
+            width="100%"
+            height="100%"
+            margin="0 auto"
+            mapStyle="mapbox://styles/mapbox/streets-v11"
+            mapboxApiAccessToken="pk.eyJ1IjoiZGJwYXRub2RlIiwiYSI6ImNrZnk4aWJ1MjAwN2kyem55MzVmaWh0MnkifQ.9Xu3ZCcZg5OPrXUkqrMILQ"
+          >
+            {this.filterPins().map((brewery) => (
+              <Marker
+                key={brewery.id}
+                longitude={brewery.lng}
+                latitude={brewery.lat}
+              >
+                <button
+                  className="pin"
+                  onClick={() => this._onClickMarker(brewery)}
+                >
+                  <img src="./hop_logo.png" alt="Brewery Icon" />
+                </button>
+              </Marker>
+            ))}
+            {this._renderPopup()}
+            <Geocoder
+              mapRef={this.myMap}
+              containerRef={this.geocoderContainerRef}
+              mapboxApiAccessToken="pk.eyJ1IjoibHVjYXNsZWlicyIsImEiOiJja2Z5OGVmb20xMjlxMnRvazY0OTlqMXVkIn0.G1QPTc55QLc2rXKcO47jzw"
+              onViewportChange={this.handleViewportChange}
+            />
+          </ReactMapGL>
+        </span>
       </div>
     );
   }
