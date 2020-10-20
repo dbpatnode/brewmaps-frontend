@@ -1,3 +1,7 @@
+* {
+  font-family: "Roboto Slab", serif;
+}
+
 .App {
   text-align: center;
 }
@@ -9,125 +13,118 @@ html,
 body {
   padding: 0px;
   margin: 0px;
+  font-family: "Roboto Slab", serif;
   /* background:#F8F2ED; */
-  font-family: "Raleway", sans-serif;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-.App-link {
-  color: #61dafb;
-}
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
 /* NAVBAR */
 .navbar-inverse {
   z-index: 1;
   background-color: white;
-  border-bottom: 6px solid #015a29;
+  border-bottom: 6px solid #8fa540;
   margin-bottom: 25px;
   width: 100%;
 }
 .navbar a {
-  background-color: #015a2985;
-  color: black;
+  font-size: 25px;
+  font-family: "Yanone Kaffeesatz", sans-serif;
+
+  /* font-weight: bold; */
+  color: rgb(43, 59, 38);
   text-decoration: none;
-  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#logout {
   border: 1px solid rgb(201, 198, 198);
   border-radius: 10px;
   box-shadow: 0px 0px 5px 7px rgba(0, 0, 0, 0.03);
-  padding: 10px;
+  background-color: #8fa540;
+  color: white;
+  padding: 3px;
+  /* padding-left: 9px;
+  padding-right: 9px; */
 }
 
 .navbar a:hover {
-  background-color: #015a295e;
+  color: #015a295e;
 }
 
-/* .navbar a navbar-brand {
-  border: 1px solid rgb(255, 255, 255);
-} */
-
-/* .navbar a:hover {
-  color: #015a2985;
-} */
 .logo {
   height: 45px;
 }
-/* .logo :hover {
-  color: #aa9902;
-} */
+
 /* HOME PAGE */
-.home {
-  display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
-  grid-template-rows: 20% 20% 20% 20% 20%;
-}
-.Bio {
-  grid-column-start: 2;
-  grid-column-end: 4;
+
+.container {
+  position: relative;
   text-align: center;
-  text-align: left;
+  color: white;
 }
-.Bio #title {
-  text-align: center;
-  height: 50px;
+
+.top-left {
+  position: absolute;
+  top: 120px;
+  left: 160px;
 }
-.Bio #subtitle {
-  text-align: center;
+
+.top-left h1 {
+  font-family: "Roboto Slab", serif;
+  padding: 10px 5px 10px 40px;
+  font-weight: 400;
+  font-size: 50px;
 }
-.Bio #body {
-  width: 100%;
+.home-page-buttons {
+  width: 50%;
+  margin-left: 90px;
 }
 #welcome-image {
-  margin-top: px;
-  grid-column-start: 1;
-  grid-column-end: 4;
-  width: 152%;
-  /* height: 300%; */
+  position: relative;
+  bottom: 0;
+  width: 1212px;
+  margin-left: 405px;
+  margin-bottom: 300px;
 }
-.home-login-signup {
-  text-align: center;
-  margin-left: 10px;
-  grid-column-start: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  width: 100%;
-  height: 150%;
-  opacity: 0.95;
-}
-.home-buttons {
-  background-color: #035e2c33;
-  /* background-color: #035e2c; */
-  /* background-color: white; */
-  border-radius: 3px;
+
+#login-button {
+  width: 50%;
+  background-color: #8fa540;
+  font-family: "Roboto Slab", serif;
+  border-radius: 5px;
   width: 85%;
   height: 20%;
-  border: 0.5px solid #ebeaec;
+  border: 0.5px solid #8fa540;
+  padding: 7px;
 }
-.home-buttons:hover {
+
+#login-button:hover {
+  background-color: #8fa540d3;
+}
+
+#signup-button {
+  width: 50%;
   background-color: #035e2c;
-  /* background-color: #035e2c33; */
-  transition: all 0.1s;
+  font-family: "Roboto Slab", serif;
+  /* background-color: white; */
+  border-radius: 5px;
+  width: 85%;
+  height: 20%;
+  border: 0.5px solid #035e2c;
+  padding: 7px;
+  margin-top: 10px;
 }
+
+#signup-button:hover {
+  background-color: #035e2cdc;
+}
+
 /* brewery show page */
+.favorite-cards {
+  margin-left: 70px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
 
 .cards {
   margin-left: 35px;
@@ -199,6 +196,9 @@ body {
 
 .view-brewery {
   color: black;
+  padding: 10px;
+  text-align: center;
+  left: 10px;
 }
 
 .view-brewery:hover {
@@ -291,7 +291,7 @@ input:focus {
   margin: 0 auto -15px auto;
   background: #fff;
   border-radius: 100%;
-  border: 1px solid #015a29;
+  border: 1px solid #8fa540;
   color: #015a29;
   font-size: 24px;
   cursor: pointer;
@@ -299,7 +299,7 @@ input:focus {
   transition: 0.2s ease-out;
 }
 .submit:hover {
-  background: #015a29;
+  background: #8fa540;
   color: #fff;
   outline: 0;
 }
@@ -307,6 +307,12 @@ input:focus {
   text-align: center;
   font-size: 14px;
 }
+
+#rendered-notes {
+  font-weight: bold;
+  padding-right: 4px;
+}
+
 .header {
   position: relative;
   width: 25%;
@@ -350,17 +356,25 @@ input:focus {
   display: table;
   clear: both;
 }
-.website {
-  font-size: 15px;
+#icons {
+  color: #8fa540;
+  padding-right: 4px;
+}
+.brewery-name {
   font-weight: bold;
-  text-decoration: none;
   color: #015a29;
 }
+.website {
+  color: black;
+  font-size: 15px;
+  /* font-weight: bold; */
+  text-decoration: none;
+}
 .website:hover {
-  color: #015a2985;
+  color: #015a29;
 }
 .phone-number {
-  color: #015a2985;
+  color: black;
   text-decoration: none;
 }
 .phone-number:hover {
@@ -409,3 +423,19 @@ input:focus {
   border-radius: 0;
   background-position: 100% center;
 }
+
+/* notes */
+.notes {
+  border-top: 0.5px solid rgb(228, 226, 226);
+  border-top-width: 85%;
+}
+.star-rating {
+  padding-top: 5px;
+  margin-left: 379px;
+
+  border-top-width: 200%;
+}
+
+/* .favorite-notes {
+  padding-bottom: 10px;
+} */

@@ -1,7 +1,7 @@
 import React from "react";
 import BreweryShowPage from "./BreweryShowPage";
 import BreweryShowPageBack from "./BreweryShowPageBack";
-// import ReactPaginate from 'react-paginate';
+
 import Flippy, { FrontSide, BackSide } from "react-flippy";
 
 const BreweryCollection = (props) => {
@@ -11,7 +11,6 @@ const BreweryCollection = (props) => {
       <div className="cards">
         {props.breweries.map((brewery) => {
           {
-            /* {JSON.parse(localStorage.getItem("allBreweries")).map(brewery => { */
           }
           return (
             <div className="ml-5 mb-3" brewery={brewery} key={brewery.id}>

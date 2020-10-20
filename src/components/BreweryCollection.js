@@ -1,9 +1,6 @@
 import React from "react";
-import BreweryShowPage from "./BreweryShowPage";
-// import BreweryShowPageBack from "./BreweryShowPageBack";
-import Flippy, { FrontSide, BackSide } from "react-flippy";
+
 const BreweryCollection = (props) => {
-  console.log("all breweries from brewery collection", props.breweries);
   const beer = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +14,7 @@ const BreweryCollection = (props) => {
   return (
     <div>
       <h1 className="header">Breweries</h1>
-      <div class="search__container">
+      <div className="search__container">
         <input
           className="search__input"
           type="text"

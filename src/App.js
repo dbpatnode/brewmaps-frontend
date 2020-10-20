@@ -19,6 +19,7 @@ class App extends Component {
     breweries: [],
     allBreweries: [],
     favorites: [],
+    notes: [],
     inputValue: "",
   };
 
@@ -41,10 +42,7 @@ class App extends Component {
                 breweries: breweries,
               },
               () => {
-                console.log(
-                  "from component did mount",
-                  this.state.allBreweries
-                );
+                console.log("from component did mount", this.state);
               }
             );
           } else {
@@ -88,13 +86,13 @@ class App extends Component {
   };
 
   handleLogin = (user) => {
-    console.log("registratino issue", user);
     this.setState({
       loggedInStatus: "LOGGED_IN",
       user: user,
       favorites: user.favorites,
+      notes: user.notes,
     });
-    console.log("handle log in", user);
+    console.log("USER HERE", user);
   };
 
   addFavorite = (e, brewery) => {
@@ -114,7 +112,7 @@ class App extends Component {
       fetch("http://localhost:3000/favorites", configObj)
         .then((resp) => resp.json())
         .then((data) => {
-          console.log(data.brewery);
+          console.log("add favoritr", data);
           this.setState({
             favorites: [
               ...this.state.favorites,
@@ -126,6 +124,32 @@ class App extends Component {
     }
   };
 
+  addNotes = (note) => {
+    debugger;
+    // if (!this.state.favorites.includes(brewery)) {
+    const configObj = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.authToken,
+      },
+      body: JSON.stringify(note),
+    };
+    fetch("http://localhost:3000/notes", configObj)
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log("addnotes", data);
+        // this.setState({
+        //   favorites: [
+        //     ...this.state.notes,
+        //     { id: data.id, brewery: data.brewery },
+        //   ],
+        // });
+        window.location.href = "/favorites";
+      });
+    // }
+  };
+
   breweryFilterOnChange = (e) => {
     console.log("hi from onChange", e.target.value);
     this.setState({
@@ -134,7 +158,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.favorites);
     return (
       <Router>
         <div>
@@ -213,6 +236,8 @@ class App extends Component {
                 favorites={this.state.favorites}
                 addFavorite={this.addFavorite}
                 removeFavorite={this.removeFavorite}
+                addNotes={this.addNotes}
+                notes={this.state.notes}
                 handleLogin={this.handleLogin}
                 loggedInStatus={this.state.loggedInStatus}
               />
