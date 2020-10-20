@@ -308,6 +308,57 @@ input:focus {
   font-size: 14px;
 }
 
+.note-toggle {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.bi-pencil {
+  margin-bottom: 9px;
+}
+
+#note-button {
+  width: 35px;
+  height: 35px;
+  display: block;
+  margin-top: 20px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 100%;
+  border: 1px solid #015a29;
+  color: #015a29;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px 7px #fff;
+  transition: 0.2s ease-out;
+  outline: none;
+}
+
+#note-button:hover {
+  background: #8fa540;
+  color: #fff;
+  outline: 0;
+}
+
+/* .submit {
+  width: 45px;
+  height: 45px;
+  display: block;
+  margin: 0 auto -15px auto;
+  background: #fff;
+  border-radius: 100%;
+  border: 1px solid #8fa540;
+  color: #015a29;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px 7px #fff;
+  transition: 0.2s ease-out;
+}
+.submit:hover {
+  background: #8fa540;
+  color: #fff;
+  outline: 0;
+} */
 #rendered-notes {
   font-weight: bold;
   padding-right: 4px;
