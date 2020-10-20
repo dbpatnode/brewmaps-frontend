@@ -112,7 +112,7 @@ class App extends Component {
       fetch("http://localhost:3000/favorites", configObj)
         .then((resp) => resp.json())
         .then((data) => {
-          console.log(data.brewery);
+          console.log("add favoritr", data);
           this.setState({
             favorites: [
               ...this.state.favorites,
@@ -124,32 +124,30 @@ class App extends Component {
     }
   };
 
-  addNotes = (e, brewery) => {
-    // debugger;
-    if (!this.state.favorites.includes(brewery)) {
-      const configObj = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: localStorage.authToken,
-        },
-        body: JSON.stringify({
-          user_id: this.state.user.id,
-          brewery_id: brewery.id,
-        }),
-      };
-      fetch("http://localhost:3000/notes", configObj)
-        .then((resp) => resp.json())
-        .then((data) => {
-          this.setState({
-            favorites: [
-              ...this.state.notes,
-              { id: data.id, brewery: data.brewery },
-            ],
-          });
-          window.location.href = "/favorites";
-        });
-    }
+  addNotes = (note) => {
+    debugger;
+    // if (!this.state.favorites.includes(brewery)) {
+    const configObj = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.authToken,
+      },
+      body: JSON.stringify(note),
+    };
+    fetch("http://localhost:3000/notes", configObj)
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log("addnotes", data);
+        // this.setState({
+        //   favorites: [
+        //     ...this.state.notes,
+        //     { id: data.id, brewery: data.brewery },
+        //   ],
+        // });
+        window.location.href = "/favorites";
+      });
+    // }
   };
 
   breweryFilterOnChange = (e) => {

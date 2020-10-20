@@ -75,7 +75,7 @@ class FavoriteContainer extends Component {
         width="1em"
         height="1em"
         viewBox="0 0 16 16"
-        class="bi bi-chat-left-text"
+        className="bi bi-chat-left-text"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -105,6 +105,18 @@ class FavoriteContainer extends Component {
         />
       </svg>
     );
+    const star = (
+      <svg
+        width="1em"
+        height="1em"
+        viewBox="0 0 16 16"
+        class="bi bi-star-fill"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+      </svg>
+    );
 
     return (
       <div>
@@ -114,7 +126,7 @@ class FavoriteContainer extends Component {
             <div className="row">
               <div className="card">
                 <a
-                  className="website"
+                  className="brewery-name"
                   style={{ display: "table-cell" }}
                   href={favorite.brewery.website_url}
                   target="_blank"
@@ -125,7 +137,8 @@ class FavoriteContainer extends Component {
 
                 <h6>Brewery Style: {favorite.brewery.brewery_type}</h6>
                 <p>
-                  {map} {favorite.brewery.street}
+                  <span id="icons">{map}</span>
+                  {favorite.brewery.street}
                   {favorite.brewery.city}, {favorite.brewery.state}{" "}
                   {favorite.brewery.postal_code}
                 </p>
@@ -133,7 +146,8 @@ class FavoriteContainer extends Component {
                   href={`tel:${favorite.brewery.phone}`}
                   className="phone-number"
                 >
-                  {phone}
+                  <span id="icons">{phone}</span>
+
                   {""}
                   {favorite.brewery.phone.length > 0
                     ? favorite.brewery.phone
@@ -147,13 +161,27 @@ class FavoriteContainer extends Component {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {globe}
+                  <span id="icons">{globe}</span>
                   {favorite.brewery.website_url}
                 </a>
 
-                {this.state.on && <Note addNotes={this.props.addNotes}></Note>}
+                {favorite.brewery.notes.map((note) => (
+                  <div className="favorite-notes">
+                    <span id="rendered-notes">previous review:</span>
+                    {note.review}
+                    <br />
+                    {note.rating} <span id="icons">{star}</span>
+                  </div>
+                ))}
+
+                {this.state.on && (
+                  <Note
+                    addNotes={this.props.addNotes}
+                    brewery={favorite.brewery.id}
+                    user={this.props.user.id}
+                  ></Note>
+                )}
                 <button onClick={this.toggle}>{notes}</button>
-                <br />
 
                 <button
                   className="submit"

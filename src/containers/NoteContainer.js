@@ -18,6 +18,14 @@ class NoteContainer extends Component {
   handleSubmit = (e) => {
     // alert("Atmosphere saved!");
     e.preventDefault();
+    const note = {
+      review: this.state.review,
+      atmosphere: this.state.atmospher,
+      rating: this.state.rating,
+      user_id: this.props.user,
+      brewery_id: this.props.brewery,
+    };
+    this.props.addNotes(note);
   };
 
   ratingChanged = (newRating) => {
@@ -28,9 +36,9 @@ class NoteContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="notes">
         <form onSubmit={this.handleSubmit}>
-          <div className="Custom Select">
+          {/* <div className="Custom Select">
             <label>
               Atmosphere
               <select
@@ -51,7 +59,7 @@ class NoteContainer extends Component {
                 <option value="pet-friendly">Pet Friendly</option>
               </select>
             </label>
-          </div>
+          </div> */}
           <div className="star-rating">
             <ReactStars
               number={this.state.rating}

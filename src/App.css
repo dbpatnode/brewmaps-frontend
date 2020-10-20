@@ -1,3 +1,7 @@
+* {
+  font-family: "Roboto Slab", serif;
+}
+
 .App {
   text-align: center;
 }
@@ -12,32 +16,7 @@ body {
   font-family: "Roboto Slab", serif;
   /* background:#F8F2ED; */
 }
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-.App-link {
-  color: #61dafb;
-}
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
 /* NAVBAR */
 .navbar-inverse {
   z-index: 1;
@@ -47,21 +26,24 @@ body {
   width: 100%;
 }
 .navbar a {
-  color: #035e2c;
+  font-size: 25px;
+  font-family: "Yanone Kaffeesatz", sans-serif;
+
+  /* font-weight: bold; */
+  color: rgb(43, 59, 38);
   text-decoration: none;
-  font-weight: bold;
-  font-family: "Open Sans", sans-serif;
+  text-transform: uppercase;
 }
 
-.logout {
+#logout {
   border: 1px solid rgb(201, 198, 198);
   border-radius: 10px;
   box-shadow: 0px 0px 5px 7px rgba(0, 0, 0, 0.03);
   background-color: #8fa540;
   color: white;
-  padding: 5px;
-  padding-left: 9px;
-  padding-right: 9px;
+  padding: 3px;
+  /* padding-left: 9px;
+  padding-right: 9px; */
 }
 
 .navbar a:hover {
@@ -325,6 +307,12 @@ input:focus {
   text-align: center;
   font-size: 14px;
 }
+
+#rendered-notes {
+  font-weight: bold;
+  padding-right: 4px;
+}
+
 .header {
   position: relative;
   width: 25%;
@@ -368,17 +356,25 @@ input:focus {
   display: table;
   clear: both;
 }
-.website {
-  font-size: 15px;
+#icons {
+  color: #8fa540;
+  padding-right: 4px;
+}
+.brewery-name {
   font-weight: bold;
-  text-decoration: none;
   color: #015a29;
 }
+.website {
+  color: black;
+  font-size: 15px;
+  /* font-weight: bold; */
+  text-decoration: none;
+}
 .website:hover {
-  color: #015a2985;
+  color: #015a29;
 }
 .phone-number {
-  color: #015a2985;
+  color: black;
   text-decoration: none;
 }
 .phone-number:hover {
@@ -429,6 +425,17 @@ input:focus {
 }
 
 /* notes */
-.star-rating {
-  margin: 0 auto;
+.notes {
+  border-top: 0.5px solid rgb(228, 226, 226);
+  border-top-width: 85%;
 }
+.star-rating {
+  padding-top: 5px;
+  margin-left: 379px;
+
+  border-top-width: 200%;
+}
+
+/* .favorite-notes {
+  padding-bottom: 10px;
+} */
