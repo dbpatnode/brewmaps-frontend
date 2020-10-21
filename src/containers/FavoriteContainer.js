@@ -2,15 +2,15 @@ import React, { Component } from "react";
 import Note from "./NoteContainer";
 
 class FavoriteContainer extends Component {
-  state = {
-    on: false,
-  };
+  // state = {
+  //   on: false,
+  // };
 
-  toggle = () => {
-    this.setState({
-      on: !this.state.on,
-    });
-  };
+  // toggle = () => {
+  //   this.setState({
+  //     on: !this.state.on,
+  //   });
+  // };
 
   removeFavorite = (id) => {
     const favoriteId = this.props.favorites.find((f) => f.brewery.id === id);
@@ -118,9 +118,9 @@ class FavoriteContainer extends Component {
       <div>
         <h1 className="header">Favorites</h1>
         <div className="favorite-cards">
-          {this.props.favorites.map((favorite) => (
+          {this.props.favorites.map((favorite, index) => (
             <div className="row">
-              <div className="card">
+              <div className="card" index={index} key={index}>
                 <a
                   className="brewery-name"
                   style={{ display: "table-cell" }}
@@ -170,18 +170,19 @@ class FavoriteContainer extends Component {
                   </div>
                 ))}
 
-                {this.state.on && (
-                  <Note
-                    addNotes={this.props.addNotes}
-                    brewery={favorite.brewery.id}
-                    user={this.props.user.id}
-                  ></Note>
-                )}
-                <div className="note-toggle">
+                {/* {this.state.on && ( */}
+                <Note
+                  note={notes}
+                  addNotes={this.props.addNotes}
+                  brewery={favorite.brewery.id}
+                  user={this.props.user.id}
+                ></Note>
+                {/* )} */}
+                {/* <div className="note-toggle">
                   <button onClick={this.toggle} id="note-button">
                     {notes}
                   </button>
-                </div>
+                </div> */}
 
                 <button
                   className="submit"

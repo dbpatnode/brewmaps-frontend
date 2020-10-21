@@ -6,6 +6,13 @@ class NoteContainer extends Component {
     review: "",
     atmosphere: "",
     rating: "",
+    on: false,
+  };
+
+  toggle = () => {
+    this.setState({
+      on: !this.state.on,
+    });
   };
 
   handleInputChange = (e) => {
@@ -35,53 +42,55 @@ class NoteContainer extends Component {
   };
 
   render() {
+    const notes = (
+      <svg
+        width="1em"
+        height="1em"
+        viewBox="0 0 16 16"
+        class="bi bi-pencil"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"
+        />
+      </svg>
+    );
     return (
       <div className="notes">
-        <form onSubmit={this.handleSubmit}>
-          {/* <div className="Custom Select">
+        <div className="note-toggle">
+          <button onClick={this.toggle} id="note-button">
+            {notes}
+          </button>
+        </div>
+        {this.state.on && (
+          <form onSubmit={this.handleSubmit}>
+            <div className="star-rating">
+              <ReactStars
+                number={this.state.rating}
+                count={5}
+                onChange={this.ratingChanged}
+                size={15}
+                activeColor="#8fa540"
+              />
+            </div>
+            <br />
             <label>
-              Atmosphere
-              <select
-                placeholder="Select Atmosphere"
-                name="atmosphere"
-                //   value={this.state.atmosphere}
-                onChange={(e) => this.handleInputChange(e)}
-              >
-                <option value=""></option>
-                <option value="dingy">Dingey</option>
-                <option value="family-friendly">Family Friendly</option>
-                <option value="bright">Bright</option>
-                <option value="inviting">Inviting</option>
-                <option value="casual">Casual</option>
-                <option value="group-friendly">Group Friendly</option>
-                <option value="hip">Hip</option>
-                <option value="divy">Dive-y</option>
-                <option value="pet-friendly">Pet Friendly</option>
-              </select>
+              review
+              <input
+                type="text"
+                name="review"
+                value={this.state.review}
+                onChange={this.handleInputChange}
+                required
+              />
             </label>
-          </div> */}
-          <div className="star-rating">
-            <ReactStars
-              number={this.state.rating}
-              count={5}
-              onChange={this.ratingChanged}
-              size={15}
-              activeColor="#8fa540"
-            />
-          </div>
-          <br />
-          <label>
-            review
-            <input
-              type="text"
-              name="review"
-              value={this.state.review}
-              onChange={this.handleInputChange}
-              required
-            />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
+            <button type="submit" value="Submit" className="note-submit-button">
+              Add Note
+            </button>
+          </form>
+        )}
       </div>
     );
   }

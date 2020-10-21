@@ -1,23 +1,120 @@
 * {
   font-family: "Roboto Slab", serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
-.App {
-  text-align: center;
-}
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 html,
 body {
   padding: 0px;
   margin: 0px;
-  font-family: "Roboto Slab", serif;
-  /* background:#F8F2ED; */
+  font-weight: 200;
+  width: 100%;
+  height: 100%;
 }
 
-/* NAVBAR */
+/* ############################# */
+/* ####### LOGIN/SIGNUP #######*/
+/* ############################ */
+
+.login {
+  position: relative;
+  top: 50%;
+  width: 250px;
+  display: table;
+  margin: 85px auto 0 auto;
+  background: #fff;
+  border: 1px solid rgb(201, 198, 198);
+  border-radius: 10px;
+  box-shadow: 10px 10px 40px -5px rgba(0, 0, 0, 0.04);
+}
+
+.legend {
+  position: relative;
+  width: 100%;
+  border-radius: 10px 10px 0px 0px;
+  display: block;
+  background: #015a29;
+  padding: 15px;
+
+  color: #fff;
+  font-size: 20px;
+}
+
+.legend:after {
+  content: "";
+  background-image: url(http://simpleicon.com/wp-content/uploads/multy-user.png);
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  background-position: 152px -16px;
+  opacity: 0.06;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+
+.input {
+  position: relative;
+  width: 90%;
+  margin: 15px auto;
+}
+.input span {
+  position: absolute;
+  display: block;
+  color: darken(#ededed, 10%);
+  left: 10px;
+  top: 8px;
+  font-size: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px 5px 10px 40px;
+  display: block;
+  border: 1px solid #ededed;
+  border-radius: 4px;
+  transition: 0.2s ease-out;
+  color: darken(#ededed, 30%);
+}
+
+input:focus {
+  outline: 0;
+  border-color: #015a29;
+}
+
+.submit {
+  width: 45px;
+  height: 45px;
+  display: block;
+  margin: 0 auto -15px auto;
+  background: #fff;
+  border-radius: 100%;
+  border: 1px solid #8fa540;
+  color: #015a29;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px 7px #fff;
+  transition: 0.2s ease-out;
+}
+
+.submit:hover {
+  background: #8fa540;
+  color: #fff;
+  outline: 0;
+}
+
+.route-links {
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ########################### */
+/* ########## NAVBAR ######### */
+/* ########################### */
+
 .navbar-inverse {
   z-index: 1;
   background-color: white;
@@ -25,11 +122,10 @@ body {
   margin-bottom: 25px;
   width: 100%;
 }
+
 .navbar a {
   font-size: 25px;
   font-family: "Yanone Kaffeesatz", sans-serif;
-
-  /* font-weight: bold; */
   color: rgb(43, 59, 38);
   text-decoration: none;
   text-transform: uppercase;
@@ -42,8 +138,6 @@ body {
   background-color: #8fa540;
   color: white;
   padding: 3px;
-  /* padding-left: 9px;
-  padding-right: 9px; */
 }
 
 .navbar a:hover {
@@ -54,7 +148,9 @@ body {
   height: 45px;
 }
 
-/* HOME PAGE */
+/* ########################## */
+/* ######## HOME PAGE ####### */
+/* ########################## */
 
 .container {
   position: relative;
@@ -74,10 +170,12 @@ body {
   font-weight: 400;
   font-size: 50px;
 }
+
 .home-page-buttons {
   width: 50%;
   margin-left: 90px;
 }
+
 #welcome-image {
   position: relative;
   bottom: 0;
@@ -105,7 +203,6 @@ body {
   width: 50%;
   background-color: #035e2c;
   font-family: "Roboto Slab", serif;
-  /* background-color: white; */
   border-radius: 5px;
   width: 85%;
   height: 20%;
@@ -118,22 +215,9 @@ body {
   background-color: #035e2cdc;
 }
 
-/* brewery show page */
-.favorite-cards {
-  margin-left: 70px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-}
-
-.cards {
-  margin-left: 35px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-}
-
-/* Map */
+/* ###################### */
+/* ######## MAP ######### */
+/* ###################### */
 
 .map-position {
   margin-left: -200px;
@@ -144,13 +228,12 @@ body {
   display: block;
   z-index: 10;
 }
+
 .mapContainer {
-  /* margin-top: 55px; */
   position: absolute;
   width: 90%;
   height: 85%;
   margin: 60px -25px 25px 95px;
-  /* border: 1px solid rgb(201, 198, 198); */
   border-radius: 10px;
   box-shadow: 10px 10px 40px -5px rgba(0, 0, 0, 0.04);
   top: 0;
@@ -158,29 +241,47 @@ body {
   left: 0;
   bottom: 0;
 }
+
+/* ########################### */
+/* ######## MAP SEARCH ######*/
+/* ########################## */
+
 .map-search-input {
   margin-top: 17px;
 }
+
 .mapboxgl-ctrl-geocoder {
   width: 100% !important;
   margin: 0 auto;
 }
+
 .mapboxgl-ctrl-geocoder--input {
   margin-top: 500px;
 }
+
+/* #################### */
+/* ##### MAP PIN ###### */
+/* #################### */
+
 .pin {
   background: none;
   border: none;
   cursor: pointer;
 }
+
 .pin img {
   width: 20px;
   height: 20px;
 }
+
 .pin img:hover {
   background-color: rgba(255, 255, 0, 0.178);
 }
-/* popups on map */
+
+/* ############################# */
+/* ####### MAP POPUP CARD ###### */
+/* ############################# */
+
 .popup-button {
   margin-left: 27px;
   /* margin-top: 5px; */
@@ -190,6 +291,7 @@ body {
   width: 75%;
   border: 0.5px solid #ebeaec;
 }
+
 .popup-button:hover {
   background-color: #035e2c;
 }
@@ -202,111 +304,16 @@ body {
 }
 
 .view-brewery:hover {
-  color: white;
+  color: #035e2c9d;
 }
 
 .popup a {
   color: #035e2c;
 }
-/* login and signup */
 
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-html,
-body {
-  width: 100%;
-  height: 100%;
-  /* background: url(https://subtlepatterns.com/patterns/sativa.png) repeat fixed; */
-  font-family: "Open Sans", sans-serif;
-  font-weight: 200;
-}
-.login {
-  position: relative;
-  top: 50%;
-  width: 250px;
-  display: table;
-  margin: 85px auto 0 auto;
-  background: #fff;
-  border: 1px solid rgb(201, 198, 198);
-  border-radius: 10px;
-  box-shadow: 10px 10px 40px -5px rgba(0, 0, 0, 0.04);
-}
-.legend {
-  position: relative;
-  width: 100%;
-  border-radius: 10px 10px 0px 0px;
-  display: block;
-  background: #015a29;
-  padding: 15px;
-
-  color: #fff;
-  font-size: 20px;
-}
-.legend:after {
-  content: "";
-  background-image: url(http://simpleicon.com/wp-content/uploads/multy-user.png);
-  background-size: 100px 100px;
-  background-repeat: no-repeat;
-  background-position: 152px -16px;
-  opacity: 0.06;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-}
-.input {
-  position: relative;
-  width: 90%;
-  margin: 15px auto;
-}
-.input span {
-  position: absolute;
-  display: block;
-  color: darken(#ededed, 10%);
-  left: 10px;
-  top: 8px;
-  font-size: 20px;
-}
-input {
-  width: 100%;
-  padding: 10px 5px 10px 40px;
-  display: block;
-  border: 1px solid #ededed;
-  border-radius: 4px;
-  transition: 0.2s ease-out;
-  color: darken(#ededed, 30%);
-}
-input:focus {
-  outline: 0;
-  border-color: #015a29;
-}
-.submit {
-  width: 45px;
-  height: 45px;
-  display: block;
-  margin: 0 auto -15px auto;
-  background: #fff;
-  border-radius: 100%;
-  border: 1px solid #8fa540;
-  color: #015a29;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0px 0px 0px 7px #fff;
-  transition: 0.2s ease-out;
-}
-.submit:hover {
-  background: #8fa540;
-  color: #fff;
-  outline: 0;
-}
-.route-links {
-  text-align: center;
-  font-size: 14px;
-}
+/* ############################# */
+/* ########## NOTES ############*/
+/* ############################# */
 
 .note-toggle {
   padding-top: 10px;
@@ -334,31 +341,64 @@ input:focus {
   outline: none;
 }
 
+.note-submit-button {
+  border: 1px solid #8fa540;
+  background-color: #8fa540;
+  border-radius: 10px;
+  text-align: center;
+  width: 90px;
+  height: 35px;
+  display: block;
+  margin: 0 auto;
+}
+
+.note-submit-button submit {
+  text-align: center;
+}
+
 #note-button:hover {
-  background: #8fa540;
+  background: #015a29;
   color: #fff;
   outline: 0;
 }
 
-/* .submit {
-  width: 45px;
-  height: 45px;
-  display: block;
-  margin: 0 auto -15px auto;
-  background: #fff;
-  border-radius: 100%;
-  border: 1px solid #8fa540;
-  color: #015a29;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0px 0px 0px 7px #fff;
-  transition: 0.2s ease-out;
+.notes {
+  border-top: 0.5px solid rgb(228, 226, 226);
+  border-top-width: 85%;
 }
-.submit:hover {
-  background: #8fa540;
-  color: #fff;
-  outline: 0;
-} */
+.star-rating {
+  padding-top: 5px;
+  margin-left: 379px;
+
+  border-top-width: 200%;
+}
+
+/* ############################ */
+/* ### FAV SHOW PAGE LAYOUT ### */
+/* ########################### */
+
+.favorite-cards {
+  margin-left: 70px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+/* ################################# */
+/* ### BREWERY SHOW PAGE LAYOUT #### */
+/* ################################ */
+
+.cards {
+  margin-left: 35px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+/* ############################ */
+/* ## BREWERY/FAV SHOW PAGE ## */
+/* ########################### */
+
 #rendered-notes {
   font-weight: bold;
   padding-right: 4px;
@@ -374,9 +414,9 @@ input:focus {
   padding: 15px;
   font-size: 50px;
   text-align: center;
-
   color: #fff;
 }
+
 .header:after {
   content: "";
   background-image: url(http://simpleicon.com/wp-content/uploads/beer_2-256x256.png);
@@ -390,56 +430,72 @@ input:focus {
   right: 0;
   position: absolute;
 }
+
 .card {
+  position: relative;
   float: left;
   width: 90%;
   padding: 10px;
   text-align: center;
   border: 1px solid;
   margin: 5px;
+
   margin-right: -150px;
   border: 1px solid rgb(201, 198, 198);
   border-radius: 10px;
   box-shadow: 10px 10px 40px -5px rgba(0, 0, 0, 0.04);
 }
+
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
+
 #icons {
   color: #8fa540;
   padding-right: 4px;
 }
+
 .brewery-name {
   font-weight: bold;
   color: #015a29;
 }
+
 .website {
   color: black;
   font-size: 15px;
-  /* font-weight: bold; */
   text-decoration: none;
 }
+
 .website:hover {
   color: #015a29;
 }
+
 .phone-number {
   color: black;
   text-decoration: none;
 }
+
 .phone-number:hover {
   text-decoration: none;
 }
+
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
+
+/* ################################## */
+/* ##### BREWERY CONTAINER SEARCH ### */
+/* ################################## */
+
 .search__container {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
 .search__input {
   margin: 0 auto;
   width: 15%;
@@ -460,11 +516,13 @@ input:focus {
   backface-visibility: hidden;
   transform-style: preserve-3d;
 }
+
 .search__input::placeholder {
   color: color(#575756 a(0.8));
   text-transform: uppercase;
   letter-spacing: 1.5px;
 }
+
 .search__input:hover,
 .search__input:focus {
   padding: 12px 0;
@@ -474,19 +532,3 @@ input:focus {
   border-radius: 0;
   background-position: 100% center;
 }
-
-/* notes */
-.notes {
-  border-top: 0.5px solid rgb(228, 226, 226);
-  border-top-width: 85%;
-}
-.star-rating {
-  padding-top: 5px;
-  margin-left: 379px;
-
-  border-top-width: 200%;
-}
-
-/* .favorite-notes {
-  padding-bottom: 10px;
-} */

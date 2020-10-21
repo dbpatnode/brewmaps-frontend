@@ -125,7 +125,7 @@ class App extends Component {
   };
 
   addNotes = (note) => {
-    debugger;
+    // debugger;
     // if (!this.state.favorites.includes(brewery)) {
     const configObj = {
       method: "POST",

@@ -4,11 +4,11 @@ import BreweryShowPageBack from "./BreweryShowPageBack";
 
 import Flippy, { FrontSide, BackSide } from "react-flippy";
 
-const BreweryCollection = (props) => {
+const individualBreweryShowPage = (props) => {
   return (
     <div className="fav-header">
       <h4>Breweries</h4>
-      <div className="cards">
+      {/* <div className="cards">
         {props.breweries.map((brewery) => {
           {
           }
@@ -29,9 +29,9 @@ const BreweryCollection = (props) => {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 };
 
-export default BreweryCollection;
+export default individualBreweryShowPage;

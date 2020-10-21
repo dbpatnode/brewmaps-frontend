@@ -16,34 +16,35 @@ class BreweryShowPage extends Component {
     } = this.props.brewery;
 
     // console.log(this.props.favorite);
+
     return (
-      <div>
-        <h4>{brewery_name}</h4>
-        <h3>Brewery Style: {brewery_type}</h3>
-        <p>
-          {street} <br />
-          {city}, {state} {postal_code}
-        </p>
-        <br />
-        <a
-          style={{ display: "table-cell" }}
-          href={website_url}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          website
-        </a>
-        <br />
-
-        <a href={`tel:${phone}`}>Call us at {phone}</a>
-        <div>
-          <FavoriteElement
-            favorites={this.props.favorites}
-            addFavorite={this.props.addFavorite}
-            brewery={this.props.brewery}
-          />
+      <div className="individual_brewery_show_page">
+        <div className="card">
+          <h4>{brewery_name}</h4>
+          <h3>Brewery Style: {brewery_type}</h3>
+          <p>
+            {street} <br />
+            {city}, {state} {postal_code}
+          </p>
+          <br />
+          <a
+            style={{ display: "table-cell" }}
+            href={website_url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            website
+          </a>
+          <br />
+          <a href={`tel:${phone}`}>Call us at {phone}</a>
+          <div>
+            <FavoriteElement
+              favorites={this.props.favorites}
+              addFavorite={this.props.addFavorite}
+              brewery={this.props.brewery}
+            />
+          </div>
         </div>
-
         <Link to="/map">
           <button className="brewery-card-button">Back to map</button>
         </Link>
