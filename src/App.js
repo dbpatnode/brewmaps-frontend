@@ -96,7 +96,6 @@ class App extends Component {
   };
 
   addFavorite = (e, brewery) => {
-    // debugger;
     if (!this.state.favorites.includes(brewery)) {
       const configObj = {
         method: "POST",
@@ -125,8 +124,6 @@ class App extends Component {
   };
 
   addNotes = (note) => {
-    // debugger;
-    // if (!this.state.favorites.includes(brewery)) {
     const configObj = {
       method: "POST",
       headers: {
@@ -139,15 +136,8 @@ class App extends Component {
       .then((resp) => resp.json())
       .then((data) => {
         console.log("addnotes", data);
-        // this.setState({
-        //   favorites: [
-        //     ...this.state.notes,
-        //     { id: data.id, brewery: data.brewery },
-        //   ],
-        // });
         window.location.href = "/favorites";
       });
-    // }
   };
 
   breweryFilterOnChange = (e) => {
@@ -286,7 +276,6 @@ class App extends Component {
                   .toLowerCase()
                   .includes(this.state.inputValue.toLowerCase());
               });
-              // console.log("breweries from app", breweries);
               return breweries ? (
                 <BreweryCollection
                   {...props}

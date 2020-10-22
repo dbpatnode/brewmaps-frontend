@@ -85,20 +85,24 @@ export default class BreweryCard extends PureComponent {
       </svg>
     );
     return (
-      // console.log(info.website_url)
       <div className="popup">
         <div>
-          <h4>{displayName}</h4>
-          <Link to={`brewery/${info.id}`} className="view-brewery">
-            {webinfo} More info
-          </Link>
-          <br />
-          {phone}Phone Number: {phoneNumber}
-          <br />
-          <a target="_new" href={website}>
-            {globe}
-            {website}
-          </a>
+          <h4 id="popup-title">{displayName}</h4>
+          <div className="popup-info">
+            <Link to={`brewery/${info.id}`} id="info">
+              <span id="icons">{webinfo}</span> more info
+            </Link>
+            <br />
+
+            <span id="icons">{phone}</span>
+            <a href={`tel:${phoneNumber}`}>{phoneNumber}</a>
+            <br />
+
+            <a target="_new" href={website}>
+              <span id="icons">{globe}</span>
+              {website}
+            </a>
+          </div>
           <button
             className="submit"
             onClick={(e) => this.props.addFavorite(e, info)}
