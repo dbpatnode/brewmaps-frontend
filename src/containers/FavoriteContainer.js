@@ -2,16 +2,6 @@ import React, { Component } from "react";
 import Note from "./NoteContainer";
 
 class FavoriteContainer extends Component {
-  // state = {
-  //   on: false,
-  // };
-
-  // toggle = () => {
-  //   this.setState({
-  //     on: !this.state.on,
-  //   });
-  // };
-
   removeFavorite = (id) => {
     const favoriteId = this.props.favorites.find((f) => f.brewery.id === id);
 
