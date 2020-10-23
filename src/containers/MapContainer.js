@@ -6,6 +6,7 @@ class MapContainer extends Component {
     return (
       <Map
         user={this.props.user}
+        favorites={this.props.favorites}
         breweries={this.props.breweries}
         addFavorite={this.props.addFavorite}
       />

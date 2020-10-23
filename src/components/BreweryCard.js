@@ -89,7 +89,14 @@ export default class BreweryCard extends PureComponent {
             </a>
           </div>
           <button
-            className="submit"
+            // className="submit"
+            className={
+              this.props.favorites.some(
+                (b) => b.brewery.brewery_name === displayName
+              )
+                ? "submit yellow"
+                : "submit red"
+            }
             onClick={(e) => this.props.addFavorite(e, info)}
           >
             {beer}

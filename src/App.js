@@ -113,7 +113,7 @@ class App extends Component {
               { id: data.id, brewery: data.brewery },
             ],
           });
-          window.location.href = "/favorites";
+          // window.location.href = "/favorites";
         });
     }
   };
@@ -135,6 +135,7 @@ class App extends Component {
   };
 
   breweryFilterOnChange = (e) => {
+    console.log("isFavorted", this.state.isFavorited);
 
     this.setState({
       inputValue: e.target.value,
@@ -200,6 +201,7 @@ class App extends Component {
                 <MapContainer
                   breweries={breweries}
                   {...props}
+                  favorites={this.state.favorites}
                   user={this.state.user}
                   addFavorite={this.addFavorite}
                   handleLogin={this.handleLogin}
@@ -233,6 +235,7 @@ class App extends Component {
             render={(props) => (
               <NoteContainer
                 {...props}
+                isFavorited={this.state.isFavorited}
                 handleLogin={this.handleLogin}
                 loggedInStatus={this.state.loggedInStatus}
               />
@@ -251,6 +254,8 @@ class App extends Component {
                 <IndividualBreweryShowPage
                   brewery={brewery}
                   {...props}
+                  favorites={this.state.favorites}
+                  isFavorited={this.state.isFavorited}
                   handleLogin={this.handleLogin}
                   loggedInStatus={this.state.loggedInStatus}
                   addFavorite={this.addFavorite}
@@ -273,6 +278,7 @@ class App extends Component {
               return breweries ? (
                 <BreweryCollection
                   {...props}
+                  favorites={this.state.favorites}
                   breweries={breweries}
                   filteredBreweries={filteredBreweries}
                   inputValue={this.state.inputValue}

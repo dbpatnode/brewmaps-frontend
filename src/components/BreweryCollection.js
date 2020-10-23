@@ -1,6 +1,8 @@
 import React from "react";
 
 const BreweryCollection = (props) => {
+  console.log("favorite", props.favorites);
+
   const beer = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -95,10 +97,23 @@ const BreweryCollection = (props) => {
                   </a>
                 </div>
 
+                <h1>
+                  {" "}
+                  {`${props.favorites.some(
+                    (b) => b.brewery.brewery_name === brewery.brewery_name
+                  )}`}
+                </h1>
+
                 <button
                   brewery={brewery}
                   id={brewery.id}
-                  className="submit"
+                  className={
+                    props.favorites.some(
+                      (b) => b.brewery.brewery_name === brewery.brewery_name
+                    )
+                      ? "submit yellow"
+                      : "submit red"
+                  }
                   onClick={(e) => props.addFavorite(e, brewery)}
                 >
                   {beer}
