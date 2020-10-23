@@ -74,7 +74,11 @@ export default class BreweryCard extends PureComponent {
         <div>
           <h4 id="popup-title">{displayName}</h4>
           <div className="popup-info">
-            <Link to={`brewery/${info.id}`} id="info">
+            <Link
+              to={`brewery/${info.id}`}
+              id="info"
+              favorites={this.props.favorites}
+            >
               <span id="icons">{webinfo}</span> more info
             </Link>
             <br />
@@ -89,7 +93,6 @@ export default class BreweryCard extends PureComponent {
             </a>
           </div>
           <button
-            // className="submit"
             className={
               this.props.favorites.some(
                 (b) => b.brewery.brewery_name === displayName

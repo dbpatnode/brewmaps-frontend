@@ -115,7 +115,14 @@ class BreweryShowPage extends Component {
             </span>
 
             <button
-              className="submit"
+              // className="submit"
+              className={
+                this.props.favorites.some(
+                  (b) => b.brewery.brewery_name === brewery_name
+                )
+                  ? "submit yellow"
+                  : "submit red"
+              }
               onClick={(e) => this.props.addFavorite(e, this.props.brewery)}
             >
               {beer}
