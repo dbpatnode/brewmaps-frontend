@@ -9,7 +9,9 @@ class NoteContainer extends Component {
     on: false,
   };
 
-  toggle = () => {
+  toggle = (e) => {
+    // debugger;
+
     this.setState({
       on: !this.state.on,
     });
@@ -47,6 +49,7 @@ class NoteContainer extends Component {
         width="1em"
         height="1em"
         viewBox="0 0 16 16"
+        id={this.props.brewery}
         class="bi bi-pencil"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
@@ -60,36 +63,45 @@ class NoteContainer extends Component {
     return (
       <div className="notes">
         <div className="note-toggle">
-          <button onClick={this.toggle} id="note-button">
+          <button
+            onClick={(e) => this.toggle(e, this.props.brewery)}
+            id="note-button"
+          >
             {notes}
           </button>
         </div>
         {this.state.on && (
-          <form onSubmit={this.handleSubmit}>
-            <div className="star-rating">
-              <ReactStars
-                number={this.state.rating}
-                count={5}
-                onChange={this.ratingChanged}
-                size={15}
-                activeColor="#8fa540"
-              />
-            </div>
-            <br />
-            <label>
-              review
-              <input
-                type="text"
-                name="review"
-                value={this.state.review}
-                onChange={this.handleInputChange}
-                required
-              />
-            </label>
-            <button type="submit" value="Submit" className="note-submit-button">
-              Add Note
-            </button>
-          </form>
+          <span id="note-info">
+            <form onSubmit={this.handleSubmit}>
+              <div className="star-rating">
+                <ReactStars
+                  number={this.state.rating}
+                  count={5}
+                  onChange={this.ratingChanged}
+                  size={15}
+                  activeColor="#8fa540"
+                />
+              </div>
+              <br />
+              <label>
+                review
+                <input
+                  type="text"
+                  name="review"
+                  value={this.state.review}
+                  onChange={this.handleInputChange}
+                  required
+                />
+              </label>
+              <button
+                type="submit"
+                value="Submit"
+                className="note-submit-button"
+              >
+                Add Note
+              </button>
+            </form>
+          </span>
         )}
       </div>
     );

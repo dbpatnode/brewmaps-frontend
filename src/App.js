@@ -34,16 +34,13 @@ class App extends Component {
       fetch("http://localhost:3000/breweries", configObj)
         .then((resp) => resp.json())
         .then((breweries) => {
-          console.log("here", breweries);
           if (!breweries.error) {
             this.setState(
               {
                 allBreweries: breweries,
                 breweries: breweries,
               },
-              () => {
-                console.log("from component did mount", this.state);
-              }
+              () => {}
             );
           } else {
             alert(breweries.error);
@@ -92,7 +89,6 @@ class App extends Component {
       favorites: user.favorites,
       notes: user.notes,
     });
-    console.log("USER HERE", user);
   };
 
   addFavorite = (e, brewery) => {
@@ -111,7 +107,6 @@ class App extends Component {
       fetch("http://localhost:3000/favorites", configObj)
         .then((resp) => resp.json())
         .then((data) => {
-          console.log("add favoritr", data);
           this.setState({
             favorites: [
               ...this.state.favorites,
@@ -135,13 +130,12 @@ class App extends Component {
     fetch("http://localhost:3000/notes", configObj)
       .then((resp) => resp.json())
       .then((data) => {
-        console.log("addnotes", data);
         window.location.href = "/favorites";
       });
   };
 
   breweryFilterOnChange = (e) => {
-    console.log("hi from onChange", e.target.value);
+
     this.setState({
       inputValue: e.target.value,
     });

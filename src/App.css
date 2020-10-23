@@ -8,10 +8,11 @@
 html,
 body {
   padding: 0px;
-  margin: 0px;
+  margin: 0 auto;
   font-weight: 200;
   width: 100%;
   height: 100%;
+  /* max-width: 1500px; */
 }
 
 /* ############################# */
@@ -179,6 +180,7 @@ input:focus {
 .top-image {
   position: relative;
   top: 0;
+  width: 100%;
   left: 0;
 }
 
@@ -186,13 +188,13 @@ input:focus {
   position: relative;
   bottom: 0;
   left: 0;
-  width: 1212px;
+  width: 100%;
   padding-top: 3px;
-  margin-left: 21.1%;
+  /* margin-left: 21.1%; */
 }
 
 #login-button {
-  width: 50%;
+  position: relative;
   background-color: #8fa540;
   font-family: "Roboto Slab", serif;
   border-radius: 5px;
@@ -207,7 +209,7 @@ input:focus {
 }
 
 #signup-button {
-  width: 50%;
+  position: relative;
   background-color: #035e2c;
   font-family: "Roboto Slab", serif;
   border-radius: 5px;
@@ -406,7 +408,7 @@ input:focus {
   margin: 0 auto;
 }
 
-.note-submit-button submit {
+.note-submit-button {
   text-align: center;
 }
 
@@ -419,12 +421,24 @@ input:focus {
 .notes {
   border-top: 0.5px solid rgb(228, 226, 226);
   border-top-width: 85%;
+  padding-bottom: 10px;
 }
+
+.react-stars-wrapper-02216654563737266 {
+  margin-left: 50%;
+}
+
 .star-rating {
   padding-top: 5px;
-  margin-left: 379px;
+  margin: 0 auto;
+  margin-left: 45%;
+  /* right: 50%; */
 
   border-top-width: 200%;
+}
+
+#note-info form {
+  margin: 0 auto;
 }
 
 /* ############################ */
@@ -432,7 +446,9 @@ input:focus {
 /* ########################### */
 
 .favorite-cards {
-  margin-left: 70px;
+  margin: 0 auto;
+  width: 65%;
+  /* margin-left: 70px; */
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -443,7 +459,11 @@ input:focus {
 /* ################################ */
 
 .cards {
-  margin-left: 35px;
+  /* margin: 0 auto;
+  width: 130%; */
+  /* height: 75%; */
+
+  margin-left: 55px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -506,6 +526,10 @@ input:focus {
 /* ## BREWERY/FAV SHOW PAGE ## */
 /* ########################### */
 
+/* .react-stars-wrapper-0042554662708091495 {
+  align-content: center;
+} */
+
 #brewery-card-info {
   padding-bottom: 30px;
 }
@@ -523,6 +547,7 @@ input:focus {
   display: block;
   background: #015a29;
   padding: 15px;
+  /* padding-bottom: 25px; */
   font-size: 50px;
   text-align: center;
   color: #fff;
@@ -547,6 +572,7 @@ input:focus {
   float: left;
   width: 90%;
   padding: 10px;
+  /* padding-top: 100px; */
   text-align: center;
   border: 1px solid;
   margin: 5px;
@@ -571,6 +597,12 @@ input:focus {
 .brewery-name {
   font-weight: bold;
   color: #015a29;
+  text-decoration: none;
+}
+
+.brewery-name:hover {
+  text-decoration: none;
+  color: #015a29a9;
 }
 
 .website {
@@ -580,7 +612,8 @@ input:focus {
 }
 
 .website:hover {
-  color: #015a29;
+  text-decoration: none;
+  color: #015a299a;
 }
 
 .phone-number {
@@ -590,6 +623,17 @@ input:focus {
 
 .phone-number:hover {
   text-decoration: none;
+  color: #015a299a;
+}
+
+.address {
+  color: black;
+  text-decoration: none;
+}
+
+.address:hover {
+  text-decoration: none;
+  color: #015a299a;
 }
 
 /* ################################## */
@@ -636,4 +680,11 @@ input:focus {
   border-bottom: 1px solid #575756;
   border-radius: 0;
   background-position: 100% center;
+}
+
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+}
+
+/* ----------- Retina Screens ----------- */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
 }

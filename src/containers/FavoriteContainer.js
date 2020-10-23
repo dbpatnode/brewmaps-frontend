@@ -134,9 +134,15 @@ class FavoriteContainer extends Component {
                 <h6>Brewery Style: {favorite.brewery.brewery_type}</h6>
                 <p>
                   <span id="icons">{map}</span>
-                  {favorite.brewery.street}
-                  {favorite.brewery.city}, {favorite.brewery.state}{" "}
-                  {favorite.brewery.postal_code}
+                  <a
+                    href={`https://maps.google.com/?q=${favorite.brewery.street},${favorite.brewery.city},${favorite.brewery.state}`}
+                    className="address"
+                    target="popup"
+                    onClick="window.open('../html-link.htm','name','width=600,height=400')"
+                  >
+                    {favorite.brewery.street} {favorite.brewery.city},{" "}
+                    {favorite.brewery.state} {favorite.brewery.postal_code}
+                  </a>
                 </p>
                 <a
                   href={`tel:${favorite.brewery.phone}`}
@@ -170,19 +176,12 @@ class FavoriteContainer extends Component {
                   </div>
                 ))}
 
-                {/* {this.state.on && ( */}
                 <Note
                   note={notes}
                   addNotes={this.props.addNotes}
                   brewery={favorite.brewery.id}
                   user={this.props.user.id}
                 ></Note>
-                {/* )} */}
-                {/* <div className="note-toggle">
-                  <button onClick={this.toggle} id="note-button">
-                    {notes}
-                  </button>
-                </div> */}
 
                 <button
                   className="submit"
