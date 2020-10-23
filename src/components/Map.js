@@ -48,7 +48,11 @@ class Map extends React.Component {
           closeOnClick={false}
           onClose={() => this.setState({ popupInfo: null })}
         >
-          <BreweryCard info={popupInfo} addFavorite={this.props.addFavorite} />
+          <BreweryCard
+            info={popupInfo}
+            favorites={this.props.favorites}
+            addFavorite={this.props.addFavorite}
+          />
         </Popup>
       )
     );

@@ -28,7 +28,8 @@ class NavBar extends Component {
                   src={logo}
                   alt="beer map logo"
                   className="logo"
-                ></img>{" "}
+                ></img>
+                BREWMAPS
               </div>
               <b>Cheers, {this.props.user.username}!</b>
               <NavLink to="/map"> BREWERYMAP </NavLink>
@@ -43,7 +44,8 @@ class NavBar extends Component {
           <nav className="navbar navbar-inverse">
             <div className="container-fluid">
               <div className="navbar-header">
-                <img src={logo} alt="beer map logo" className="logo"></img>{" "}
+                <img src={logo} alt="beer map logo" className="logo"></img>
+                BREWMAPS
               </div>
             </div>
           </nav>

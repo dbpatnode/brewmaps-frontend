@@ -34,16 +34,13 @@ class App extends Component {
       fetch("http://localhost:3000/breweries", configObj)
         .then((resp) => resp.json())
         .then((breweries) => {
-          console.log("here", breweries);
           if (!breweries.error) {
             this.setState(
               {
                 allBreweries: breweries,
                 breweries: breweries,
               },
-              () => {
-                console.log("from component did mount", this.state);
-              }
+              () => {}
             );
           } else {
             alert(breweries.error);
@@ -92,11 +89,9 @@ class App extends Component {
       favorites: user.favorites,
       notes: user.notes,
     });
-    console.log("USER HERE", user);
   };
 
   addFavorite = (e, brewery) => {
-    // debugger;
     if (!this.state.favorites.includes(brewery)) {
       const configObj = {
         method: "POST",
@@ -112,21 +107,18 @@ class App extends Component {
       fetch("http://localhost:3000/favorites", configObj)
         .then((resp) => resp.json())
         .then((data) => {
-          console.log("add favoritr", data);
           this.setState({
             favorites: [
               ...this.state.favorites,
               { id: data.id, brewery: data.brewery },
             ],
           });
-          window.location.href = "/favorites";
+          // window.location.href = "/favorites";
         });
     }
   };
 
   addNotes = (note) => {
-    debugger;
-    // if (!this.state.favorites.includes(brewery)) {
     const configObj = {
       method: "POST",
       headers: {
@@ -138,20 +130,13 @@ class App extends Component {
     fetch("http://localhost:3000/notes", configObj)
       .then((resp) => resp.json())
       .then((data) => {
-        console.log("addnotes", data);
-        // this.setState({
-        //   favorites: [
-        //     ...this.state.notes,
-        //     { id: data.id, brewery: data.brewery },
-        //   ],
-        // });
         window.location.href = "/favorites";
       });
-    // }
   };
 
   breweryFilterOnChange = (e) => {
-    console.log("hi from onChange", e.target.value);
+    console.log("isFavorted", this.state.isFavorited);
+
     this.setState({
       inputValue: e.target.value,
     });
@@ -216,6 +201,7 @@ class App extends Component {
                 <MapContainer
                   breweries={breweries}
                   {...props}
+                  favorites={this.state.favorites}
                   user={this.state.user}
                   addFavorite={this.addFavorite}
                   handleLogin={this.handleLogin}
@@ -249,6 +235,7 @@ class App extends Component {
             render={(props) => (
               <NoteContainer
                 {...props}
+                isFavorited={this.state.isFavorited}
                 handleLogin={this.handleLogin}
                 loggedInStatus={this.state.loggedInStatus}
               />
@@ -267,6 +254,8 @@ class App extends Component {
                 <IndividualBreweryShowPage
                   brewery={brewery}
                   {...props}
+                  favorites={this.state.favorites}
+                  isFavorited={this.state.isFavorited}
                   handleLogin={this.handleLogin}
                   loggedInStatus={this.state.loggedInStatus}
                   addFavorite={this.addFavorite}
@@ -286,10 +275,10 @@ class App extends Component {
                   .toLowerCase()
                   .includes(this.state.inputValue.toLowerCase());
               });
-              // console.log("breweries from app", breweries);
               return breweries ? (
                 <BreweryCollection
                   {...props}
+                  favorites={this.state.favorites}
                   breweries={breweries}
                   filteredBreweries={filteredBreweries}
                   inputValue={this.state.inputValue}

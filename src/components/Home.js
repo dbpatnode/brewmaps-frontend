@@ -1,6 +1,5 @@
 import React from "react";
-// import title from './title.png'
-import WelcomeImage from "./botom.png";
+import footer from "./home_page_botom.png";
 import { Link } from "react-router-dom";
 import background from "./brewery_background.png";
 
@@ -9,7 +8,7 @@ const Home = () => {
     <div>
       <div className="home">
         <div className="container">
-          <img src={background} alt="brewery"></img>
+          <img src={background} alt="brewery" className="top-image"></img>
           <div className="top-left">
             <div className="title">
               <h1>
@@ -34,8 +33,8 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="footer">
-        <img src={WelcomeImage} alt="Hop Logo" id="welcome-image"></img>
+      <div className="container">
+        <img src={footer} alt="Hop Logo" id="welcome-image"></img>
       </div>
     </div>
   );
