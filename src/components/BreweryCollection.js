@@ -97,12 +97,12 @@ const BreweryCollection = (props) => {
                   </a>
                 </div>
 
-                <h1>
+                {/* <h1>
                   {" "}
                   {`${props.favorites.some(
                     (b) => b.brewery.brewery_name === brewery.brewery_name
                   )}`}
-                </h1>
+                </h1> */}
 
                 <button
                   brewery={brewery}

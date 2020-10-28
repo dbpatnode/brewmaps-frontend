@@ -1,69 +1,79 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## BrewMaps
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Brewery journaling application that allows users to favorite, rate and write reviews of breweries across the United States.
 
-### `yarn start`
+## Installation
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Fork or clone the respository.
+2. Cd into the frontend repo and run the following:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- `yarn start`
+- `yarn start`
 
-### `yarn test`
+3. Fork or clone backend repository from: `https://github.com/dbpatnode/brewmaps_backend`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `bundle install`
+- `rails db:migrate`
+- `rails s`
 
-### `yarn build`
+## Features
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1. Account
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- Login/Sign up/logout
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. Favorites list
 
-### `yarn eject`
+- Add breweries to favorites
+- Delete cards from favorites
+- Add Ratings for breweries
+- Add Comments about your experience
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 3. Find location on the map
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Click on pins to view more information about the brewery:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. call breweries
+2. view website
+3. get directions from google maps
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Search Functoinality
 
-## Learn More
+- Search from map by location
+- Search from brewery page based on name
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Demo
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Homepage
 
-### Code Splitting
+![Screenshot](homepage.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Login
 
-### Analyzing the Bundle Size
+![Screenshot](login.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### Signup
 
-### Making a Progressive Web App
+![Screenshot](signup.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+### Map Features
 
-### Advanced Configuration
+![whatevername](https://media.giphy.com/media/iYNAp7sSuXFERqlcuC/giphy.gif)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## Map Search Functionality
 
-### Deployment
+![whatevername](https://media.giphy.com/media/z03XGCYjq4NucbT8Gl/giphy.gif)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Brewery Index, Add Favorite and Other Functoinality
 
-### `yarn build` fails to minify
+![whatevername](https://media.giphy.com/media/sV05YdrFXrdfkN4wUP/giphy.gif)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# brewmaps-frontend
+## Brewery Comments and ratings
+
+![whatevername](https://media.giphy.com/media/yPFM1LhOEFBSPsCJ4o/giphy.gif)
+
+## Delete Favorites
+
+![whatevername](https://media.giphy.com/media/52dONgLriKuP2zonas/giphy.gif)
