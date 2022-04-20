@@ -1,37 +1,37 @@
-import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import "./App.css";
-import NavBar from "./components/NavBar.js";
-import Login from "./components/auth/Login.js";
-import Registration from "./components/auth/Registration.js";
-import MapContainer from "./containers/MapContainer.js";
-import Home from "./components/Home";
-import FavoriteContainer from "./containers/FavoriteContainer.js";
-import NoteContainer from "./containers/NoteContainer.js";
-import IndividualBreweryShowPage from "./components/BreweryShowPage";
-import BreweryCollection from "./components/BreweryCollection";
+import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import './App.scss';
+import NavBar from './components/NavBar.js';
+import Login from './components/auth/Login.js';
+import Registration from './components/auth/Registration.js';
+import MapContainer from './containers/MapContainer.js';
+import Home from './components/Home';
+import FavoriteContainer from './containers/FavoriteContainer.js';
+import NoteContainer from './containers/NoteContainer.js';
+import IndividualBreweryShowPage from './components/BreweryShowPage';
+import BreweryCollection from './components/BreweryCollection';
 
 class App extends Component {
   state = {
-    loggedInStatus: "NOT_LOGGED_IN",
+    loggedInStatus: 'NOT_LOGGED_IN',
     user: {},
     breweries: [],
     allBreweries: [],
     favorites: [],
     notes: [],
-    inputValue: "",
+    inputValue: '',
   };
 
   componentDidMount() {
-    if (!localStorage.getItem("allBreweries")) {
+    if (!localStorage.getItem('allBreweries')) {
       const configObj = {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: localStorage.authToken,
         },
       };
-      fetch("http://localhost:3000/breweries", configObj)
+      fetch('http://localhost:3000/breweries', configObj)
         .then((resp) => resp.json())
         .then((breweries) => {
           if (!breweries.error) {
@@ -40,51 +40,51 @@ class App extends Component {
                 allBreweries: breweries,
                 breweries: breweries,
               },
-              () => {}
+              () => {},
             );
           } else {
             alert(breweries.error);
           }
           // });
-          localStorage.setItem("allBreweries", JSON.stringify(breweries));
+          localStorage.setItem('allBreweries', JSON.stringify(breweries));
         });
     }
 
-    if (localStorage.getItem("allBreweries")) {
+    if (localStorage.getItem('allBreweries')) {
       this.setState({
-        breweries: JSON.parse(localStorage.getItem("allBreweries")),
+        breweries: JSON.parse(localStorage.getItem('allBreweries')),
       });
     }
 
-    const token = localStorage.getItem("authToken");
+    const token = localStorage.getItem('authToken');
     if (token) {
       const configObj = {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: localStorage.authToken,
         },
       };
 
-      this.setState({ loggedInStatus: "LOGGED_IN" });
-      fetch("http://localhost:3000/whoami", configObj)
+      this.setState({ loggedInStatus: 'LOGGED_IN' });
+      fetch('http://localhost:3000/whoami', configObj)
         .then((resp) => resp.json())
         .then(this.handleLogin);
     } else {
-      this.setState({ loggedInStatus: "NOT_LOGGED_IN" });
+      this.setState({ loggedInStatus: 'NOT_LOGGED_IN' });
     }
   }
 
   handleLogout = () => {
     localStorage.clear();
     this.setState({
-      loggedInStatus: "NOT_LOGGED_IN",
+      loggedInStatus: 'NOT_LOGGED_IN',
       user: {},
     });
   };
 
   handleLogin = (user) => {
     this.setState({
-      loggedInStatus: "LOGGED_IN",
+      loggedInStatus: 'LOGGED_IN',
       user: user,
       favorites: user.favorites,
       notes: user.notes,
@@ -94,9 +94,9 @@ class App extends Component {
   addFavorite = (e, brewery) => {
     if (!this.state.favorites.includes(brewery)) {
       const configObj = {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: localStorage.authToken,
         },
         body: JSON.stringify({
@@ -104,7 +104,7 @@ class App extends Component {
           brewery_id: brewery.id,
         }),
       };
-      fetch("http://localhost:3000/favorites", configObj)
+      fetch('http://localhost:3000/favorites', configObj)
         .then((resp) => resp.json())
         .then((data) => {
           this.setState({
@@ -120,22 +120,22 @@ class App extends Component {
 
   addNotes = (note) => {
     const configObj = {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: localStorage.authToken,
       },
       body: JSON.stringify(note),
     };
-    fetch("http://localhost:3000/notes", configObj)
+    fetch('http://localhost:3000/notes', configObj)
       .then((resp) => resp.json())
       .then((data) => {
-        window.location.href = "/favorites";
+        window.location.href = '/favorites';
       });
   };
 
   breweryFilterOnChange = (e) => {
-    console.log("isFavorted", this.state.isFavorited);
+    console.log('isFavorted', this.state.isFavorited);
 
     this.setState({
       inputValue: e.target.value,
@@ -147,7 +147,7 @@ class App extends Component {
       <Router>
         <div>
           <Route
-            path="/"
+            path='/'
             render={(props) => (
               <NavBar
                 {...props}
@@ -160,7 +160,7 @@ class App extends Component {
 
           <Route
             exact
-            path="/"
+            path='/'
             render={(props) => (
               <Home
                 {...props}
@@ -172,7 +172,7 @@ class App extends Component {
           />
 
           <Route
-            path="/signup"
+            path='/signup'
             render={(props) => (
               <Registration
                 {...props}
@@ -183,7 +183,7 @@ class App extends Component {
           />
 
           <Route
-            path="/login"
+            path='/login'
             render={(props) => (
               <Login
                 {...props}
@@ -194,7 +194,7 @@ class App extends Component {
           />
 
           <Route
-            path="/map"
+            path='/map'
             render={(props) => {
               const breweries = this.state.breweries;
               return breweries ? (
@@ -208,13 +208,13 @@ class App extends Component {
                   loggedInStatus={this.state.loggedInStatus}
                 />
               ) : (
-                "Loading..."
+                'Loading...'
               );
             }}
           />
 
           <Route
-            path="/favorites"
+            path='/favorites'
             render={(props) => (
               <FavoriteContainer
                 {...props}
@@ -231,7 +231,7 @@ class App extends Component {
           />
 
           <Route
-            path="/notes"
+            path='/notes'
             render={(props) => (
               <NoteContainer
                 {...props}
@@ -243,11 +243,11 @@ class App extends Component {
           />
 
           <Route
-            path="/brewery/:BreweryId"
+            path='/brewery/:BreweryId'
             render={(props) => {
               const BreweryId = props.match.params.BreweryId;
               const brewery = this.state.breweries.find(
-                (e) => e.id === parseInt(BreweryId)
+                (e) => e.id === parseInt(BreweryId),
               );
 
               return brewery ? (
@@ -261,13 +261,13 @@ class App extends Component {
                   addFavorite={this.addFavorite}
                 />
               ) : (
-                "Loading..."
+                'Loading...'
               );
             }}
           />
 
           <Route
-            path="/breweries"
+            path='/breweries'
             render={(props) => {
               const breweries = this.state.breweries;
               const filteredBreweries = breweries.filter((brewery) => {
@@ -288,7 +288,7 @@ class App extends Component {
                   loggedInStatus={this.state.loggedInStatus}
                 />
               ) : (
-                "Loading..."
+                'Loading...'
               );
             }}
           />
