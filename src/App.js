@@ -31,7 +31,8 @@ class App extends Component {
           Authorization: localStorage.authToken,
         },
       };
-      fetch('http://localhost:3000/breweries', configObj)
+      fetch('https://daniels-brewmaps-api.herokuapp.com/breweries', configObj)
+        // fetch('http://daniels-brewmaps-api.herokuapp.com/breweries', configObj)
         .then((resp) => resp.json())
         .then((breweries) => {
           if (!breweries.error) {
@@ -66,7 +67,7 @@ class App extends Component {
       };
 
       this.setState({ loggedInStatus: 'LOGGED_IN' });
-      fetch('http://localhost:3000/whoami', configObj)
+      fetch('https://daniels-brewmaps-api.herokuapp.com/whoami', configObj)
         .then((resp) => resp.json())
         .then(this.handleLogin);
     } else {
@@ -104,7 +105,7 @@ class App extends Component {
           brewery_id: brewery.id,
         }),
       };
-      fetch('http://localhost:3000/favorites', configObj)
+      fetch('https://daniels-brewmaps-api.herokuapp.com/favorites', configObj)
         .then((resp) => resp.json())
         .then((data) => {
           this.setState({
@@ -127,7 +128,7 @@ class App extends Component {
       },
       body: JSON.stringify(note),
     };
-    fetch('http://localhost:3000/notes', configObj)
+    fetch('https://daniels-brewmaps-api.herokuapp.com/notes', configObj)
       .then((resp) => resp.json())
       .then((data) => {
         window.location.href = '/favorites';
@@ -162,12 +163,7 @@ class App extends Component {
             exact
             path='/'
             render={(props) => (
-              <Home
-                {...props}
-                handleLogout={this.handleLogout}
-                handleLogin={this.handleLogin}
-                loggedInStatus={this.state.loggedInStatus}
-              />
+              <Home {...props} loggedInStatus={this.state.loggedInStatus} />
             )}
           />
 
@@ -204,8 +200,6 @@ class App extends Component {
                   favorites={this.state.favorites}
                   user={this.state.user}
                   addFavorite={this.addFavorite}
-                  handleLogin={this.handleLogin}
-                  loggedInStatus={this.state.loggedInStatus}
                 />
               ) : (
                 'Loading...'
@@ -224,8 +218,6 @@ class App extends Component {
                 removeFavorite={this.removeFavorite}
                 addNotes={this.addNotes}
                 notes={this.state.notes}
-                handleLogin={this.handleLogin}
-                loggedInStatus={this.state.loggedInStatus}
               />
             )}
           />
@@ -233,12 +225,7 @@ class App extends Component {
           <Route
             path='/notes'
             render={(props) => (
-              <NoteContainer
-                {...props}
-                isFavorited={this.state.isFavorited}
-                handleLogin={this.handleLogin}
-                loggedInStatus={this.state.loggedInStatus}
-              />
+              <NoteContainer {...props} isFavorited={this.state.isFavorited} />
             )}
           />
 
@@ -284,8 +271,6 @@ class App extends Component {
                   inputValue={this.state.inputValue}
                   breweryFilterOnChange={this.breweryFilterOnChange}
                   addFavorite={this.addFavorite}
-                  handleLogin={this.handleLogin}
-                  loggedInStatus={this.state.loggedInStatus}
                 />
               ) : (
                 'Loading...'

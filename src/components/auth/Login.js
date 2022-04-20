@@ -21,7 +21,7 @@ export default class Login extends Component {
     const { username, password } = this.state;
     this.props.history.push("/map");
 
-    fetch("http://localhost:3000/login", {
+    fetch("https://daniels-brewmaps-api.herokuapp.com/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
