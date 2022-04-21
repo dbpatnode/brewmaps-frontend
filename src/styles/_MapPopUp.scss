@@ -1,0 +1,39 @@
+.popup-button {
+  margin-left: 27px;
+  margin-bottom: 5px;
+  background-color: white;
+  border-radius: 3px;
+  width: 75%;
+  border: 0.5px solid #ebeaec;
+}
+
+.popup-button:hover {
+  background-color: #035e2c;
+}
+
+.view-brewery {
+  color: black;
+  padding: 10px;
+  text-align: center;
+  left: 10px;
+}
+
+#popup-title {
+  color: #035e2c;
+}
+
+.popup-info {
+  text-align: center;
+  padding-bottom: 5px;
+}
+.popup-info:hover {
+  color: #035e2c;
+}
+
+.view-brewery:hover {
+  color: #035e2c9d;
+}
+
+.popup a {
+  color: black;
+}

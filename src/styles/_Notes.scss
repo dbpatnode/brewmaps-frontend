@@ -1,0 +1,69 @@
+.note-toggle {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.bi-pencil {
+  margin-bottom: 9px;
+}
+
+#note-button {
+  width: 35px;
+  height: 35px;
+  display: block;
+  margin-top: 20px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 100%;
+  border: 1px solid #015a29;
+  color: #015a29;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px 7px #fff;
+  transition: 0.2s ease-out;
+  outline: none;
+}
+
+.note-submit-button {
+  border: 1px solid #8fa540;
+  background-color: #8fa540;
+  border-radius: 10px;
+  text-align: center;
+  width: 90px;
+  height: 35px;
+  display: block;
+  margin: 0 auto;
+}
+
+.note-submit-button {
+  text-align: center;
+}
+
+#note-button:hover {
+  background: #015a29;
+  color: #fff;
+  outline: 0;
+}
+
+.notes {
+  border-top: 0.5px solid rgb(228, 226, 226);
+  border-top-width: 85%;
+  padding-bottom: 10px;
+}
+
+.react-stars-wrapper-02216654563737266 {
+  margin-left: 50%;
+}
+
+.star-rating {
+  padding-top: 5px;
+  margin: 0 auto;
+  margin-left: 45%;
+  /* right: 50%; */
+
+  border-top-width: 200%;
+}
+
+#note-info form {
+  margin: 0 auto;
+}

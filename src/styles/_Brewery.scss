@@ -1,0 +1,171 @@
+.single-card {
+  margin-top: 7%;
+  margin-left: 35%;
+  padding-top: 400px;
+
+  position: relative;
+  float: left;
+  width: 35%;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid;
+  border: 1px solid rgb(201, 198, 198);
+  border-radius: 10px;
+  box-shadow: 10px 10px 40px -5px rgba(0, 0, 0, 0.04);
+}
+
+.brewery-card-button {
+  position: relative;
+  width: 110px;
+  height: 30px;
+  left: 0;
+  bottom: 0;
+  margin-left: 37%;
+  margin-top: 1%;
+  color: white;
+  background-color: #8fa540;
+  border-radius: 5px;
+  box-shadow: 10px 10px 40px -5px rgba(0, 0, 0, 0.04);
+}
+
+.brewery-card-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -12px;
+  border-style: solid;
+  border-width: 15px 15px 15px 0;
+
+  border-color: transparent #8fa540 transparent transparent;
+  box-shadow: 10px 10px 40px -5px rgba(0, 0, 0, 0.04);
+}
+
+.brewery-card-button:hover {
+  background-color: #9bb43fbb;
+}
+
+.brewery-card-button:hover::before {
+  border-right-color: #9bb43fbb;
+}
+
+/* ################################# */
+/* ### BREWERY SHOW PAGE LAYOUT #### */
+/* ################################ */
+
+/* ############################################ */
+/* ### INDIVIDUAL BREWERY SHOW PAGE LAYOUT #### */
+/* ############################################ */
+
+/* ############################ */
+/* ## BREWERY/FAV SHOW PAGE ## */
+/* ########################### */
+
+/* .react-stars-wrapper-0042554662708091495 {
+  align-content: center;
+} */
+
+#brewery-card-info {
+  padding-bottom: 30px;
+}
+
+#rendered-notes {
+  font-weight: bold;
+  padding-right: 4px;
+}
+
+.header {
+  position: relative;
+  width: 25%;
+  margin: 0 auto;
+  border-radius: 5px 5px 5px 5px;
+  display: block;
+  background: #015a29;
+  padding: 15px;
+  /* padding-bottom: 25px; */
+  font-size: 50px;
+  text-align: center;
+  color: #fff;
+}
+
+.header:after {
+  content: '';
+  background-image: url(http://simpleicon.com/wp-content/uploads/beer_2-256x256.png);
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  background-position: 300px -16px;
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+
+.card {
+  position: relative;
+  float: left;
+  width: 90%;
+  padding: 10px;
+  /* padding-top: 100px; */
+  text-align: center;
+  border: 1px solid;
+  margin: 5px;
+
+  margin-right: -150px;
+  border: 1px solid rgb(201, 198, 198);
+  border-radius: 10px;
+  box-shadow: 10px 10px 40px -5px rgba(0, 0, 0, 0.04);
+}
+
+.row:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+#icons {
+  color: #8fa540;
+  padding-right: 4px;
+}
+
+.brewery-name {
+  font-weight: bold;
+  color: #015a29;
+  text-decoration: none;
+}
+
+.brewery-name:hover {
+  text-decoration: none;
+  color: #015a29a9;
+}
+
+.website {
+  color: black;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.website:hover {
+  text-decoration: none;
+  color: #015a299a;
+}
+
+.phone-number {
+  color: black;
+  text-decoration: none;
+}
+
+.phone-number:hover {
+  text-decoration: none;
+  color: #015a299a;
+}
+
+.address {
+  color: black;
+  text-decoration: none;
+}
+
+.address:hover {
+  text-decoration: none;
+  color: #015a299a;
+}

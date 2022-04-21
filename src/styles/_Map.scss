@@ -1,0 +1,37 @@
+.map-position {
+  margin-left: -200px;
+  margin-right: 50px;
+  width: 75%;
+  height: 85%;
+  position: fixed;
+  display: block;
+  z-index: 10;
+}
+
+.mapContainer {
+  position: absolute;
+  width: 90%;
+  height: 85%;
+  margin: 60px -25px 25px 95px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 40px -5px rgba(0, 0, 0, 0.04);
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+/* #################### */
+/* ##### MAP PIN ###### */
+/* #################### */
+
+.pin {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.pin img {
+  width: 25px;
+  height: 25px;
+}
