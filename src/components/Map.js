@@ -16,7 +16,9 @@ class Map extends React.Component {
 
   filterPins() {
     return this.props.breweries.filter(
-      (brewery) => brewery.lng !== null || brewery.lat !== null,
+      (brewery) =>
+        // console.log('brewery: ', brewery);
+        brewery.lng !== null || brewery.lat !== null,
     );
   }
 
@@ -41,11 +43,11 @@ class Map extends React.Component {
     return (
       popupInfo && (
         <Popup
-          tipSize={5}
+          tipSize={30}
           anchor='top'
           longitude={popupInfo.lng}
           latitude={popupInfo.lat}
-          closeOnClick={false}
+          closeOnClick={true}
           onClose={() => this.setState({ popupInfo: null })}
         >
           <BreweryCard
@@ -83,7 +85,6 @@ class Map extends React.Component {
             onViewportChange={this.handleViewportChange}
             width='100%'
             height='100%'
-            margin='0 auto'
             mapStyle='mapbox://styles/mapbox/streets-v11'
             mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API_ACCESS_TOKEN}
           >

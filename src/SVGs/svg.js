@@ -15,7 +15,7 @@ export const phone = (
     width='1em'
     height='1em'
     viewBox='0 0 16 16'
-    class='bi bi-telephone'
+    className='bi bi-telephone'
     fill='currentColor'
     xmlns='http://www.w3.org/2000/svg'
   >
@@ -30,7 +30,7 @@ export const map = (
     width='1em'
     height='1em'
     viewBox='0 0 16 16'
-    class='bi bi-map'
+    className='bi bi-map'
     fill='currentColor'
     xmlns='http://www.w3.org/2000/svg'
   >
@@ -80,7 +80,7 @@ export const arrow = (
     width='1em'
     height='1em'
     viewBox='0 0 16 16'
-    class='bi bi-arrow-right'
+    className='bi bi-arrow-right'
     fill='currentColor'
     xmlns='http://www.w3.org/2000/svg'
   >
@@ -96,7 +96,7 @@ export const userIcon = (
     width='1em'
     height='1em'
     viewBox='0 0 16 16'
-    class='bi bi-person-circle'
+    className='bi bi-person-circle'
     fill='currentColor'
     xmlns='http://www.w3.org/2000/svg'
   >
@@ -114,7 +114,7 @@ export const password = (
     width='1em'
     height='1em'
     viewBox='0 0 16 16'
-    class='bi bi-lock'
+    className='bi bi-lock'
     fill='currentColor'
     xmlns='http://www.w3.org/2000/svg'
   >
@@ -130,7 +130,7 @@ export const email = (
     width='1em'
     height='1em'
     viewBox='0 0 16 16'
-    class='bi bi-envelope-open-fill'
+    className='bi bi-envelope-open-fill'
     fill='currentColor'
     xmlns='http://www.w3.org/2000/svg'
   >
@@ -143,7 +143,7 @@ export const passwordConfirmationIcon = (
     width='1em'
     height='1em'
     viewBox='0 0 16 16'
-    class='bi bi-shield-lock-fill'
+    className='bi bi-shield-lock-fill'
     fill='currentColor'
     xmlns='http://www.w3.org/2000/svg'
   >
@@ -159,7 +159,7 @@ export const trash = (
     width='1em'
     height='1em'
     viewBox='0 0 16 16'
-    class='bi bi-trash'
+    className='bi bi-trash'
     fill='currentColor'
     xmlns='http://www.w3.org/2000/svg'
   >
@@ -176,7 +176,7 @@ export const star = (
     width='1em'
     height='1em'
     viewBox='0 0 16 16'
-    class='bi bi-star-fill'
+    className='bi bi-star-fill'
     fill='currentColor'
     xmlns='http://www.w3.org/2000/svg'
   >
@@ -189,7 +189,7 @@ export const pencil = (
     width='1em'
     height='1em'
     viewBox='0 0 16 16'
-    class='bi bi-pencil'
+    className='bi bi-pencil'
     fill='currentColor'
     xmlns='http://www.w3.org/2000/svg'
   >

@@ -18,32 +18,41 @@ const BreweryCollection = (props) => {
 
       <div className='cards'>
         {props.filteredBreweries.map((brewery) => {
+          const {
+            id,
+            website_url,
+            brewery_name,
+            brewery_type,
+            street,
+            city,
+            state,
+            postal_code,
+          } = brewery;
           return (
-            <div className='row'>
-              <div className='card' brewery={brewery} key={brewery.id}>
+            <div key={id} className='row'>
+              {/* {console.log(brewery)} */}
+              <div className='card' brewery={brewery}>
                 <div id='brewery-card-info'>
                   <span>
                     <a
                       className='brewery-name'
                       style={{ display: 'table-cell' }}
-                      href={brewery.website_url}
+                      href={website_url}
                       target='_blank'
                       rel='noopener noreferrer'
                     >
-                      {brewery.brewery_name}
+                      {brewery_name}
                     </a>
                   </span>
-                  <h6>Brewery Style: {brewery.brewery_type}</h6>
+                  <h6>Brewery Style: {brewery_type}</h6>
                   <p>
                     <span id='icons'>{map}</span>
                     <a
-                      href={`https://maps.google.com/?q=${brewery.street},${brewery.city},${brewery.state}`}
+                      href={`https://maps.google.com/?q=${street},${city},${state}`}
                       className='address'
                       target='popup'
-                      onClick="window.open('../html-link.htm','name','width=600,height=400')"
                     >
-                      {brewery.street} {brewery.city}, {brewery.state}{' '}
-                      {brewery.postal_code}
+                      {street} {city}, {state} {postal_code}
                     </a>
                   </p>
 
