@@ -63,8 +63,8 @@ class Map extends React.Component {
 
     return (
       <div className='mapContainer'>
-        <div alignItems='center'>
-          <div
+        {/* <div alignItems='center'> */}
+        {/* <div
             className='map-search-input'
             ref={this.geocoderContainerRef}
             style={{
@@ -74,8 +74,8 @@ class Map extends React.Component {
               alignItems: 'center',
               paddingLeft: 4,
             }}
-          />
-        </div>
+          // /> */}
+        {/* </div> */}
         <span className='whole-map'>
           <ReactMapGL
             ref={this.myMap}
@@ -105,7 +105,9 @@ class Map extends React.Component {
             <Geocoder
               mapRef={this.myMap}
               containerRef={this.geocoderContainerRef}
-              mapboxApiAccessToken='pk.eyJ1IjoibHVjYXNsZWlicyIsImEiOiJja2Z5OGVmb20xMjlxMnRvazY0OTlqMXVkIn0.G1QPTc55QLc2rXKcO47jzw'
+              mapboxApiAccessToken={
+                process.env.REACT_APP_MAPBOX_API_ACCESSTOKEN
+              }
               onViewportChange={this.handleViewportChange}
             />
           </ReactMapGL>
