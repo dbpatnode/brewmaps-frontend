@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
-import Geocoder from 'react-map-gl-geocoder';
+// import Geocoder from 'react-map-gl-geocoder';
 import BreweryCard from './BreweryCard.js';
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
@@ -85,7 +85,7 @@ class Map extends React.Component {
             height='100%'
             margin='0 auto'
             mapStyle='mapbox://styles/mapbox/streets-v11'
-            mapboxApiAccessToken='pk.eyJ1IjoiZGJwYXRub2RlIiwiYSI6ImNrZnk4aWJ1MjAwN2kyem55MzVmaWh0MnkifQ.9Xu3ZCcZg5OPrXUkqrMILQ'
+            mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API_ACCESS_TOKEN}
           >
             {this.filterPins().map((brewery) => (
               <Marker
@@ -102,14 +102,14 @@ class Map extends React.Component {
               </Marker>
             ))}
             {this._renderPopup()}
-            <Geocoder
+            {/* <Geocoder
               mapRef={this.myMap}
               containerRef={this.geocoderContainerRef}
               mapboxApiAccessToken={
-                process.env.REACT_APP_MAPBOX_API_ACCESSTOKEN
+                process.env.REACT_APP_GEOCODER_API_ACCESS_TOKEN
               }
               onViewportChange={this.handleViewportChange}
-            />
+            /> */}
           </ReactMapGL>
         </span>
       </div>
