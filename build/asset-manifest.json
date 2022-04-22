@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.dad624f6.chunk.css",
+    "main.js": "/static/js/main.d8abc542.chunk.js",
+    "main.js.map": "/static/js/main.d8abc542.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.7bab8eff.js",
+    "runtime-main.js.map": "/static/js/runtime-main.7bab8eff.js.map",
+    "static/css/2.66201046.chunk.css": "/static/css/2.66201046.chunk.css",
+    "static/js/2.7df835c1.chunk.js": "/static/js/2.7df835c1.chunk.js",
+    "static/js/2.7df835c1.chunk.js.map": "/static/js/2.7df835c1.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.dd53f5585e214fe1b3c739a51d91d8e6.js": "/precache-manifest.dd53f5585e214fe1b3c739a51d91d8e6.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.66201046.chunk.css.map": "/static/css/2.66201046.chunk.css.map",
+    "static/css/main.dad624f6.chunk.css.map": "/static/css/main.dad624f6.chunk.css.map",
+    "static/js/2.7df835c1.chunk.js.LICENSE.txt": "/static/js/2.7df835c1.chunk.js.LICENSE.txt",
+    "static/media/brewery_background.png": "/static/media/brewery_background.740d605b.png",
+    "static/media/home_page_botom.png": "/static/media/home_page_botom.1845e3fb.png",
+    "static/media/hop_logo.png": "/static/media/hop_logo.bed25608.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7bab8eff.js",
+    "static/css/2.66201046.chunk.css",
+    "static/js/2.7df835c1.chunk.js",
+    "static/css/main.dad624f6.chunk.css",
+    "static/js/main.d8abc542.chunk.js"
+  ]
+}

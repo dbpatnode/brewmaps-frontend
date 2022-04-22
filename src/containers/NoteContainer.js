@@ -11,22 +11,18 @@ class NoteContainer extends Component {
   };
 
   toggle = (e) => {
-    // debugger;
-
     this.setState({
       on: !this.state.on,
     });
   };
 
   handleInputChange = (e) => {
-    // debugger;
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
 
   handleSubmit = (e) => {
-    // alert("Atmosphere saved!");
     e.preventDefault();
     const note = {
       review: this.state.review,
