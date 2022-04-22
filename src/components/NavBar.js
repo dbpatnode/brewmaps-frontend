@@ -33,7 +33,7 @@ class NavBar extends Component {
               <NavLink to='/map'> BREWERYMAP </NavLink>
               <NavLink to='/breweries'> BREWERIES </NavLink>
               <NavLink to='/favorites'> FAVORITES</NavLink>
-              <a id='logout' href='#' onClick={this.handleLogoutClick}>
+              <a id='logout' href='/' onClick={this.handleLogoutClick}>
                 LOGOUT
               </a>
             </div>

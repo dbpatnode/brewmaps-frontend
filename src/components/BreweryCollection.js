@@ -1,5 +1,6 @@
 import React from 'react';
-import { beer, phone, map } from '../SVGs/svg';
+import { beer, map } from '../SVGs/svg';
+// import { beer, phone, map } from '../SVGs/svg';
 
 const BreweryCollection = (props) => {
   return (
