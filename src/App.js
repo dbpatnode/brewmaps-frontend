@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 // import './App.scss';
-import NavBar from './components/NavBar.js';
-import Login from './components/auth/Login.js';
-import Registration from './components/auth/Registration.js';
-import MapContainer from './containers/MapContainer.js';
+import NavBar from './components/Nav/NavBar';
+import Login from './components/auth/Login';
+import Registration from './components/auth/Registration';
+import MapContainer from './containers/MapContainer';
 import Home from './components/Home';
-import FavoriteContainer from './containers/FavoriteContainer.js';
-import NoteContainer from './containers/NoteContainer.js';
+import FavoriteContainer from './containers/FavoriteContainer';
+import NoteContainer from './containers/NoteContainer';
 import IndividualBreweryShowPage from './components/BreweryShowPage';
-import BreweryCollection from './components/BreweryCollection';
+import BreweryCollection from './components/Breweries/BreweryCollection';
 
 class App extends Component {
   state = {

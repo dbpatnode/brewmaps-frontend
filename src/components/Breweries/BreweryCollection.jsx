@@ -1,5 +1,5 @@
 import React from 'react';
-import { beer, map } from '../SVGs/svg';
+import { beer, map } from '../../SVGs/svg';
 // import { beer, phone, map } from '../SVGs/svg';
 
 const BreweryCollection = (props) => {
@@ -30,7 +30,6 @@ const BreweryCollection = (props) => {
           } = brewery;
           return (
             <div key={id} className='row'>
-              {/* {console.log(brewery)} */}
               <div className='card' brewery={brewery}>
                 <div id='brewery-card-info'>
                   <span>

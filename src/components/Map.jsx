@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 // import Geocoder from 'react-map-gl-geocoder';
-import BreweryCard from './BreweryCard.js';
+import BreweryCard from './BreweryCard.jsx';
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
 class Map extends React.Component {
