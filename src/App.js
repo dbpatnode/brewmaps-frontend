@@ -5,12 +5,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/Nav/NavBar';
 import Login from './components/auth/Login';
 import Registration from './components/auth/Registration';
-import MapContainer from './containers/MapContainer';
-import Home from './components/Home';
-import FavoriteContainer from './containers/FavoriteContainer';
-import NoteContainer from './containers/NoteContainer';
-import IndividualBreweryShowPage from './components/BreweryShowPage';
-import BreweryCollection from './components/Breweries/BreweryCollection';
+import MapContainer from './components/Map/MapContainer';
+import Home from './components/Home/Home';
+import FavoriteContainer from './components/Favorites/FavoriteContainer';
+import NoteContainer from './components/Notes/NoteContainer';
+import IndividualBreweryShowPage from './components/Brewery/BreweryShowPage';
+import BreweryCollection from './components/Breweries/BreweryContainer';
 
 class App extends Component {
   state = {

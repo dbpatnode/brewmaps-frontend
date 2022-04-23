@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { beer, phone as phoneIcon, map, globe } from '../SVGs/svg';
+import { beer, phone as phoneIcon, map, globe } from '../../SVGs/svg';
 
 class BreweryShowPage extends Component {
   render() {

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
-import logo from './hop_logo.png';
+
+const logo = './images/hop_logo.png';
 
 class NavBar extends Component {
   state = {
@@ -16,7 +17,6 @@ class NavBar extends Component {
 
   render() {
     return (
-      // <Router>
       <div className='navbar'>
         {this.props.loggedInStatus !== 'NOT_LOGGED_IN' ? (
           <nav className='navbar navbar-inverse'>

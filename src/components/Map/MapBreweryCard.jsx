@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
-import { webinfo, beer, phone, globe } from '../SVGs/svg';
+import { webinfo, beer, phone, globe } from '../../SVGs/svg';
 
 export default class BreweryCard extends PureComponent {
   render() {

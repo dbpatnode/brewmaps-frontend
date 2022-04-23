@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 // import Geocoder from 'react-map-gl-geocoder';
-import BreweryCard from './BreweryCard.jsx';
+import MapBreweryCard from './MapBreweryCard';
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
 class Map extends React.Component {
@@ -50,7 +50,7 @@ class Map extends React.Component {
           closeOnClick={true}
           onClose={() => this.setState({ popupInfo: null })}
         >
-          <BreweryCard
+          <MapBreweryCard
             info={popupInfo}
             favorites={this.props.favorites}
             addFavorite={this.props.addFavorite}

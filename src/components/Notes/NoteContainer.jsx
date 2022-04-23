@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactStars from 'react-rating-stars-component';
-import { pencil } from '../SVGs/svg';
+import { pencil } from '../../SVGs/svg';
 
 class NoteContainer extends Component {
   state = {

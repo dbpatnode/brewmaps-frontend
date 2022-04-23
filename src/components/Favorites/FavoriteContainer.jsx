@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Note from './NoteContainer';
+import NoteContainer from '../Notes/NoteContainer';
 import {
   phone as phoneIcon,
   map,
@@ -7,7 +7,7 @@ import {
   pencil,
   trash,
   star,
-} from '../SVGs/svg';
+} from '../../SVGs/svg';
 
 class FavoriteContainer extends Component {
   removeFavorite = (id) => {
@@ -98,12 +98,12 @@ class FavoriteContainer extends Component {
                     );
                   })}
 
-                  <Note
+                  <NoteContainer
                     pencil={pencil}
                     addNotes={this.props.addNotes}
                     brewery={favorite.brewery.id}
                     user={this.props.user.id}
-                  ></Note>
+                  ></NoteContainer>
 
                   <button
                     className='submit'
