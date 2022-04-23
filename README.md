@@ -7,16 +7,12 @@ Brewery journaling application that allows users to favorite, rate and write rev
 ## Installation
 
 1. Fork or clone the respository.
-2. Cd into the frontend repo and run the following:
+2. Fork or clone backend repository from: `https://github.com/dbpatnode/brewmaps_backend` (follow readme for setup)
 
-- `yarn start`
-- `yarn start`
+3. from brewmaps-frontend run the following:
 
-3. Fork or clone backend repository from: `https://github.com/dbpatnode/brewmaps_backend`
-
-- `bundle install`
-- `rails db:migrate`
-- `rails s`
+- `npm install`
+- `npm start`
 
 ## Features
 
@@ -41,22 +37,23 @@ Brewery journaling application that allows users to favorite, rate and write rev
 
 ### Search Functoinality
 
-- Search from map by location
+<!-- - Search from map by location -->
+
 - Search from brewery page based on name
 
 ## Demo
 
 ### Homepage
 
-![Screenshot](homepage.png)
+![Screenshot](images/homepage.png)
 
 ### Login
 
-![Screenshot](login.png)
+![Screenshot](images/login.png)
 
 ### Signup
 
-![Screenshot](signup.png)
+![Screenshot](images/signup.png)
 
 ### Map Features
 
@@ -77,4 +74,3 @@ Brewery journaling application that allows users to favorite, rate and write rev
 ## Delete Favorites
 
 ![whatevername](https://media.giphy.com/media/52dONgLriKuP2zonas/giphy.gif)
-
