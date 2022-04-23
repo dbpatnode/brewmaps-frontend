@@ -45,15 +45,15 @@ Brewery journaling application that allows users to favorite, rate and write rev
 
 ### Homepage
 
-![Screenshot](images/homepage.png)
+![Screenshot](./public/images/homepage.png)
 
 ### Login
 
-![Screenshot](images/login.png)
+![Screenshot](./public/images/login.png)
 
 ### Signup
 
-![Screenshot](images/signup.png)
+![Screenshot](./public/images/signup.png)
 
 ### Map Features
 
