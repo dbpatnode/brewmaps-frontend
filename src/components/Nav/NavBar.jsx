@@ -16,9 +16,10 @@ class NavBar extends Component {
   };
 
   render() {
+    console.log('navprops ', this.props);
     return (
       <div className='navbar'>
-        {this.props.loggedInStatus !== 'NOT_LOGGED_IN' ? (
+        {this.props.loggedInStatus === 'LOGGED_IN' ? (
           <nav className='navbar navbar-inverse'>
             <div className='container-fluid'>
               <div className='navbar-header'>

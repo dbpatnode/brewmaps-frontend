@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-// import './App.scss';
 import NavBar from './components/Nav/NavBar';
 import Login from './components/auth/Login';
 import Registration from './components/auth/Registration';
@@ -32,7 +31,6 @@ class App extends Component {
         },
       };
       fetch('https://daniels-brewmaps-api.herokuapp.com/breweries', configObj)
-        // fetch('http://daniels-brewmaps-api.herokuapp.com/breweries', configObj)
         .then((resp) => resp.json())
         .then((breweries) => {
           if (!breweries.error) {
@@ -46,7 +44,6 @@ class App extends Component {
           } else {
             alert(breweries.error);
           }
-          // });
           localStorage.setItem('allBreweries', JSON.stringify(breweries));
         });
     }
