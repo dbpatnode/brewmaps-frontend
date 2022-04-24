@@ -1,10 +1,9 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
 
-const logo = './images/hop_logo.png';
-
 const NavBar = ({ loggedInStatus, user, handleLogout }) => {
+  const logo = './images/hop_logo.png';
+
   return (
     <nav className='navbar'>
       <div className='left-nav'>
