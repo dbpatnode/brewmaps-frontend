@@ -6,31 +6,30 @@ const logo = './images/hop_logo.png';
 
 const NavBar = ({ loggedInStatus, user, handleLogout }) => {
   return (
-    <div className='navbar'>
-      <nav className='navbar navbar-inverse'>
-        <div className='container-fluid'>
-          <div className='navbar-header'>
-            <img
-              className='navbar-brand logo'
-              src={logo}
-              alt='beer map logo'
-            ></img>
-            BREWMAPS
-          </div>
-          {loggedInStatus === 'LOGGED_IN' && (
-            <div>
-              <b>Cheers, {user.username}!</b>
-              <NavLink to='/map'> BREWERYMAP </NavLink>
-              <NavLink to='/breweries'> BREWERIES </NavLink>
-              <NavLink to='/favorites'> FAVORITES</NavLink>
-              <a id='logout' href='/' onClick={handleLogout}>
-                LOGOUT
-              </a>
-            </div>
-          )}
+    <nav className='navbar'>
+      <div className='left-nav'>
+        <span>
+          <img className='logo' src={logo} alt='BrewMaps Logo' />
+        </span>
+        <span>
+          <NavLink to='/'>BREWMAPS</NavLink>
+        </span>
+        {loggedInStatus === 'LOGGED_IN' && (
+          <span className='username'>Cheers, {user.username}!</span>
+        )}
+      </div>
+
+      {loggedInStatus === 'LOGGED_IN' && (
+        <div className='right-nav'>
+          <NavLink to='/map'> BREWERYMAP </NavLink>
+          <NavLink to='/breweries'> BREWERIES </NavLink>
+          <NavLink to='/favorites'> FAVORITES</NavLink>
+          <a className='logout' href='/' onClick={handleLogout}>
+            LOGOUT
+          </a>
         </div>
-      </nav>
-    </div>
+      )}
+    </nav>
   );
 };
 
