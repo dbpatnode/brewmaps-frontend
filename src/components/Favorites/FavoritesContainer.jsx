@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NoteContainer from '../Notes/NoteContainer';
+import NoteContainer from '../Notes/NotesContainer';
 import {
   phone as phoneIcon,
   map,

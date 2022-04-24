@@ -6,10 +6,10 @@ import Login from './components/auth/Login';
 import Registration from './components/auth/Registration';
 import MapContainer from './components/Map/MapContainer';
 import Home from './components/Home/Home';
-import FavoriteContainer from './components/Favorites/FavoriteContainer';
-import NoteContainer from './components/Notes/NoteContainer';
-import IndividualBreweryShowPage from './components/Brewery/BreweryShowPage';
-import BreweryCollection from './components/Breweries/BreweryContainer';
+import FavoriteContainer from './components/Favorites/FavoritesContainer';
+import NoteContainer from './components/Notes/NotesContainer';
+import IndividualBreweryShowPage from './components/Brewery/Brewery';
+import BreweryCollection from './components/Breweries/BreweriesContainer';
 
 class App extends Component {
   state = {

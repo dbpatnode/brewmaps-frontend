@@ -19,7 +19,6 @@ const BreweryCard = ({ brewery, favorites, addFavorite }) => {
           <span>
             <a
               className='brewery-name'
-              style={{ display: 'table-cell' }}
               href={website_url}
               target='_blank'
               rel='noopener noreferrer'
