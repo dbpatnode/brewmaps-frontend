@@ -1,41 +1,43 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import Login from '../auth/Login';
+import Registration from '../auth/Registration';
 
-const Home = () => {
-  const footer = './images/home_page_botom.png';
-  const background = './brewery_background.png';
+const Home = ({ handleLogin, history }) => {
+  const [toggle, setToggle] = useState(false);
+
+  const handleToggle = () => {
+    setToggle(!toggle);
+  };
+
   return (
-    <div>
-      <div className='home'>
-        <div className='container'>
-          <img src={background} alt='brewery' className='top-image'></img>
-          <div className='top-left'>
-            <div className='title'>
-              <h1>
-                YOUR <br />
-                BREWERY
-                <br />
-                WISHLIST
-                <br />
-              </h1>
-            </div>
-            <div className='home-page-buttons'>
-              <Link to='/login'>
-                {' '}
-                <button id='login-button'>LOGIN</button>
-              </Link>
-              <br />
-              <Link to='/signup'>
-                <button id='signup-button'>SIGN UP</button>
-              </Link>
-            </div>
-          </div>
+    <div className='Home'>
+      <span className='home-upper-left'>
+        <div>
+          <h1>BREWMAPS:</h1>
+          <h2>Your</h2>
+          <h2>Brewery</h2>
+          <h2>Wishlist</h2>
         </div>
-      </div>
-
-      <div className='container'>
-        <img src={footer} alt='Hop Logo' id='welcome-image'></img>
-      </div>
+      </span>
+      <span className='home-upper-right'>
+        {!toggle ? (
+          <div className='registration-container'>
+            <Login handleLogin={handleLogin} history={history} />
+            <span className='toggle-message'>
+              Don't have an account yet? signup{' '}
+              <button onClick={handleToggle}>here</button>
+            </span>
+          </div>
+        ) : (
+          <div className='registration-container'>
+            <Registration handleLogin={handleLogin} history={history} />
+            <span className='toggle-message'>
+              Do you have an account already? Login{' '}
+              <button onClick={handleToggle}>here</button>
+            </span>
+          </div>
+        )}
+      </span>
     </div>
   );
 };

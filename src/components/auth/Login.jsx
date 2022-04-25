@@ -20,7 +20,8 @@ export default class Login extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { username, password } = this.state;
-    this.props.history.push('/map');
+    const { history, handleLogin } = this.props;
+    history.push('/map');
 
     fetch('https://daniels-brewmaps-api.herokuapp.com/login', {
       method: 'POST',
@@ -34,12 +35,13 @@ export default class Login extends Component {
     })
       .then((res) => res.json())
       .then((json) => {
-        this.props.handleLogin(json.user);
+        handleLogin(json.user);
         localStorage.setItem('authToken', json.auth_token);
       });
   };
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <form className='login' onSubmit={this.handleSubmit}>
@@ -79,10 +81,10 @@ export default class Login extends Component {
           </fieldset>
         </form>
         <br />
-        <div className='route-links'>
+        {/* <div className='route-links'>
           <Link to='/'>homepage</Link> {'  🍻  '}
           <Link to='/signup'>signup </Link>
-        </div>
+        </div> */}
       </div>
     );
   }

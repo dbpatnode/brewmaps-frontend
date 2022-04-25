@@ -47,7 +47,7 @@ export default class Registration extends Component {
         this.props.handleLogin(json);
       });
 
-    this.props.history.push('/login');
+    this.props.history.push('/map');
   };
 
   render() {
@@ -129,10 +129,6 @@ export default class Registration extends Component {
           </fieldset>
         </form>
         <br />
-        <div className='route-links'>
-          <Link to='/'>homepage</Link> {'  🍻  '}
-          <Link to='/login'>login </Link>
-        </div>
       </div>
     );
   }

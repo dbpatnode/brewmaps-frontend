@@ -1,70 +1,28 @@
-.container {
-  position: relative;
-  text-align: left;
-  color: white;
-}
+.Home {
+  display: flex;
+  height: 88.2vh;
 
-.top-left {
-  position: absolute;
-  top: 120px;
-  left: 160px;
-}
+  .home-upper-left {
+    width: 50%;
+    height: 84%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .home-upper-right {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-.top-left h1 {
-  font-family: 'Yanone Kaffeesatz', sans-serif;
-  padding: 10px 5px 10px 40px;
-  font-weight: 400;
-  font-size: 90px;
-}
-
-.home-page-buttons {
-  width: 50%;
-  margin-left: 20%;
-}
-
-.top-image {
-  position: relative;
-  top: 0;
-  width: 100%;
-  left: 0;
-}
-
-#welcome-image {
-  position: relative;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding-top: 3px;
-  /* margin-left: 21.1%; */
-}
-
-#login-button {
-  position: relative;
-  background-color: #8fa540;
-  font-family: 'Roboto Slab', serif;
-  border-radius: 5px;
-  width: 85%;
-  height: 20%;
-  border: 0.5px solid #8fa540;
-  padding: 7px;
-}
-
-#login-button:hover {
-  background-color: #8fa540d3;
-}
-
-#signup-button {
-  position: relative;
-  background-color: #035e2c;
-  font-family: 'Roboto Slab', serif;
-  border-radius: 5px;
-  width: 85%;
-  height: 20%;
-  border: 0.5px solid #035e2c;
-  padding: 7px;
-  margin-top: 10px;
-}
-
-#signup-button:hover {
-  background-color: #035e2cdc;
+    .registration-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .toggle-message {
+        text-align: center;
+      }
+    }
+  }
 }
