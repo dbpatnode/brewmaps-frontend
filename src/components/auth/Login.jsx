@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+
 import { arrow, userIcon, password } from '../../SVGs/svg';
 
 export default class Login extends Component {
@@ -81,10 +81,6 @@ export default class Login extends Component {
           </fieldset>
         </form>
         <br />
-        {/* <div className='route-links'>
-          <Link to='/'>homepage</Link> {'  🍻  '}
-          <Link to='/signup'>signup </Link>
-        </div> */}
       </div>
     );
   }
