@@ -33,7 +33,7 @@ const Home = ({ handleLogin, history }) => {
             <div className='registration-container'>
               <Registration handleLogin={handleLogin} history={history} />
               <span className='toggle-message'>
-                Do you have an account already? Login{' '}
+                Have an account already? Login{' '}
                 <button onClick={handleToggle}>here</button>.
               </span>
             </div>

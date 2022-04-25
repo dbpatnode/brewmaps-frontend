@@ -78,7 +78,7 @@ class Map extends React.Component {
             }}
           // /> */}
         {/* </div> */}
-        <span className='whole-map'>
+        <span>
           <ReactMapGL
             ref={this.myMap}
             {...this.state.viewport}
