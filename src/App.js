@@ -13,7 +13,6 @@ import BreweriesContainer from './components/Breweries/BreweriesContainer';
 
 const App = () => {
   const [breweries, setBreweries] = useState([]);
-  const [allBreweries, setAllBreweries] = useState([]);
   const [loggedInStatus, setLoggedInStatus] = useState('NOT_LOGGED_IN');
   const [user, setUser] = useState({});
   const [favorites, setFavorites] = useState([]);
@@ -29,7 +28,6 @@ const App = () => {
       .then((data) => {
         if (!data.error) {
           setBreweries(data);
-          setAllBreweries(data);
         } else {
           alert(data.error);
         }
@@ -83,8 +81,6 @@ const App = () => {
         .then((resp) => resp.json())
         .then((data) => {
           setFavorites([...favorites, { id: data.id, brewery: data.brewery }]);
-          // setFavorites(...favorites, { id: data.id, brewery: data.brewery });
-          // window.location.href = '/favorites';
         });
     }
   };
