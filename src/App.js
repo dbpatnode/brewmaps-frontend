@@ -5,7 +5,7 @@ import NavBar from './components/Nav/NavBar';
 import Login from './components/auth/Login';
 import Registration from './components/auth/Registration';
 import MapContainer from './components/Map/MapContainer';
-import Home from './components/Home/Home';
+import Home from './components/Home/HomeContainer';
 import FavoriteContainer from './components/Favorites/FavoritesContainer';
 import NoteContainer from './components/Notes/NotesContainer';
 import Brewery from './components/Brewery/Brewery';
