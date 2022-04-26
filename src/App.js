@@ -160,7 +160,6 @@ const App = () => {
         <Route
           path='/map'
           render={(props) => {
-            // const breweries = breweries;
             return breweries ? (
               <MapContainer
                 breweries={breweries}

@@ -39,7 +39,6 @@ class Map extends React.Component {
 
   _renderPopup() {
     const { popupInfo } = this.state;
-
     return (
       popupInfo && (
         <Popup
@@ -88,20 +87,28 @@ class Map extends React.Component {
             mapStyle='mapbox://styles/mapbox/streets-v11'
             mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API_ACCESS_TOKEN}
           >
-            {this.filterPins().map((brewery) => (
-              <Marker
-                key={brewery.id}
-                longitude={brewery.lng}
-                latitude={brewery.lat}
-              >
-                <button
-                  className='pin'
-                  onClick={() => this._onClickMarker(brewery)}
+            {console.log('this.filterPins(): ', this.filterPins())}
+            {this.filterPins().length == 0 ? (
+              <div className='loading'>
+                <div class='loader'>Loading...</div>
+              </div>
+            ) : (
+              this.filterPins().map((brewery) => (
+                <Marker
+                  key={brewery.id}
+                  longitude={brewery.lng}
+                  latitude={brewery.lat}
                 >
-                  <img src='./hop_logo.png' alt='Brewery Icon' />
-                </button>
-              </Marker>
-            ))}
+                  {console.log(brewery)}
+                  <button
+                    className='pin'
+                    onClick={() => this._onClickMarker(brewery)}
+                  >
+                    <img src='./hop_logo.png' alt='Brewery Icon' />
+                  </button>
+                </Marker>
+              ))
+            )}
             {this._renderPopup()}
             {/* <Geocoder
               mapRef={this.myMap}
