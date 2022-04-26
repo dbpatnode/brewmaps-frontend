@@ -9,9 +9,18 @@
     ),
     url(/images/brewery_background.png) no-repeat top center;
   background-size: cover;
-
   -webkit-background-size: cover;
 
+  h2 {
+    padding-left: 20px;
+  }
+  .signed-in-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+  }
   .home-content {
     display: flex;
     height: 88.2vh;
@@ -22,9 +31,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      h2 {
-        padding-left: 20px;
-      }
     }
     .home-upper-right {
       width: 50%;

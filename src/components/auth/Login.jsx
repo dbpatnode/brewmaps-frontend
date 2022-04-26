@@ -41,7 +41,6 @@ export default class Login extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <form className='login' onSubmit={this.handleSubmit}>
