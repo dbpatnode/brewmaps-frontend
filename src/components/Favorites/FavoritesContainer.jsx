@@ -66,14 +66,16 @@ class FavoriteContainer extends Component {
                       {street} {city}, {state} {postal_code}
                     </a>
                   </p>
-                  <a href={`tel:${phone}`} className='phone-number'>
-                    <span id='icons'>{phoneIcon}</span>
 
-                    {''}
-                    {favorite.brewery.phone.length > 0
-                      ? favorite.brewery.phone
-                      : 'No phone number available'}
-                  </a>
+                  {''}
+                  {favorite.brewery.phone ? (
+                    <a href={`tel:${phone}`} className='phone-number'>
+                      <span id='icons'>{phoneIcon}</span>
+                      favorite.brewery.phone
+                    </a>
+                  ) : (
+                    'No phone number available'
+                  )}
 
                   <a
                     className='website'

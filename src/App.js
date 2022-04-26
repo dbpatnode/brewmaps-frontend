@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/Nav/NavBar';
@@ -8,51 +8,32 @@ import MapContainer from './components/Map/MapContainer';
 import Home from './components/Home/Home';
 import FavoriteContainer from './components/Favorites/FavoritesContainer';
 import NoteContainer from './components/Notes/NotesContainer';
-import IndividualBreweryShowPage from './components/Brewery/Brewery';
-import BreweryCollection from './components/Breweries/BreweriesContainer';
+import Brewery from './components/Brewery/Brewery';
+import BreweriesContainer from './components/Breweries/BreweriesContainer';
 
-class App extends Component {
-  state = {
-    loggedInStatus: 'NOT_LOGGED_IN',
-    user: {},
-    breweries: [],
-    allBreweries: [],
-    favorites: [],
-    notes: [],
-    inputValue: '',
-  };
+const App = () => {
+  const [breweries, setBreweries] = useState([]);
+  const [allBreweries, setAllBreweries] = useState([]);
+  const [loggedInStatus, setLoggedInStatus] = useState('NOT_LOGGED_IN');
+  const [user, setUser] = useState({});
+  const [favorites, setFavorites] = useState([]);
+  const [notes, setNotes] = useState([]);
+  const [inputValue, setInputValue] = useState('');
 
-  componentDidMount() {
-    if (!localStorage.getItem('allBreweries')) {
-      const configObj = {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: localStorage.authToken,
-        },
-      };
-      fetch('https://daniels-brewmaps-api.herokuapp.com/breweries', configObj)
-        .then((resp) => resp.json())
-        .then((breweries) => {
-          if (!breweries.error) {
-            this.setState(
-              {
-                allBreweries: breweries,
-                breweries: breweries,
-              },
-              () => {},
-            );
-          } else {
-            alert(breweries.error);
-          }
-          localStorage.setItem('allBreweries', JSON.stringify(breweries));
-        });
-    }
-
-    if (localStorage.getItem('allBreweries')) {
-      this.setState({
-        breweries: JSON.parse(localStorage.getItem('allBreweries')),
+  useEffect(() => {
+    fetch('https://daniels-brewmaps-api.herokuapp.com/breweries', {
+      'Content-Type': 'application/json',
+      Authorization: localStorage.authToken,
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (!data.error) {
+          setBreweries(data);
+          setAllBreweries(data);
+        } else {
+          alert(data.error);
+        }
       });
-    }
 
     const token = localStorage.getItem('authToken');
     if (token) {
@@ -63,34 +44,30 @@ class App extends Component {
         },
       };
 
-      this.setState({ loggedInStatus: 'LOGGED_IN' });
+      setLoggedInStatus('LOGGED_IN');
       fetch('https://daniels-brewmaps-api.herokuapp.com/whoami', configObj)
         .then((resp) => resp.json())
-        .then(this.handleLogin);
+        .then(handleLogin);
     } else {
-      this.setState({ loggedInStatus: 'NOT_LOGGED_IN' });
+      setLoggedInStatus('NOT_LOGGED_IN');
     }
-  }
+  }, []);
 
-  handleLogout = () => {
+  const handleLogout = () => {
     localStorage.clear();
-    this.setState({
-      loggedInStatus: 'NOT_LOGGED_IN',
-      user: {},
-    });
+    setLoggedInStatus('NOT_LOGGED_IN');
+    setUser({});
   };
 
-  handleLogin = (user) => {
-    this.setState({
-      loggedInStatus: 'LOGGED_IN',
-      user: user,
-      favorites: user.favorites,
-      notes: user.notes,
-    });
+  const handleLogin = (user) => {
+    setLoggedInStatus('LOGGED_IN');
+    setUser(user);
+    setFavorites(user.favorites);
+    setNotes(user.notes);
   };
 
-  addFavorite = (e, brewery) => {
-    if (!this.state.favorites.includes(brewery)) {
+  const addFavorite = (e, brewery) => {
+    if (!favorites.includes(brewery)) {
       const configObj = {
         method: 'POST',
         headers: {
@@ -98,25 +75,21 @@ class App extends Component {
           Authorization: localStorage.authToken,
         },
         body: JSON.stringify({
-          user_id: this.state.user.id,
+          user_id: user.id,
           brewery_id: brewery.id,
         }),
       };
       fetch('https://daniels-brewmaps-api.herokuapp.com/favorites', configObj)
         .then((resp) => resp.json())
         .then((data) => {
-          this.setState({
-            favorites: [
-              ...this.state.favorites,
-              { id: data.id, brewery: data.brewery },
-            ],
-          });
-          // window.location.href = "/favorites";
+          setFavorites([...favorites, { id: data.id, brewery: data.brewery }]);
+          // setFavorites(...favorites, { id: data.id, brewery: data.brewery });
+          // window.location.href = '/favorites';
         });
     }
   };
 
-  addNotes = (note) => {
+  const addNotes = (note) => {
     const configObj = {
       method: 'POST',
       headers: {
@@ -132,158 +105,145 @@ class App extends Component {
       });
   };
 
-  breweryFilterOnChange = (e) => {
-    console.log('isFavorted', this.state.isFavorited);
-
-    this.setState({
-      inputValue: e.target.value,
-    });
+  const breweryFilterOnChange = (e) => {
+    const { value } = e.target;
+    setInputValue(value);
   };
 
-  render() {
-    return (
-      <Router>
-        <div>
-          <Route
-            path='/'
-            render={(props) => (
-              <NavBar
+  return (
+    <Router>
+      <div>
+        <Route
+          path='/'
+          render={(props) => (
+            <NavBar
+              {...props}
+              user={user}
+              loggedInStatus={loggedInStatus}
+              handleLogout={handleLogout}
+            />
+          )}
+        />
+
+        <Route
+          exact
+          path='/'
+          render={(props) => (
+            <Home
+              {...props}
+              history={props.history}
+              handleLogin={handleLogin}
+              loggedInStatus={loggedInStatus}
+            />
+          )}
+        />
+
+        <Route
+          path='/signup'
+          render={(props) => (
+            <Registration
+              {...props}
+              // history={props.history}
+              handleLogin={handleLogin}
+              loggedInStatus={loggedInStatus}
+            />
+          )}
+        />
+
+        <Route
+          path='/login'
+          render={(props) => (
+            <Login
+              {...props}
+              handleLogin={handleLogin}
+              loggedInStatus={loggedInStatus}
+            />
+          )}
+        />
+
+        <Route
+          path='/map'
+          render={(props) => {
+            // const breweries = breweries;
+            return breweries ? (
+              <MapContainer
+                breweries={breweries}
                 {...props}
-                user={this.state.user}
-                loggedInStatus={this.state.loggedInStatus}
-                handleLogout={this.handleLogout}
+                favorites={favorites}
+                user={user}
+                addFavorite={addFavorite}
               />
-            )}
-          />
+            ) : (
+              <div className='loading'>'Loading...'</div>
+            );
+          }}
+        />
 
-          <Route
-            exact
-            path='/'
-            render={(props) => (
-              <Home
+        <Route
+          path='/favorites'
+          render={(props) => (
+            <FavoriteContainer
+              {...props}
+              user={user}
+              favorites={favorites}
+              addFavorite={addFavorite}
+              // removeFavorite={removeFavorite}
+              addNotes={addNotes}
+              notes={notes}
+            />
+          )}
+        />
+
+        <Route path='/notes' render={(props) => <NoteContainer {...props} />} />
+
+        <Route
+          path='/brewery/:BreweryId'
+          render={(props) => {
+            const BreweryId = props.match.params.BreweryId;
+            const brewery = breweries.find((e) => e.id === parseInt(BreweryId));
+
+            return brewery ? (
+              <Brewery
+                brewery={brewery}
                 {...props}
-                history={props.history}
-                handleLogin={this.handleLogin}
-                loggedInStatus={this.state.loggedInStatus}
+                favorites={favorites}
+                handleLogin={handleLogin}
+                loggedInStatus={loggedInStatus}
+                addFavorite={addFavorite}
               />
-            )}
-          />
+            ) : (
+              <div className='loading'>'Loading...'</div>
+            );
+          }}
+        />
 
-          <Route
-            path='/signup'
-            render={(props) => (
-              <Registration
+        <Route
+          path='/breweries'
+          render={(props) => {
+            // const breweries = breweries;
+            const filteredBreweries = breweries.filter((brewery) => {
+              return brewery.brewery_name
+                .toLowerCase()
+                .includes(inputValue.toLowerCase());
+            });
+            return breweries ? (
+              <BreweriesContainer
                 {...props}
-                // history={props.history}
-                handleLogin={this.handleLogin}
-                loggedInStatus={this.state.loggedInStatus}
+                favorites={favorites}
+                breweries={breweries}
+                filteredBreweries={filteredBreweries}
+                inputValue={inputValue}
+                breweryFilterOnChange={breweryFilterOnChange}
+                addFavorite={addFavorite}
               />
-            )}
-          />
-
-          <Route
-            path='/login'
-            render={(props) => (
-              <Login
-                {...props}
-                handleLogin={this.handleLogin}
-                loggedInStatus={this.state.loggedInStatus}
-              />
-            )}
-          />
-
-          <Route
-            path='/map'
-            render={(props) => {
-              const breweries = this.state.breweries;
-              return breweries ? (
-                <MapContainer
-                  breweries={breweries}
-                  {...props}
-                  favorites={this.state.favorites}
-                  user={this.state.user}
-                  addFavorite={this.addFavorite}
-                />
-              ) : (
-                'Loading...'
-              );
-            }}
-          />
-
-          <Route
-            path='/favorites'
-            render={(props) => (
-              <FavoriteContainer
-                {...props}
-                user={this.state.user}
-                favorites={this.state.favorites}
-                addFavorite={this.addFavorite}
-                removeFavorite={this.removeFavorite}
-                addNotes={this.addNotes}
-                notes={this.state.notes}
-              />
-            )}
-          />
-
-          <Route
-            path='/notes'
-            render={(props) => (
-              <NoteContainer {...props} isFavorited={this.state.isFavorited} />
-            )}
-          />
-
-          <Route
-            path='/brewery/:BreweryId'
-            render={(props) => {
-              const BreweryId = props.match.params.BreweryId;
-              const brewery = this.state.breweries.find(
-                (e) => e.id === parseInt(BreweryId),
-              );
-
-              return brewery ? (
-                <IndividualBreweryShowPage
-                  brewery={brewery}
-                  {...props}
-                  favorites={this.state.favorites}
-                  isFavorited={this.state.isFavorited}
-                  handleLogin={this.handleLogin}
-                  loggedInStatus={this.state.loggedInStatus}
-                  addFavorite={this.addFavorite}
-                />
-              ) : (
-                'Loading...'
-              );
-            }}
-          />
-
-          <Route
-            path='/breweries'
-            render={(props) => {
-              const breweries = this.state.breweries;
-              const filteredBreweries = breweries.filter((brewery) => {
-                return brewery.brewery_name
-                  .toLowerCase()
-                  .includes(this.state.inputValue.toLowerCase());
-              });
-              return breweries ? (
-                <BreweryCollection
-                  {...props}
-                  favorites={this.state.favorites}
-                  breweries={breweries}
-                  filteredBreweries={filteredBreweries}
-                  inputValue={this.state.inputValue}
-                  breweryFilterOnChange={this.breweryFilterOnChange}
-                  addFavorite={this.addFavorite}
-                />
-              ) : (
-                'Loading...'
-              );
-            }}
-          />
-        </div>
-      </Router>
-    );
-  }
-}
+            ) : (
+              <div className='loading'>'Loading...'</div>
+            );
+          }}
+        />
+      </div>
+    </Router>
+  );
+};
 
 export default App;

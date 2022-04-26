@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const NavBar = ({ loggedInStatus, user, handleLogout }) => {
   const logo = './images/hop_logo.png';
+  console.log(user);
 
   return (
     <nav className='navbar'>
