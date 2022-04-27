@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useBreweriesProvider } from './providers/BreweriesProvider';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/Nav/NavBar';
@@ -12,27 +13,27 @@ import Brewery from './components/Brewery/Brewery';
 import BreweriesContainer from './components/Breweries/BreweriesContainer';
 
 const App = () => {
-  const [breweries, setBreweries] = useState([]);
+  // const [breweries, setBreweries] = useState([]);
   const [loggedInStatus, setLoggedInStatus] = useState('NOT_LOGGED_IN');
   const [user, setUser] = useState({});
   const [favorites, setFavorites] = useState([]);
   const [notes, setNotes] = useState([]);
   const [inputValue, setInputValue] = useState('');
 
+  const { breweries } = useBreweriesProvider();
+  //   fetch('https://daniels-brewmaps-api.herokuapp.com/breweries', {
+  //     'Content-Type': 'application/json',
+  //     Authorization: localStorage.authToken,
+  //   })
+  //     .then((resp) => resp.json())
+  //     .then((data) => {
+  //       if (!data.error) {
+  //         setBreweries(data);
+  //       } else {
+  //         alert(data.error);
+  //       }
+  //     });
   useEffect(() => {
-    fetch('https://daniels-brewmaps-api.herokuapp.com/breweries', {
-      'Content-Type': 'application/json',
-      Authorization: localStorage.authToken,
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        if (!data.error) {
-          setBreweries(data);
-        } else {
-          alert(data.error);
-        }
-      });
-
     const token = localStorage.getItem('authToken');
     if (token) {
       const configObj = {
