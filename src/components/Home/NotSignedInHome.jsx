@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Login from '../auth/Login';
 import Registration from '../auth/Registration';
+import useWindowSize from '../../helpers/useWindowSize';
 
 const NotSignedInHome = ({ handleLogin, history }) => {
   const [toggle, setToggle] = useState(false);
@@ -9,6 +10,7 @@ const NotSignedInHome = ({ handleLogin, history }) => {
     setToggle(!toggle);
   };
 
+  // const width = useWindowSize().width;
   return (
     <div className='home-content'>
       <div className='wrapper'>
