@@ -5,11 +5,11 @@ import SignedInHome from './SignedInHome';
 const HomeContainer = ({ handleLogin, history }) => {
   return (
     <div className='Home'>
-      {/* {localStorage.length === 0 ? ( */}
-      <NotSignedInHome handleLogin={handleLogin} history={history} />
-      {/* ) : (
+      {localStorage.length === 0 ? (
+        <NotSignedInHome handleLogin={handleLogin} history={history} />
+      ) : (
         <SignedInHome />
-      )} */}
+      )}
     </div>
   );
 };
