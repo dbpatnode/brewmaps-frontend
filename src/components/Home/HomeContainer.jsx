@@ -6,7 +6,8 @@ const HomeContainer = ({ handleLogin, history }) => {
   return (
     <div className='Home-container'>
       <div className='Home-top'>
-        {localStorage.length !== 0 ? (
+        {console.log(localStorage.authToken)}
+        {localStorage.authToken !== undefined ? (
           <SignedInHome />
         ) : (
           <NotSignedInHome handleLogin={handleLogin} history={history} />
