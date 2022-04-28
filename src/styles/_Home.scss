@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 90vh;
+    height: 83vh;
     width: 100%;
     color: white;
     background: linear-gradient(rgba(1, 110, 1, 0.361), rgb(1, 110, 0.361)),
@@ -32,9 +32,9 @@
 
       .wrapper {
         display: flex;
-        // align-items: center;
         gap: 60px;
       }
+
       .home-upper-left {
         width: 50%;
         height: 90%;
@@ -76,6 +76,7 @@
       }
     }
   }
+
   .bottom {
     background-color: rgb(1, 110, 0.361);
     display: flex;
@@ -83,6 +84,7 @@
     align-items: center;
     width: 100vw;
     img {
+      max-width: 1400px;
       width: 97%;
       padding-bottom: 20px;
     }
