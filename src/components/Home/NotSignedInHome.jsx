@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Login from '../auth/Login';
 import Registration from '../auth/Registration';
-import useWindowSize from '../../helpers/useWindowSize';
 
 const NotSignedInHome = ({ handleLogin, history }) => {
   const [toggle, setToggle] = useState(false);
