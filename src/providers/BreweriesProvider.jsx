@@ -9,10 +9,10 @@ export const useBreweriesProvider = () => useContext(BreweriesContext);
 // Passes this state to children of provider
 const BreweriesProvider = ({ children }) => {
   const [breweries, setBreweries] = useState([]);
-  //   const url = 'https://daniels-brewmaps-api.herokuapp.com/breweries';
+  const url = 'https://daniels-brewmaps-api.herokuapp.com/breweries';
 
   useEffect(() => {
-    fetch(`https://daniels-brewmaps-api.herokuapp.com/breweries`, {
+    fetch(url, {
       'Content-Type': 'application/json',
       Authorization: localStorage.authToken,
     })
@@ -27,6 +27,7 @@ const BreweriesProvider = ({ children }) => {
   }, []);
 
   return (
+    //   check index.js for where this is being used
     <BreweriesContext.Provider value={{ breweries, setBreweries }}>
       {children}
     </BreweriesContext.Provider>

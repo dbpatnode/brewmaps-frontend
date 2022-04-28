@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { arrow, userIcon, password as passwordIcon } from '../../SVGs/svg';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
-import { arrow, userIcon, password } from '../../SVGs/svg';
-
-export default class Login extends Component {
-  state = {
+const Login = ({ history, handleLogin }) => {
+  const [inputs, setInputs] = useState({
     username: '',
     password: '',
-    loginErrors: '',
-    allFavorites: [],
-  };
+  });
 
-  handleChange = (e) => {
+  const [error, setError] = useState(false);
+
+  const handleChange = (e) => {
     let { name, value } = e.target;
-    this.setState({
+
+    setInputs({
+      ...inputs,
       [name]: value,
     });
   };
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const { username, password } = this.state;
-    const { history, handleLogin } = this.props;
-    history.push('/map');
+    const { username, password } = inputs;
 
     fetch('https://daniels-brewmaps-api.herokuapp.com/login', {
       method: 'POST',
@@ -37,13 +37,22 @@ export default class Login extends Component {
       .then((json) => {
         handleLogin(json.user);
         localStorage.setItem('authToken', json.auth_token);
+        history.push('/map');
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        if (error) {
+          setError(true);
+        }
       });
   };
 
-  render() {
-    return (
+  const { username, password } = inputs;
+  return (
+    <div>
+      {error && <ErrorMessage message={'Invalid username or password.'} />}
       <div>
-        <form className='login' onSubmit={this.handleSubmit}>
+        <form className='login' onSubmit={handleSubmit}>
           <fieldset>
             <legend className='legend'>Login</legend>
             <div className='input'>
@@ -51,8 +60,8 @@ export default class Login extends Component {
                 type='username'
                 name='username'
                 placeholder='Username'
-                value={this.state.username}
-                onChange={this.handleChange}
+                value={username}
+                onChange={handleChange}
                 required
               />
               <span>
@@ -64,23 +73,24 @@ export default class Login extends Component {
                 type='password'
                 name='password'
                 placeholder='Password'
-                value={this.state.password}
-                onChange={this.handleChange}
+                value={password}
+                onChange={handleChange}
                 required
               />
               <span>
-                <i className='fa fa-lock'>{password}</i>
+                <i className='fa fa-lock'>{passwordIcon}</i>
               </span>
             </div>
 
             <button className='submit' type='submit'>
               {arrow}
             </button>
-            {this.state.isInvalid && <div>Invalid Username or Password</div>}
           </fieldset>
         </form>
         <br />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default Login;
