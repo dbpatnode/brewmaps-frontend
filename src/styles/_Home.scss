@@ -26,8 +26,15 @@
 
     .home-content {
       display: flex;
+      justify-content: center;
       height: 88.2vh;
       min-width: 70vw;
+
+      .wrapper {
+        display: flex;
+        // align-items: center;
+        gap: 60px;
+      }
       .home-upper-left {
         width: 50%;
         height: 90%;
