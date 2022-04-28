@@ -1,12 +1,13 @@
 import React from 'react';
 import NotSignedInHome from './NotSignedInHome';
 import SignedInHome from './SignedInHome';
+import useWindowSize from '../../helpers/useWindowSize';
 
 const HomeContainer = ({ handleLogin, history }) => {
+  const width = useWindowSize().width;
   return (
-    <div className='Home-container'>
+    <div className={width < 600 ? 'Mobile-home-container' : 'Home-container'}>
       <div className='Home-top'>
-        {console.log(localStorage.authToken)}
         {localStorage.authToken !== undefined ? (
           <SignedInHome />
         ) : (
@@ -14,7 +15,9 @@ const HomeContainer = ({ handleLogin, history }) => {
         )}
       </div>
       <span className='bottom'>
-        <img src='./images/home_page_botom.png' alt='' />
+        <div>
+          <img src='./images/home_page_botom.png' alt='' />
+        </div>
       </span>
     </div>
   );

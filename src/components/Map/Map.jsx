@@ -90,7 +90,7 @@ class Map extends React.Component {
             {/* {console.log('this.filterPins(): ', this.filterPins())} */}
             {this.filterPins().length === 0 ? (
               <div className='loading'>
-                <div class='loader'>Loading...</div>
+                <div className='loader'>Loading...</div>
               </div>
             ) : (
               this.filterPins().map((brewery) => (
