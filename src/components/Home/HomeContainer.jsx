@@ -4,12 +4,17 @@ import SignedInHome from './SignedInHome';
 
 const HomeContainer = ({ handleLogin, history }) => {
   return (
-    <div className='Home'>
-      {localStorage.length !== 0 ? (
-        <SignedInHome />
-      ) : (
-        <NotSignedInHome handleLogin={handleLogin} history={history} />
-      )}
+    <div className='Home-container'>
+      <div className='Home-top'>
+        {localStorage.length !== 0 ? (
+          <SignedInHome />
+        ) : (
+          <NotSignedInHome handleLogin={handleLogin} history={history} />
+        )}
+      </div>
+      <span className='bottom'>
+        <img src='./images/home_page_botom.png' alt='' />
+      </span>
     </div>
   );
 };
