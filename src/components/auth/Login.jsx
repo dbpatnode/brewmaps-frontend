@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { arrow, userIcon, password as passwordIcon } from '../../SVGs/svg';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
-const Login = ({ history, handleLogin, loggedInStatus }) => {
+const Login = ({ history, handleLogin }) => {
   const [inputs, setInputs] = useState({
     username: '',
     password: '',
-    // loginErrors: '',
   });
 
   const [error, setError] = useState(false);
@@ -22,7 +22,6 @@ const Login = ({ history, handleLogin, loggedInStatus }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { username, password } = inputs;
-    // history.push('/map');
 
     fetch('https://daniels-brewmaps-api.herokuapp.com/login', {
       method: 'POST',
@@ -51,6 +50,7 @@ const Login = ({ history, handleLogin, loggedInStatus }) => {
   const { username, password } = inputs;
   return (
     <div>
+      {error && <ErrorMessage message={'Invalid username or password.'} />}
       <div>
         <form className='login' onSubmit={handleSubmit}>
           <fieldset>
@@ -89,8 +89,6 @@ const Login = ({ history, handleLogin, loggedInStatus }) => {
         </form>
         <br />
       </div>
-
-      {error && <div>Invalid Username or Password.</div>}
     </div>
   );
 };
