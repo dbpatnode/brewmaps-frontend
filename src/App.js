@@ -21,18 +21,7 @@ const App = () => {
   const [inputValue, setInputValue] = useState('');
 
   const { breweries } = useBreweriesProvider();
-  //   fetch('https://daniels-brewmaps-api.herokuapp.com/breweries', {
-  //     'Content-Type': 'application/json',
-  //     Authorization: localStorage.authToken,
-  //   })
-  //     .then((resp) => resp.json())
-  //     .then((data) => {
-  //       if (!data.error) {
-  //         setBreweries(data);
-  //       } else {
-  //         alert(data.error);
-  //       }
-  //     });
+
   useEffect(() => {
     const token = localStorage.getItem('authToken');
     if (token) {

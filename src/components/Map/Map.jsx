@@ -87,7 +87,7 @@ class Map extends React.Component {
             mapStyle='mapbox://styles/mapbox/streets-v11'
             mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API_ACCESS_TOKEN}
           >
-            {console.log('this.filterPins(): ', this.filterPins())}
+            {/* {console.log('this.filterPins(): ', this.filterPins())} */}
             {this.filterPins().length === 0 ? (
               <div className='loading'>
                 <div class='loader'>Loading...</div>
@@ -99,7 +99,6 @@ class Map extends React.Component {
                   longitude={brewery.lng}
                   latitude={brewery.lat}
                 >
-                  {console.log(brewery)}
                   <button
                     className='pin'
                     onClick={() => this._onClickMarker(brewery)}
