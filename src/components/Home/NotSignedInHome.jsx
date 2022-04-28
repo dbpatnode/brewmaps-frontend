@@ -10,7 +10,6 @@ const NotSignedInHome = ({ handleLogin, history }) => {
     setToggle(!toggle);
   };
 
-  // const width = useWindowSize().width;
   return (
     <div className='home-content'>
       <div className='wrapper'>
