@@ -120,6 +120,10 @@
   }
 
   .Home-top {
-    margin-top: 180px;
+    position: absolute;
+  }
+
+  .bottom {
+    display: none;
   }
 }
