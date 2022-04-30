@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const NavBar = ({ loggedInStatus, user, handleLogout }) => {
+const WebNav = ({ loggedInStatus, user, handleLogout }) => {
   const logo = './images/hop_logo.png';
 
   return (
@@ -32,4 +32,4 @@ const NavBar = ({ loggedInStatus, user, handleLogout }) => {
   );
 };
 
-export default NavBar;
+export default WebNav;

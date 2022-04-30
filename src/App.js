@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useBreweriesProvider } from './providers/BreweriesProvider';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import NavBar from './components/Nav/NavBar';
+import NavBar from './components/Nav/NavBarContainer';
 import Login from './components/auth/Login';
 import Registration from './components/auth/Registration';
 import MapContainer from './components/Map/MapContainer';
