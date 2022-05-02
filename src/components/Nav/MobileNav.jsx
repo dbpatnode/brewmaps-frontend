@@ -41,9 +41,9 @@ const MobileNav = ({ loggedInStatus, user, handleLogout }) => {
               <NavLink to='/favorites'>Favorites</NavLink>
             </div>
             <div className='mobile-logout'>
-              <a href='/' onClick={handleLogout}>
+              <NavLink to='/' onClick={handleLogout}>
                 LOG OUT
-              </a>
+              </NavLink>
             </div>
           </div>
         </div>
