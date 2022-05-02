@@ -32,7 +32,7 @@ const MobileNav = ({ loggedInStatus, user, handleLogout }) => {
               <NavLink to='/'>Home</NavLink>
             </div>
             <div className='link' onClick={ToggleClass}>
-              <NavLink to='/map'>Map</NavLink>
+              <NavLink to='/map'>Map.</NavLink>
             </div>
             <div className='link' onClick={ToggleClass}>
               <NavLink to='/breweries'>Breweries</NavLink>
