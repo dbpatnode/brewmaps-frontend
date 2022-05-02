@@ -5,6 +5,7 @@ import useWindowSize from '../../helpers/useWindowSize';
 
 const HomeContainer = ({ handleLogin, history }) => {
   const width = useWindowSize().width;
+
   return (
     <div className={width < 600 ? 'Mobile-home-container' : 'Home-container'}>
       <div className='Home-top'>

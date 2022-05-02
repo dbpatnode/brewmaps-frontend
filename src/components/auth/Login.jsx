@@ -19,6 +19,25 @@ const Login = ({ history, handleLogin }) => {
     });
   };
 
+  // useEffect(() => {
+  //   const token = localStorage.getItem('authToken');
+  //   if (token) {
+  //     const configObj = {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         Authorization: localStorage.authToken,
+  //       },
+  //     };
+
+  //     setLoggedInStatus('LOGGED_IN');
+  //     fetch('https://daniels-brewmaps-api.herokuapp.com/whoami', configObj)
+  //       .then((resp) => resp.json())
+  //       .then(handleLogin);
+  //   } else {
+  //     setLoggedInStatus('NOT_LOGGED_IN');
+  //   }
+  // }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const { username, password } = inputs;
