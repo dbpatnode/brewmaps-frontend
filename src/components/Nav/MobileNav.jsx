@@ -42,14 +42,14 @@ const MobileNav = ({ loggedInStatus, user, handleLogout }) => {
             <div className='link' onClick={ToggleClass}>
               <NavLink to='/favorites'>Favorites</NavLink>
             </div>
-            {/* <div className='link' onClick={ToggleClass}> */}
-            <a className='logout' href='/' onClick={handleLogout}>
-              LOGOUT
-            </a>
+            <div className='mobile-logout'>
+              <a href='/' onClick={handleLogout}>
+                LOG OUT
+              </a>
+            </div>
           </div>
         </div>
       )}
-      {/* </div> */}
     </nav>
   );
 };
