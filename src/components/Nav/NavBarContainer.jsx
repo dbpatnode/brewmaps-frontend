@@ -1,6 +1,7 @@
 import React from 'react';
 import useWindowSize from '../../helpers/useWindowSize';
 import WebNav from './WebNav';
+import MobileNav from './MobileNav';
 
 const NavBar = ({ loggedInStatus, user, handleLogout }) => {
   const width = useWindowSize().width;
@@ -8,7 +9,11 @@ const NavBar = ({ loggedInStatus, user, handleLogout }) => {
   return (
     <div>
       {width < 1024 ? (
-        <></>
+        <MobileNav
+          loggedInStatus={loggedInStatus}
+          user={user}
+          handleLogout={handleLogout}
+        />
       ) : (
         <WebNav
           loggedInStatus={loggedInStatus}
