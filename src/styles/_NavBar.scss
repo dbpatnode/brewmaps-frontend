@@ -1,12 +1,15 @@
 .navbar {
+  position: absolute;
   height: 10vh;
   min-height: 70px;
   display: flex;
   align-items: center;
   z-index: 1;
-  background-color: white;
-  border-bottom: 6px solid #8fa540;
+  color: rgb(244, 244, 244);
+  background-color: #00873d;
+  border-bottom: 6px solid #007233;
   width: 100%;
+  margin-bottom: 20px;
 
   span {
     font-size: 20px;
