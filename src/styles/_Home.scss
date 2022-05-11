@@ -25,6 +25,7 @@
 }
 
 .Home-top {
+  margin-top: -23px;
   color: white;
 }
 
@@ -102,6 +103,7 @@
 
 // mobile view specific
 .Mobile-home-container {
+  margin-top: -23px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -121,6 +123,7 @@
 
   .Home-top {
     position: absolute;
+    // top: 0;
   }
 
   .bottom {
