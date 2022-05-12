@@ -4,7 +4,7 @@ import BreweryCard from './BreweryCard';
 
 const BreweryCollection = (props) => {
   return (
-    <div>
+    <div className='top-margin'>
       <h1 className='header'>Breweries</h1>
       <SearchBar
         inputValue={props.inputValue}

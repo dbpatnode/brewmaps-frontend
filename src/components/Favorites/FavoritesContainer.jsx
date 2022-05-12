@@ -26,7 +26,7 @@ class FavoriteContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className='top-margin'>
         <h1 className='header'>Favorites</h1>
         <div className='favorite-cards'>
           {this.props.favorites.map((favorite, index) => {
