@@ -3,7 +3,6 @@ nav {
   top: 0;
   height: 10vh;
   min-height: 70px;
-
   z-index: 1;
   color: rgb(244, 244, 244);
   background-color: #00873d;
@@ -21,10 +20,13 @@ nav {
     text-transform: uppercase;
     display: block;
     position: relative;
+    transition: 220ms all ease-in-out;
     padding: 0.2em 0;
 
-    &:hover {
-      color: rgb(218, 218, 218);
+    &:hover,
+    &:active,
+    &:focus {
+      color: scale-color(rgb(244, 244, 244), $lightness: -8%);
       text-decoration: none;
     }
 
@@ -52,7 +54,7 @@ nav {
     }
   }
 
-  a:last-of-type {
+  .logo-link {
     &:hover::after,
     &:focus::after {
       opacity: 0;
@@ -78,18 +80,86 @@ nav {
     align-items: center;
     gap: 20px;
     width: 70%;
-    .logout {
-      border: 1px solid rgb(201, 198, 198);
-      border-radius: 10px;
-      box-shadow: 0px 0px 5px 7px rgba(0, 0, 0, 0.03);
-      background-color: #8fa540;
-      color: white;
-      padding: 3px;
-    }
+    // .logout {
+    //   border: 1px solid rgb(201, 198, 198);
+    //   font-size: 14px;
+    //   padding: 6px;
+    //   border-radius: 10px;
+    //   box-shadow: 0px 0px 5px 7px rgba(0, 0, 0, 0.03);
+    //   background-color: #8fa540;
+    //   color: white;
+    //   margin-left: 40px;
+    //   // padding: 3px;
+    // }
   }
 }
 
-// Mobile
+// /* CSS */
+.logout-button {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgb(117, 95, 0);
+  border-radius: 3px;
+  color: #ffffff;
+  display: inline-block;
+  font-size: 15px;
+  line-height: 15px;
+  padding: 18px 18px 17px;
+  text-decoration: none;
+  cursor: pointer;
+  background: rgb(160, 131, 0);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.logout-button span:first-child {
+  position: relative;
+  transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  z-index: 10;
+}
+
+.logout-button span:last-child {
+  color: rgb(99, 99, 99);
+  display: block;
+  position: absolute;
+  bottom: 0;
+  transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
+  z-index: 100;
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  transform: translateY(225%) translateX(-50%);
+  height: 14px;
+  line-height: 13px;
+}
+
+.logout-button:after {
+  content: '';
+  position: absolute;
+  bottom: -60%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(245, 223, 121);
+  transform-origin: bottom center;
+  transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
+  transform: skewY(9.3deg) scaleY(0);
+  z-index: 50;
+}
+
+.logout-button:hover:after {
+  transform-origin: bottom center;
+  transform: skewY(9.3deg) scaleY(2);
+}
+
+.logout-button:hover span:last-child {
+  transform: translateX(-50%) translateY(-100%);
+  opacity: 1;
+  transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
+}
+
+// ////////////////////
 .navbar.mobile {
   .navigation {
     position: absolute;

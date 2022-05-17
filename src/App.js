@@ -45,6 +45,7 @@ const App = () => {
     localStorage.clear();
     setLoggedInStatus('NOT_LOGGED_IN');
     setUser({});
+    window.location.href = '/';
   };
 
   const handleLogin = (user) => {

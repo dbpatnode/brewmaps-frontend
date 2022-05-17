@@ -11,11 +11,10 @@ const WebNav = ({ loggedInStatus, user, handleLogout }) => {
           <img className='logo' src={logo} alt='BrewMaps Logo' />
         </span>
         <span>
-          <NavLink to='/'>BREWMAPS</NavLink>
+          <NavLink to='/' className='logo-link'>
+            BREWMAPS
+          </NavLink>
         </span>
-        {loggedInStatus === 'LOGGED_IN' && (
-          <span className='username'>Cheers, {user.username}!</span>
-        )}
       </div>
 
       {loggedInStatus === 'LOGGED_IN' && (
@@ -23,9 +22,11 @@ const WebNav = ({ loggedInStatus, user, handleLogout }) => {
           <NavLink to='/map'> BREWERYMAP </NavLink>
           <NavLink to='/breweries'> BREWERIES </NavLink>
           <NavLink to='/favorites'> FAVORITES</NavLink>
-          <a className='logout' href='/' onClick={handleLogout}>
-            LOGOUT
-          </a>
+
+          <button class='logout-button' role='button' onClick={handleLogout}>
+            <span class='text'> Cheers, {user.username}</span>
+            <span>Log Out</span>
+          </button>
         </div>
       )}
     </nav>
