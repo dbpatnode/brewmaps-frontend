@@ -16,7 +16,7 @@ const Registration = ({ history, handleLogin }) => {
     password_confirmation: '',
   });
 
-  const [error, setError] = useState(false);
+  // const [error, setError] = useState(false);
 
   const handleChange = (e) => {
     let { name, value } = e.target;
