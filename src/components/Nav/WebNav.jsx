@@ -23,8 +23,8 @@ const WebNav = ({ loggedInStatus, user, handleLogout }) => {
           <NavLink to='/breweries'> BREWERIES </NavLink>
           <NavLink to='/favorites'> FAVORITES</NavLink>
 
-          <button class='logout-button' onClick={handleLogout}>
-            <span class='text'> Cheers, {user.username}</span>
+          <button className='logout-button' onClick={handleLogout}>
+            <span className='text'> Cheers, {user.username}</span>
             <span>Log Out</span>
           </button>
         </div>

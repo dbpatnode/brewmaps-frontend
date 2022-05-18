@@ -3,8 +3,8 @@ import { useBreweriesProvider } from './providers/BreweriesProvider';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/Nav/NavBarContainer';
-import Login from './components/auth/Login';
-import Registration from './components/auth/Registration';
+// import Login from './components/auth/Login';
+// import Registration from './components/auth/Registration';
 import MapContainer from './components/Map/MapContainer';
 import Home from './components/Home/HomeContainer';
 import FavoriteContainer from './components/Favorites/FavoritesContainer';
@@ -76,22 +76,6 @@ const App = () => {
     }
   };
 
-  const addNotes = (note) => {
-    const configObj = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: localStorage.authToken,
-      },
-      body: JSON.stringify(note),
-    };
-    fetch('https://daniels-brewmaps-api.herokuapp.com/notes', configObj)
-      .then((resp) => resp.json())
-      .then((data) => {
-        window.location.href = '/favorites';
-      });
-  };
-
   const breweryFilterOnChange = (e) => {
     const { value } = e.target;
     setInputValue(value);
@@ -126,29 +110,6 @@ const App = () => {
         />
 
         <Route
-          path='/signup'
-          render={(props) => (
-            <Registration
-              {...props}
-              // history={props.history}
-              handleLogin={handleLogin}
-              loggedInStatus={loggedInStatus}
-            />
-          )}
-        />
-
-        <Route
-          path='/login'
-          render={(props) => (
-            <Login
-              {...props}
-              handleLogin={handleLogin}
-              loggedInStatus={loggedInStatus}
-            />
-          )}
-        />
-
-        <Route
           path='/map'
           render={(props) => {
             return breweries ? (
@@ -170,11 +131,12 @@ const App = () => {
           render={(props) => (
             <FavoriteContainer
               {...props}
+              // history={props.history}
               user={user}
               favorites={favorites}
-              addFavorite={addFavorite}
-              // removeFavorite={removeFavorite}
-              addNotes={addNotes}
+              setFavorites={setFavorites}
+              // addFavorite={addFavorite}
+              // setNotes={setNotes}
               notes={notes}
             />
           )}

@@ -31,6 +31,8 @@ class NoteContainer extends Component {
       user_id: this.props.user,
       brewery_id: this.props.brewery,
     };
+    this.setState({ review: '', atmosphere: '', rating: '' });
+
     this.props.addNotes(note);
   };
 
@@ -58,6 +60,7 @@ class NoteContainer extends Component {
                 <ReactStars
                   number={this.state.rating}
                   count={5}
+                  isHalf={true}
                   onChange={this.ratingChanged}
                   size={15}
                   activeColor='#8fa540'
