@@ -1,5 +1,5 @@
-import React from 'react';
-import NoteContainer from '../Notes/NotesContainer';
+import React from "react";
+import NoteContainer from "../Notes/NotesContainer";
 import {
   phone as phoneIcon,
   map,
@@ -7,22 +7,22 @@ import {
   pencil,
   trash,
   star,
-} from '../../SVGs/svg';
+} from "../../SVGs/svg";
 
 const FavoriteContainer = ({ user, favorites, setFavorites, notes }) => {
   const addNotes = (note) => {
-    console.log('note: ', note);
+    console.log("note: ", note);
 
     const configObj = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: localStorage.authToken,
       },
       body: JSON.stringify(note),
     };
 
-    fetch('https://daniels-brewmaps-api.herokuapp.com/notes', configObj)
+    fetch("https://daniels-brewmaps-api.herokuapp.com/notes", configObj)
       .then((resp) => resp.json())
       .then((data) => {
         const duplicatedFavorites = [...favorites];
@@ -39,23 +39,17 @@ const FavoriteContainer = ({ user, favorites, setFavorites, notes }) => {
       });
   };
 
-  // console.log(notes);
-
   const removeFavorite = (id) => {
     const favoriteId = favorites.find((f) => f.brewery.id === id);
 
     fetch(
       `https://daniels-brewmaps-api.herokuapp.com/favorites/${favoriteId.id}`,
       {
-        method: 'DELETE',
+        method: "DELETE",
       },
     )
       .then((resp) => resp.json())
-      .then(
-        (data) =>
-          // console.log(data));
-          (window.location.href = '/favorites'),
-      );
+      .then((data) => (window.location.href = "/favorites"));
   };
 
   return (
@@ -80,7 +74,7 @@ const FavoriteContainer = ({ user, favorites, setFavorites, notes }) => {
               <div className='card' index={index} key={index}>
                 <a
                   className='brewery-name'
-                  style={{ display: 'table-cell' }}
+                  style={{ display: "table-cell" }}
                   href={website_url}
                   target='_blank'
                   rel='noopener noreferrer'
@@ -100,19 +94,19 @@ const FavoriteContainer = ({ user, favorites, setFavorites, notes }) => {
                   </a>
                 </p>
 
-                {''}
+                {""}
                 {favorite.brewery.phone ? (
                   <a href={`tel:${phone}`} className='phone-number'>
                     <span id='icons'>{phoneIcon}</span>
                     {favorite.brewery.phone}
                   </a>
                 ) : (
-                  'No phone number available'
+                  "No phone number available"
                 )}
 
                 <a
                   className='website'
-                  style={{ display: 'table-cell' }}
+                  style={{ display: "table-cell" }}
                   href={favorite.brewery.website_url}
                   target='_blank'
                   rel='noopener noreferrer'
